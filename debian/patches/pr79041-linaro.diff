@@ -1,0 +1,15 @@
+# DP: Fix PR target/79041, aarch64 backend emitting R_AARCH64_ADR_PREL_PG_HI21
+# DP: relocation despite -mpc-relative-literal-loads option being used
+
+--- a/src/gcc/config/aarch64/aarch64.c	2017-06-20 17:22:23.967114886 +0200
++++ b/src/gcc/config/aarch64/aarch64.c	2017-06-20 17:31:37.023190332 +0200
+@@ -9556,7 +9556,8 @@
+ 	  /* This is alright even in PIC code as the constant
+ 	     pool reference is always PC relative and within
+ 	     the same translation unit.  */
+-	  if (CONSTANT_POOL_ADDRESS_P (x))
++	  if (!aarch64_pcrelative_literal_loads
++	      && CONSTANT_POOL_ADDRESS_P (x))
+ 	    return SYMBOL_SMALL_ABSOLUTE;
+ 	  else
+ 	    return SYMBOL_FORCE_TO_MEM;

@@ -1,0 +1,3 @@
+version=2
+ftp://gcc.gnu.org/pub/gcc/releases/gcc-(6\.[\d\.]*)/ \
+	gcc-([\d\.]+)\.tar\.xz debian uupdate

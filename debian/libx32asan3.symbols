@@ -1,0 +1,4 @@
+libasan.so.3 libx32asan3 #MINVER#
+#include "libasan.symbols.common"
+#include "libasan.symbols.32"
+#include "libasan.symbols.16"

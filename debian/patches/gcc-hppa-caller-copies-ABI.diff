@@ -1,0 +1,18 @@
+# DP: Switch hppa-linux to caller copies ABI (as done in GCC 8).
+
+2018-01-16  John David Anglin  <danglin@gcc.gnu.org>
+
+	* config.gcc (hppa*-*-linux*): Change callee copies ABI to caller
+	copies.
+
+--- a/src/gcc/config.gcc
++++ b/src/gcc/config.gcc
+@@ -1339,7 +1339,7 @@
+ 	gas=yes gnu_ld=yes
+ 	;;
+ hppa*-*-linux*)
+-	target_cpu_default="MASK_PA_11|MASK_NO_SPACE_REGS"
++	target_cpu_default="MASK_PA_11|MASK_NO_SPACE_REGS|MASK_CALLER_COPIES"
+ 	tm_file="${tm_file} dbxelf.h elfos.h gnu-user.h linux.h glibc-stdint.h pa/pa-linux.h \
+ 		 pa/pa32-regs.h pa/pa32-linux.h"
+ 	tmake_file="${tmake_file} pa/t-linux"

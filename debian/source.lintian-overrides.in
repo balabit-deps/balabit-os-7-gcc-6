@@ -1,0 +1,5 @@
+@SRC@ source: invalid-arch-string-in-source-relation
+@SRC@ source: quilt-build-dep-but-no-series-file
+# lintian can't handle (>= ${gcc:Version})
+@SRC@ source: weak-library-dev-dependency
+@SRC@ source: patch-file-present-but-not-mentioned-in-series

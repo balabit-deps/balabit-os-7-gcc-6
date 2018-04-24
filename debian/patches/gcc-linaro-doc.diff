@@ -1,0 +1,756 @@
+# DP: Changes for the Linaro 6-2017.11 snapshot (documentation).
+
+--- a/src/gcc/doc/cpp.texi
++++ b/src/gcc/doc/cpp.texi
+@@ -1984,7 +1984,7 @@ by GCC, or a non-GCC compiler that claims to accept the GNU C dialects,
+ you can simply test @code{__GNUC__}.  If you need to write code
+ which depends on a specific version, you must be more careful.  Each
+ time the minor version is increased, the patch level is reset to zero;
+-each time the major version is increased (which happens rarely), the
++each time the major version is increased, the
+ minor version and patch level are reset.  If you wish to use the
+ predefined macros directly in the conditional, you will need to write it
+ like this:
+--- a/src/gcc/doc/extend.texi
++++ b/src/gcc/doc/extend.texi
+@@ -11416,6 +11416,7 @@ instructions, but allow the compiler to schedule those calls.
+ * ARM iWMMXt Built-in Functions::
+ * ARM C Language Extensions (ACLE)::
+ * ARM Floating Point Status and Control Intrinsics::
++* ARM ARMv8-M Security Extensions::
+ * AVR Built-in Functions::
+ * Blackfin Built-in Functions::
+ * FR-V Built-in Functions::
+@@ -12260,6 +12261,35 @@ unsigned int __builtin_arm_get_fpscr ()
+ void __builtin_arm_set_fpscr (unsigned int)
+ @end smallexample
+ 
++@node ARM ARMv8-M Security Extensions
++@subsection ARM ARMv8-M Security Extensions
++
++GCC implements the ARMv8-M Security Extensions as described in the ARMv8-M
++Security Extensions: Requiremenets on Development Tools Engineering
++Specification, which can be found at
++@uref{http://infocenter.arm.com/help/topic/com.arm.doc.ecm0359818/ECM0359818_armv8m_security_extensions_reqs_on_dev_tools_1_0.pdf}.
++
++As part of the Security Extensions GCC implements two new function attributes:
++@code{cmse_nonsecure_entry} and @code{cmse_nonsecure_call}.
++
++As part of the Security Extensions GCC implements the intrinsics below.  FPTR
++is used here to mean any function pointer type.
++
++@smallexample
++cmse_address_info_t cmse_TT (void *)
++cmse_address_info_t cmse_TT_fptr (FPTR)
++cmse_address_info_t cmse_TTT (void *)
++cmse_address_info_t cmse_TTT_fptr (FPTR)
++cmse_address_info_t cmse_TTA (void *)
++cmse_address_info_t cmse_TTA_fptr (FPTR)
++cmse_address_info_t cmse_TTAT (void *)
++cmse_address_info_t cmse_TTAT_fptr (FPTR)
++void * cmse_check_address_range (void *, size_t, int)
++typeof(p) cmse_nsfptr_create (FPTR p)
++intptr_t cmse_is_nsfptr (FPTR)
++int cmse_nonsecure_caller (void)
++@end smallexample
++
+ @node AVR Built-in Functions
+ @subsection AVR Built-in Functions
+ 
+--- a/src/gcc/doc/fragments.texi
++++ b/src/gcc/doc/fragments.texi
+@@ -156,15 +156,16 @@ variants.  And for some targets it is better to reuse an existing multilib
+ than to fall back to default multilib when there is no corresponding multilib.
+ This can be done by adding reuse rules to @code{MULTILIB_REUSE}.
+ 
+-A reuse rule is comprised of two parts connected by equality sign.  The left part
+-is option set used to build multilib and the right part is option set that will
+-reuse this multilib.  The order of options in the left part matters and should be
+-same with those specified in @code{MULTILIB_REQUIRED} or aligned with order in
+-@code{MULTILIB_OPTIONS}.  There is no such limitation for options in right part
+-as we don't build multilib from them.  But the equality sign in both parts should
+-be replaced with period.
+-
+-The @code{MULTILIB_REUSE} is different from @code{MULTILIB_MATCHES} in that it
++A reuse rule is comprised of two parts connected by equality sign.  The left
++part is the option set used to build multilib and the right part is the option
++set that will reuse this multilib.  Both parts should only use options
++specified in @code{MULTILIB_OPTIONS} and the equality signs found in options
++name should be replaced with periods.  The order of options in the left part
++matters and should be same with those specified in @code{MULTILIB_REQUIRED} or
++aligned with the order in @code{MULTILIB_OPTIONS}.  There is no such limitation
++for options in the right part as we don't build multilib from them.
++
++@code{MULTILIB_REUSE} is different from @code{MULTILIB_MATCHES} in that it
+ sets up relations between two option sets rather than two options.  Here is an
+ example to demo how we reuse libraries built in Thumb mode for applications built
+ in ARM mode:
+--- a/src/gcc/doc/install.texi
++++ b/src/gcc/doc/install.texi
+@@ -1106,19 +1106,59 @@ sysv, aix.
+ 
+ @item --with-multilib-list=@var{list}
+ @itemx --without-multilib-list
+-Specify what multilibs to build.
+-Currently only implemented for arm*-*-*, sh*-*-* and x86-64-*-linux*.
++Specify what multilibs to build.  @var{list} is a comma separated list of
++values, possibly consisting of a single value.  Currently only implemented
++for arm*-*-*, sh*-*-* and x86-64-*-linux*.  The accepted values and meaning
++for each target is given below.
+ 
+ @table @code
+ @item arm*-*-*
+-@var{list} is either @code{default} or @code{aprofile}.  Specifying
+-@code{default} is equivalent to omitting this option while specifying
+-@code{aprofile} builds multilibs for each combination of ISA (@code{-marm} or
+-@code{-mthumb}), architecture (@code{-march=armv7-a}, @code{-march=armv7ve},
+-or @code{-march=armv8-a}), FPU available (none, @code{-mfpu=vfpv3-d16},
+-@code{-mfpu=neon}, @code{-mfpu=vfpv4-d16}, @code{-mfpu=neon-vfpv4} or
+-@code{-mfpu=neon-fp-armv8} depending on architecture) and floating-point ABI
+-(@code{-mfloat-abi=softfp} or @code{-mfloat-abi=hard}).
++@var{list} is one of@code{default}, @code{aprofile} or @code{rmprofile}.
++Specifying @code{default} is equivalent to omitting this option, ie. only the
++default runtime library will be enabled.  Specifying @code{aprofile} or
++@code{rmprofile} builds multilibs for a combination of ISA, architecture,
++FPU available and floating-point ABI.
++
++The table below gives the combination of ISAs, architectures, FPUs and
++floating-point ABIs for which multilibs are built for each accepted value.
++
++@multitable @columnfractions .15 .28 .30
++@item Option @tab aprofile @tab rmprofile
++@item ISAs
++@tab @code{-marm} and @code{-mthumb}
++@tab @code{-mthumb}
++@item Architectures@*@*@*@*@*@*
++@tab default architecture@*
++@code{-march=armv7-a}@*
++@code{-march=armv7ve}@*
++@code{-march=armv8-a}@*@*@*
++@tab default architecture@*
++@code{-march=armv6s-m}@*
++@code{-march=armv7-m}@*
++@code{-march=armv7e-m}@*
++@code{-march=armv8-m.base}@*
++@code{-march=armv8-m.main}@*
++@code{-march=armv7}
++@item FPUs@*@*@*@*@*
++@tab none@*
++@code{-mfpu=vfpv3-d16}@*
++@code{-mfpu=neon}@*
++@code{-mfpu=vfpv4-d16}@*
++@code{-mfpu=neon-vfpv4}@*
++@code{-mfpu=neon-fp-armv8}
++@tab none@*
++@code{-mfpu=vfpv3-d16}@*
++@code{-mfpu=fpv4-sp-d16}@*
++@code{-mfpu=fpv5-sp-d16}@*
++@code{-mfpu=fpv5-d16}@*
++@item floating-point@/ ABIs@*@*
++@tab @code{-mfloat-abi=soft}@*
++@code{-mfloat-abi=softfp}@*
++@code{-mfloat-abi=hard}
++@tab @code{-mfloat-abi=soft}@*
++@code{-mfloat-abi=softfp}@*
++@code{-mfloat-abi=hard}
++@end multitable
+ 
+ @item sh*-*-*
+ @var{list} is a comma separated list of CPU names.  These must be of the
+--- a/src/gcc/doc/invoke.texi
++++ b/src/gcc/doc/invoke.texi
+@@ -573,6 +573,8 @@ Objective-C and Objective-C++ Dialects}.
+ -mfix-cortex-a53-835769  -mno-fix-cortex-a53-835769 @gol
+ -mfix-cortex-a53-843419  -mno-fix-cortex-a53-843419 @gol
+ -mlow-precision-recip-sqrt -mno-low-precision-recip-sqrt@gol
++-mlow-precision-sqrt -mno-low-precision-sqrt@gol
++-mlow-precision-div -mno-low-precision-div @gol
+ -march=@var{name}  -mcpu=@var{name}  -mtune=@var{name}}
+ 
+ @emph{Adapteva Epiphany Options}
+@@ -606,7 +608,6 @@ Objective-C and Objective-C++ Dialects}.
+ @gccoptlist{-mapcs-frame  -mno-apcs-frame @gol
+ -mabi=@var{name} @gol
+ -mapcs-stack-check  -mno-apcs-stack-check @gol
+--mapcs-float  -mno-apcs-float @gol
+ -mapcs-reentrant  -mno-apcs-reentrant @gol
+ -msched-prolog  -mno-sched-prolog @gol
+ -mlittle-endian  -mbig-endian @gol
+@@ -632,7 +633,9 @@ Objective-C and Objective-C++ Dialects}.
+ -mneon-for-64bits @gol
+ -mslow-flash-data @gol
+ -masm-syntax-unified @gol
+--mrestrict-it}
++-mrestrict-it @gol
++-mpure-code @gol
++-mcmse}
+ 
+ @emph{AVR Options}
+ @gccoptlist{-mmcu=@var{mcu} -maccumulate-args -mbranch-cost=@var{cost} @gol
+@@ -9483,6 +9486,11 @@ Size of minimal partition for WHOPR (in estimated instructions).
+ This prevents expenses of splitting very small programs into too many
+ partitions.
+ 
++@item lto-max-partition
++Size of max partition for WHOPR (in estimated instructions).
++to provide an upper bound for individual size of partition.
++Meant to be used only with balanced partitioning.
++
+ @item cxx-max-namespaces-for-diagnostic-help
+ The maximum number of namespaces to consult for suggestions when C++
+ name lookup fails for an identifier.  The default is 1000.
+@@ -12833,9 +12841,9 @@ These options are defined for AArch64 implementations:
+ @item -mabi=@var{name}
+ @opindex mabi
+ Generate code for the specified data model.  Permissible values
+-are @samp{ilp32} for SysV-like data model where int, long int and pointer
+-are 32-bit, and @samp{lp64} for SysV-like data model where int is 32-bit,
+-but long int and pointer are 64-bit.
++are @samp{ilp32} for SysV-like data model where int, long int and pointers
++are 32 bits, and @samp{lp64} for SysV-like data model where int is 32 bits,
++but long int and pointers are 64 bits.
+ 
+ The default depends on the specific target configuration.  Note that
+ the LP64 and ILP32 ABIs are not link-compatible; you must compile your
+@@ -12860,25 +12868,24 @@ Generate little-endian code.  This is the default when GCC is configured for an
+ @item -mcmodel=tiny
+ @opindex mcmodel=tiny
+ Generate code for the tiny code model.  The program and its statically defined
+-symbols must be within 1GB of each other.  Pointers are 64 bits.  Programs can
+-be statically or dynamically linked.  This model is not fully implemented and
+-mostly treated as @samp{small}.
++symbols must be within 1MB of each other.  Programs can be statically or
++dynamically linked.
+ 
+ @item -mcmodel=small
+ @opindex mcmodel=small
+ Generate code for the small code model.  The program and its statically defined
+-symbols must be within 4GB of each other.  Pointers are 64 bits.  Programs can
+-be statically or dynamically linked.  This is the default code model.
++symbols must be within 4GB of each other.  Programs can be statically or
++dynamically linked.  This is the default code model.
+ 
+ @item -mcmodel=large
+ @opindex mcmodel=large
+ Generate code for the large code model.  This makes no assumptions about
+-addresses and sizes of sections.  Pointers are 64 bits.  Programs can be
+-statically linked only.
++addresses and sizes of sections.  Programs can be statically linked only.
+ 
+ @item -mstrict-align
+ @opindex mstrict-align
+-Do not assume that unaligned memory references are handled by the system.
++Avoid generating memory accesses that may not be aligned on a natural object
++boundary as described in the architecture specification.
+ 
+ @item -momit-leaf-frame-pointer
+ @itemx -mno-omit-leaf-frame-pointer
+@@ -12900,7 +12907,7 @@ of TLS variables.
+ @item -mtls-size=@var{size}
+ @opindex mtls-size
+ Specify bit size of immediate TLS offsets.  Valid values are 12, 24, 32, 48.
+-This option depends on binutils higher than 2.25.
++This option requires binutils 2.26 or newer.
+ 
+ @item -mfix-cortex-a53-835769
+ @itemx -mno-fix-cortex-a53-835769
+@@ -12920,12 +12927,34 @@ corresponding flag to the linker.
+ 
+ @item -mlow-precision-recip-sqrt
+ @item -mno-low-precision-recip-sqrt
+-@opindex -mlow-precision-recip-sqrt
+-@opindex -mno-low-precision-recip-sqrt
+-When calculating the reciprocal square root approximation,
+-uses one less step than otherwise, thus reducing latency and precision.
+-This is only relevant if @option{-ffast-math} enables the reciprocal square root
+-approximation, which in turn depends on the target processor.
++@opindex mlow-precision-recip-sqrt
++@opindex mno-low-precision-recip-sqrt
++Enable or disable the reciprocal square root approximation.
++This option only has an effect if @option{-ffast-math} or
++@option{-funsafe-math-optimizations} is used as well.  Enabling this reduces
++precision of reciprocal square root results to about 16 bits for
++single precision and to 32 bits for double precision.
++
++@item -mlow-precision-sqrt
++@item -mno-low-precision-sqrt
++@opindex -mlow-precision-sqrt
++@opindex -mno-low-precision-sqrt
++Enable or disable the square root approximation.
++This option only has an effect if @option{-ffast-math} or
++@option{-funsafe-math-optimizations} is used as well.  Enabling this reduces
++precision of square root results to about 16 bits for
++single precision and to 32 bits for double precision.
++If enabled, it implies @option{-mlow-precision-recip-sqrt}.
++
++@item -mlow-precision-div
++@item -mno-low-precision-div
++@opindex -mlow-precision-div
++@opindex -mno-low-precision-div
++Enable or disable the division approximation.
++This option only has an effect if @option{-ffast-math} or
++@option{-funsafe-math-optimizations} is used as well.  Enabling this reduces
++precision of division results to about 16 bits for
++single precision and to 32 bits for double precision.
+ 
+ @item -march=@var{name}
+ @opindex march
+@@ -12934,10 +12963,16 @@ more feature modifiers.  This option has the form
+ @option{-march=@var{arch}@r{@{}+@r{[}no@r{]}@var{feature}@r{@}*}}.
+ 
+ The permissible values for @var{arch} are @samp{armv8-a},
+-@samp{armv8.1-a} or @var{native}.
++@samp{armv8.1-a}, @samp{armv8.2-a}, @samp{armv8.3-a} or @var{native}.
++
++The value @samp{armv8.3-a} implies @samp{armv8.2-a} and enables compiler
++support for the ARMv8.3-A architecture extensions.
++
++The value @samp{armv8.2-a} implies @samp{armv8.1-a} and enables compiler
++support for the ARMv8.2-A architecture extensions.
+ 
+ The value @samp{armv8.1-a} implies @samp{armv8-a} and enables compiler
+-support for the ARMv8.1 architecture extension.  In particular, it
++support for the ARMv8.1-A architecture extension.  In particular, it
+ enables the @samp{+crc} and @samp{+lse} features.
+ 
+ The value @samp{native} is available on native AArch64 GNU/Linux and
+@@ -12961,18 +12996,18 @@ processors implementing the target architecture.
+ Specify the name of the target processor for which GCC should tune the
+ performance of the code.  Permissible values for this option are:
+ @samp{generic}, @samp{cortex-a35}, @samp{cortex-a53}, @samp{cortex-a57},
+-@samp{cortex-a72}, @samp{exynos-m1}, @samp{qdf24xx}, @samp{thunderx},
+-@samp{xgene1}.
++@samp{cortex-a72}, @samp{cortex-a73}, @samp{exynos-m1}, @samp{qdf24xx},
++@samp{thunderx}, @samp{xgene1}, @samp{vulcan}, @samp{cortex-a57.cortex-a53},
++@samp{cortex-a72.cortex-a53}, @samp{cortex-a73.cortex-a35},
++@samp{cortex-a73.cortex-a53}, @samp{native}.
+ 
+-Additionally, this option can specify that GCC should tune the performance
+-of the code for a big.LITTLE system.  Permissible values for this
+-option are: @samp{cortex-a57.cortex-a53}, @samp{cortex-a72.cortex-a53}.
++The values @samp{cortex-a57.cortex-a53}, @samp{cortex-a72.cortex-a53},
++@samp{cortex-a73.cortex-a35}, @samp{cortex-a73.cortex-a53}
++specify that GCC should tune for a big.LITTLE system.
+ 
+ Additionally on native AArch64 GNU/Linux systems the value
+-@samp{native} is available.  This option causes the compiler to pick
+-the architecture of and tune the performance of the code for the
+-processor of the host system.  This option has no effect if the
+-compiler is unable to recognize the architecture of the host system.
++@samp{native} tunes performance to the host system.  This option has no effect
++if the compiler is unable to recognize the processor of the host system.
+ 
+ Where none of @option{-mtune=}, @option{-mcpu=} or @option{-march=}
+ are specified, the code is tuned to perform well across a range
+@@ -12992,12 +13027,6 @@ documented in the sub-section on
+ Feature Modifiers}.  Where conflicting feature modifiers are
+ specified, the right-most feature is used.
+ 
+-Additionally on native AArch64 GNU/Linux systems the value
+-@samp{native} is available.  This option causes the compiler to tune
+-the performance of the code for the processor of the host system.
+-This option has no effect if the compiler is unable to recognize the
+-architecture of the host system.
+-
+ GCC uses @var{name} to determine what kind of instructions it can emit when
+ generating assembly code (as if by @option{-march}) and to determine
+ the target processor for which to tune for performance (as if
+@@ -13015,11 +13044,11 @@ across releases.
+ This option is only intended to be useful when developing GCC.
+ 
+ @item -mpc-relative-literal-loads
+-@opindex mpcrelativeliteralloads
+-Enable PC relative literal loads. If this option is used, literal
+-pools are assumed to have a range of up to 1MiB and an appropriate
+-instruction sequence is used. This option has no impact when used
+-with @option{-mcmodel=tiny}.
++@opindex mpc-relative-literal-loads
++Enable PC-relative literal loads.  With this option literal pools are
++accessed using a single instruction and emitted after each function.  This
++limits the maximum size of functions to 1MB.  This is enabled by default for
++@option{-mcmodel=tiny}.
+ 
+ @end table
+ 
+@@ -13047,12 +13076,14 @@ instructions.  This is on by default for all possible values for options
+ @item lse
+ Enable Large System Extension instructions.  This is on by default for
+ @option{-march=armv8.1-a}.
++@item fp16
++Enable FP16 extension.  This also enables floating-point instructions.
+ 
+ @end table
+ 
+-That is, @option{crypto} implies @option{simd} implies @option{fp}.
+-Conversely, @option{nofp} (or equivalently, @option{-mgeneral-regs-only})
+-implies @option{nosimd} implies @option{nocrypto}.
++Feature @option{crypto} implies @option{simd}, which implies @option{fp}.
++Conversely, @option{nofp} implies @option{nosimd}, which implies
++@option{nocrypto}.
+ 
+ @node Adapteva Epiphany Options
+ @subsection Adapteva Epiphany Options
+@@ -13902,16 +13933,6 @@ called, depending upon the amount of stack space required.  The runtime
+ system is required to provide these functions.  The default is
+ @option{-mno-apcs-stack-check}, since this produces smaller code.
+ 
+-@c not currently implemented
+-@item -mapcs-float
+-@opindex mapcs-float
+-Pass floating-point arguments using the floating-point registers.  This is
+-one of the variants of the APCS@.  This option is recommended if the
+-target hardware has a floating-point unit or if a lot of floating-point
+-arithmetic is going to be performed by the code.  The default is
+-@option{-mno-apcs-float}, since the size of integer-only code is 
+-slightly increased if @option{-mapcs-float} is used.
+-
+ @c not currently implemented
+ @item -mapcs-reentrant
+ @opindex mapcs-reentrant
+@@ -13972,21 +13993,42 @@ name to determine what kind of instructions it can emit when generating
+ assembly code.  This option can be used in conjunction with or instead
+ of the @option{-mcpu=} option.  Permissible names are: @samp{armv2},
+ @samp{armv2a}, @samp{armv3}, @samp{armv3m}, @samp{armv4}, @samp{armv4t},
+-@samp{armv5}, @samp{armv5t}, @samp{armv5e}, @samp{armv5te},
+-@samp{armv6}, @samp{armv6j},
+-@samp{armv6t2}, @samp{armv6z}, @samp{armv6kz}, @samp{armv6-m},
+-@samp{armv7}, @samp{armv7-a}, @samp{armv7-r}, @samp{armv7-m}, @samp{armv7e-m},
++@samp{armv5}, @samp{armv5e}, @samp{armv5t}, @samp{armv5te},
++@samp{armv6}, @samp{armv6-m}, @samp{armv6j}, @samp{armv6k},
++@samp{armv6kz}, @samp{armv6s-m},
++@samp{armv6t2}, @samp{armv6z}, @samp{armv6zk},
++@samp{armv7}, @samp{armv7-a}, @samp{armv7-m}, @samp{armv7-r}, @samp{armv7e-m},
+ @samp{armv7ve}, @samp{armv8-a}, @samp{armv8-a+crc}, @samp{armv8.1-a},
+-@samp{armv8.1-a+crc}, @samp{iwmmxt}, @samp{iwmmxt2}, @samp{ep9312}.
++@samp{armv8.1-a+crc}, @samp{armv8-m.base}, @samp{armv8-m.main},
++@samp{armv8-m.main+dsp}, @samp{iwmmxt}, @samp{iwmmxt2}.
+ 
+-Architecture revisions older than @option{armv4t} are deprecated.
++Architecture revisions older than @samp{armv4t} are deprecated.
+ 
+-@option{-march=armv7ve} is the armv7-a architecture with virtualization
++@option{-march=armv6s-m} is the @samp{armv6-m} architecture with support for
++the (now mandatory) SVC instruction.
++
++@option{-march=armv6zk} is an alias for @samp{armv6kz}, existing for backwards
++compatibility.
++
++@option{-march=armv7ve} is the @samp{armv7-a} architecture with virtualization
+ extensions.
+ 
+ @option{-march=armv8-a+crc} enables code generation for the ARMv8-A
+ architecture together with the optional CRC32 extensions.
+ 
++@option{-march=armv8.1-a} enables compiler support for the ARMv8.1-A
++architecture.  This also enables the features provided by
++@option{-march=armv8-a+crc}.
++
++@option{-march=armv8.2-a} enables compiler support for the ARMv8.2-A
++architecture.  This also enables the features provided by
++@option{-march=armv8.1-a}.
++
++@option{-march=armv8.2-a+fp16} enables compiler support for the
++ARMv8.2-A architecture with the optional FP16 instructions extension.
++This also enables the features provided by @option{-march=armv8.1-a}
++and implies @option{-mfp16-format=ieee}.
++
+ @option{-march=native} causes the compiler to auto-detect the architecture
+ of the build computer.  At present, this feature is only supported on
+ GNU/Linux, and not all architectures are recognized.  If the auto-detect
+@@ -14018,8 +14060,10 @@ Permissible names are: @samp{arm2}, @samp{arm250},
+ @samp{generic-armv7-a}, @samp{cortex-a5}, @samp{cortex-a7}, @samp{cortex-a8},
+ @samp{cortex-a9}, @samp{cortex-a12}, @samp{cortex-a15}, @samp{cortex-a17},
+ @samp{cortex-a32}, @samp{cortex-a35}, @samp{cortex-a53}, @samp{cortex-a57},
+-@samp{cortex-a72}, @samp{cortex-r4},
++@samp{cortex-a72}, @samp{cortex-a73}, @samp{cortex-r4},
+ @samp{cortex-r4f}, @samp{cortex-r5}, @samp{cortex-r7}, @samp{cortex-r8},
++@samp{cortex-m33},
++@samp{cortex-m23},
+ @samp{cortex-m7},
+ @samp{cortex-m4},
+ @samp{cortex-m3},
+@@ -14040,7 +14084,8 @@ Permissible names are: @samp{arm2}, @samp{arm250},
+ Additionally, this option can specify that GCC should tune the performance
+ of the code for a big.LITTLE system.  Permissible names are:
+ @samp{cortex-a15.cortex-a7}, @samp{cortex-a17.cortex-a7},
+-@samp{cortex-a57.cortex-a53}, @samp{cortex-a72.cortex-a53}.
++@samp{cortex-a57.cortex-a53}, @samp{cortex-a72.cortex-a53},
++@samp{cortex-a72.cortex-a35}, @samp{cortex-a73.cortex-a53}.
+ 
+ @option{-mtune=generic-@var{arch}} specifies that GCC should tune the
+ performance for a blend of processors within architecture @var{arch}.
+@@ -14078,12 +14123,14 @@ is unsuccessful the option has no effect.
+ @item -mfpu=@var{name}
+ @opindex mfpu
+ This specifies what floating-point hardware (or hardware emulation) is
+-available on the target.  Permissible names are: @samp{vfp}, @samp{vfpv3},
++available on the target.  Permissible names are: @samp{vfpv2}, @samp{vfpv3},
+ @samp{vfpv3-fp16}, @samp{vfpv3-d16}, @samp{vfpv3-d16-fp16}, @samp{vfpv3xd},
+-@samp{vfpv3xd-fp16}, @samp{neon}, @samp{neon-fp16}, @samp{vfpv4},
++@samp{vfpv3xd-fp16}, @samp{neon-vfpv3}, @samp{neon-fp16}, @samp{vfpv4},
+ @samp{vfpv4-d16}, @samp{fpv4-sp-d16}, @samp{neon-vfpv4},
+ @samp{fpv5-d16}, @samp{fpv5-sp-d16},
+ @samp{fp-armv8}, @samp{neon-fp-armv8} and @samp{crypto-neon-fp-armv8}.
++Note that @samp{neon} is an alias for @samp{neon-vfpv3} and @samp{vfp}
++is an alias for @samp{vfpv2}.
+ 
+ If @option{-msoft-float} is specified this specifies the format of
+ floating-point values.
+@@ -14170,9 +14217,12 @@ otherwise the default is @samp{R10}.
+ 
+ @item -mpic-data-is-text-relative
+ @opindex mpic-data-is-text-relative
+-Assume that each data segments are relative to text segment at load time.
+-Therefore, it permits addressing data using PC-relative operations.
+-This option is on by default for targets other than VxWorks RTP.
++Assume that the displacement between the text and data segments is fixed
++at static link time.  This permits using PC-relative addressing
++operations to access data known to be in the data segment.  For
++non-VxWorks RTP targets, this option is enabled by default.  When
++disabled on such targets, it will enable @option{-msingle-pic-base} by
++default.
+ 
+ @item -mpoke-function-name
+ @opindex mpoke-function-name
+@@ -14282,10 +14332,10 @@ generating these instructions.  This option is enabled by default when
+ @opindex mno-unaligned-access
+ Enables (or disables) reading and writing of 16- and 32- bit values
+ from addresses that are not 16- or 32- bit aligned.  By default
+-unaligned access is disabled for all pre-ARMv6 and all ARMv6-M
+-architectures, and enabled for all other architectures.  If unaligned
+-access is not enabled then words in packed data structures are
+-accessed a byte at a time.
++unaligned access is disabled for all pre-ARMv6, all ARMv6-M and for
++ARMv8-M Baseline architectures, and enabled for all other
++architectures.  If unaligned access is not enabled then words in packed
++data structures are accessed a byte at a time.
+ 
+ The ARM attribute @code{Tag_CPU_unaligned_access} is set in the
+ generated object file to either true or false, depending upon the
+@@ -14325,6 +14375,20 @@ Print CPU tuning information as comment in assembler file.  This is
+ an option used only for regression testing of the compiler and not
+ intended for ordinary use in compiling code.  This option is disabled
+ by default.
++
++@item -mpure-code
++@opindex mpure-code
++Do not allow constant data to be placed in code sections.
++Additionally, when compiling for ELF object format give all text sections the
++ELF processor-specific section attribute @code{SHF_ARM_PURECODE}.  This option
++is only available when generating non-pic code for M-profile targets with the
++MOVT instruction.
++
++@item -mcmse
++@opindex mcmse
++Generate secure code as per the "ARMv8-M Security Extensions: Requirements on
++Development Tools Engineering Specification", which can be found on
++@url{http://infocenter.arm.com/help/topic/com.arm.doc.ecm0359818/ECM0359818_armv8m_security_extensions_reqs_on_dev_tools_1_0.pdf}.
+ @end table
+ 
+ @node AVR Options
+@@ -18092,7 +18156,7 @@ IEEE 754 floating-point data.
+ 
+ The @option{-mnan=legacy} option selects the legacy encoding.  In this
+ case quiet NaNs (qNaNs) are denoted by the first bit of their trailing
+-significand field being 0, whereas signalling NaNs (sNaNs) are denoted
++significand field being 0, whereas signaling NaNs (sNaNs) are denoted
+ by the first bit of their trailing significand field being 1.
+ 
+ The @option{-mnan=2008} option selects the IEEE 754-2008 encoding.  In
+--- a/src/gcc/doc/md.texi
++++ b/src/gcc/doc/md.texi
+@@ -5030,7 +5030,7 @@ it is unspecified which of the two operands is returned as the result.
+ IEEE-conformant minimum and maximum operations.  If one operand is a quiet
+ @code{NaN}, then the other operand is returned.  If both operands are quiet
+ @code{NaN}, then a quiet @code{NaN} is returned.  In the case when gcc supports
+-signalling @code{NaN} (-fsignaling-nans) an invalid floating point exception is
++signaling @code{NaN} (-fsignaling-nans) an invalid floating point exception is
+ raised and a quiet @code{NaN} is returned.
+ 
+ All operands have mode @var{m}, which is a scalar or vector
+--- a/src/gcc/doc/sourcebuild.texi
++++ b/src/gcc/doc/sourcebuild.texi
+@@ -1555,6 +1555,16 @@ options.  Some multilibs may be incompatible with these options.
+ ARM Target supports @code{-mfpu=neon-vfpv4 -mfloat-abi=softfp} or compatible
+ options.  Some multilibs may be incompatible with these options.
+ 
++@item arm_fp16_ok
++@anchor{arm_fp16_ok}
++Target supports options to generate VFP half-precision floating-point
++instructions.  Some multilibs may be incompatible with these
++options.  This test is valid for ARM only.
++
++@item arm_fp16_hw
++Target supports executing VFP half-precision floating-point
++instructions.  This test is valid for ARM only.
++
+ @item arm_neon_fp16_ok
+ @anchor{arm_neon_fp16_ok}
+ ARM Target supports @code{-mfpu=neon-fp16 -mfloat-abi=softfp} or compatible
+@@ -1565,6 +1575,13 @@ options, including @code{-mfp16-format=ieee} if necessary to obtain the
+ Test system supports executing Neon half-precision float instructions.
+ (Implies previous.)
+ 
++@item arm_fp16_alternative_ok
++ARM target supports the ARM FP16 alternative format.  Some multilibs
++may be incompatible with the options needed.
++
++@item arm_fp16_none_ok
++ARM target supports specifying none as the ARM FP16 format.
++
+ @item arm_thumb1_ok
+ ARM target generates Thumb-1 code for @code{-mthumb}.
+ 
+@@ -1589,6 +1606,7 @@ ARM target supports @code{-mfpu=neon-fp-armv8 -mfloat-abi=softfp}.
+ Some multilibs may be incompatible with these options.
+ 
+ @item arm_v8_1a_neon_ok
++@anchor{arm_v8_1a_neon_ok}
+ ARM target supports options to generate ARMv8.1 Adv.SIMD instructions.
+ Some multilibs may be incompatible with these options.
+ 
+@@ -1597,10 +1615,47 @@ ARM target supports executing ARMv8.1 Adv.SIMD instructions.  Some
+ multilibs may be incompatible with the options needed.  Implies
+ arm_v8_1a_neon_ok.
+ 
++@item arm_acq_rel
++ARM target supports acquire-release instructions.
++
++@item arm_v8_2a_fp16_scalar_ok
++@anchor{arm_v8_2a_fp16_scalar_ok}
++ARM target supports options to generate instructions for ARMv8.2 and
++scalar instructions from the FP16 extension.  Some multilibs may be
++incompatible with these options.
++
++@item arm_v8_2a_fp16_scalar_hw
++ARM target supports executing instructions for ARMv8.2 and scalar
++instructions from the FP16 extension.  Some multilibs may be
++incompatible with these options.  Implies arm_v8_2a_fp16_neon_ok.
++
++@item arm_v8_2a_fp16_neon_ok
++@anchor{arm_v8_2a_fp16_neon_ok}
++ARM target supports options to generate instructions from ARMv8.2 with
++the FP16 extension.  Some multilibs may be incompatible with these
++options.  Implies arm_v8_2a_fp16_scalar_ok.
++
++@item arm_v8_2a_fp16_neon_hw
++ARM target supports executing instructions from ARMv8.2 with the FP16
++extension.  Some multilibs may be incompatible with these options.
++Implies arm_v8_2a_fp16_neon_ok and arm_v8_2a_fp16_scalar_hw.
++
+ @item arm_prefer_ldrd_strd
+ ARM target prefers @code{LDRD} and @code{STRD} instructions over
+ @code{LDM} and @code{STM} instructions.
+ 
++@item arm_thumb1_movt_ok
++ARM target generates Thumb-1 code for @code{-mthumb} with @code{MOVW}
++and @code{MOVT} instructions available.
++
++@item arm_thumb1_cbz_ok
++ARM target generates Thumb-1 code for @code{-mthumb} with
++@code{CBZ} and @code{CBNZ} instructions available.
++
++@item arm_cmse_ok
++ARM target supports ARMv8-M Security Extensions, enabled by the @code{-mcmse}
++option.
++
+ @end table
+ 
+ @subsubsection AArch64-specific attributes
+@@ -2069,6 +2124,28 @@ NEON support.  Only ARM targets support this feature, and only then
+ in certain modes; see the @ref{arm_neon_ok,,arm_neon_ok effective target
+ keyword}.
+ 
++@item arm_fp16
++VFP half-precision floating point support.  This does not select the
++FP16 format; for that, use @ref{arm_fp16_ieee,,arm_fp16_ieee} or
++@ref{arm_fp16_alternative,,arm_fp16_alternative} instead.  This
++feature is only supported by ARM targets and then only in certain
++modes; see the @ref{arm_fp16_ok,,arm_fp16_ok effective target
++keyword}.
++
++@item arm_fp16_ieee
++@anchor{arm_fp16_ieee}
++ARM IEEE 754-2008 format VFP half-precision floating point support.
++This feature is only supported by ARM targets and then only in certain
++modes; see the @ref{arm_fp16_ok,,arm_fp16_ok effective target
++keyword}.
++
++@item arm_fp16_alternative
++@anchor{arm_fp16_alternative}
++ARM Alternative format VFP half-precision floating point support.
++This feature is only supported by ARM targets and then only in certain
++modes; see the @ref{arm_fp16_ok,,arm_fp16_ok effective target
++keyword}.
++
+ @item arm_neon_fp16
+ NEON and half-precision floating point support.  Only ARM targets
+ support this feature, and only then in certain modes; see
+@@ -2078,6 +2155,23 @@ the @ref{arm_neon_fp16_ok,,arm_neon_fp16_ok effective target keyword}.
+ arm vfp3 floating point support; see
+ the @ref{arm_vfp3_ok,,arm_vfp3_ok effective target keyword}.
+ 
++@item arm_v8_1a_neon
++Add options for ARMv8.1 with Adv.SIMD support, if this is supported
++by the target; see the @ref{arm_v8_1a_neon_ok,,arm_v8_1a_neon_ok}
++effective target keyword.
++
++@item arm_v8_2a_fp16_scalar
++Add options for ARMv8.2 with scalar FP16 support, if this is
++supported by the target; see the
++@ref{arm_v8_2a_fp16_scalar_ok,,arm_v8_2a_fp16_scalar_ok} effective
++target keyword.
++
++@item arm_v8_2a_fp16_neon
++Add options for ARMv8.2 with Adv.SIMD FP16 support, if this is
++supported by the target; see the
++@ref{arm_v8_2a_fp16_neon_ok,,arm_v8_2a_fp16_neon_ok} effective target
++keyword.
++
+ @item bind_pic_locally
+ Add the target-specific flags needed to enable functions to bind
+ locally when using pic/PIC passes in the testsuite.
+@@ -2111,6 +2205,11 @@ the codeset to convert to.
+ Skip the test if the target does not support profiling with option
+ @var{profopt}.
+ 
++@item dg-require-stack-check @var{check}
++Skip the test if the target does not support the @code{-fstack-check}
++option.  If @var{check} is @code{""}, support for @code{-fstack-check}
++is checked, for @code{-fstack-check=("@var{check}")} otherwise.
++
+ @item dg-require-visibility @var{vis}
+ Skip the test if the target does not support the @code{visibility} attribute.
+ If @var{vis} is @code{""}, support for @code{visibility("hidden")} is
+--- a/src/gcc/doc/tm.texi
++++ b/src/gcc/doc/tm.texi
+@@ -7510,6 +7510,18 @@ is non-NULL, it is the @code{VAR_DECL} or @code{FUNCTION_DECL} with which
+ this section is associated.
+ @end deftypefn
+ 
++@deftypefn {Target Hook} bool TARGET_ASM_ELF_FLAGS_NUMERIC (unsigned int @var{flags}, unsigned int *@var{num})
++This hook can be used to encode ELF section flags for which no letter
++code has been defined in the assembler.  It is called by
++@code{default_asm_named_section} whenever the section flags need to be
++emitted in the assembler output.  If the hook returns true, then the
++numerical value for ELF section flags should be calculated from
++@var{flags} and saved in @var{*num}; the value is printed out instead of the
++normal sequence of letter codes.  If the hook is not defined, or if it
++returns false, then @var{num} is ignored and the traditional letter sequence
++is emitted.
++@end deftypefn
++
+ @deftypefn {Target Hook} {section *} TARGET_ASM_FUNCTION_SECTION (tree @var{decl}, enum node_frequency @var{freq}, bool @var{startup}, bool @var{exit})
+ Return preferred text (sub)section for function @var{decl}.
+ Main purpose of this function is to separate cold, normal and hot
+--- a/src/gcc/doc/tm.texi.in
++++ b/src/gcc/doc/tm.texi.in
+@@ -5209,6 +5209,8 @@ of the filename using this macro.
+ 
+ @hook TARGET_ASM_NAMED_SECTION
+ 
++@hook TARGET_ASM_ELF_FLAGS_NUMERIC
++
+ @hook TARGET_ASM_FUNCTION_SECTION
+ 
+ @hook TARGET_ASM_FUNCTION_SWITCHED_TEXT_SECTIONS

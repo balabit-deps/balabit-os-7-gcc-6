@@ -1,0 +1,22 @@
+Description: [sanitizer] Fix a crash in SizeClassAllocator32 with an out-of-range pointer
+ .
+ This happens on a 64-bit platform that uses SizeClassAllocator32 (e.g. ASan on AArch64). When querying a large invalid pointer, `__sanitizer_get_allocated_size(0xdeadbeefdeadbeef)`, an assertion will fail.  This patch changes PointerIsMine to return false if the pointer is outside of [kSpaceBeg, kSpaceBeg + kSpaceSize).
+ .
+ Differential Revision: http://reviews.llvm.org/D15008
+Author: Kuba Brecka <kuba.brecka@gmail.com>
+Origin: http://llvm.org/svn/llvm-project/compiler-rt/trunk@268243
+Bug-Ubuntu: https://bugs.launchpad.net/bugs/1709727
+Applied-Upstream: svn://gcc.gnu.org/svn/gcc/trunk@241977
+
+--- a/src/libsanitizer/sanitizer_common/sanitizer_allocator.h	2015-10-21 01:32:45.340398000 -0600
++++ b/src/libsanitizer/sanitizer_common/sanitizer_allocator.h	2017-08-09 11:58:12.564883000 -0600
+@@ -747,6 +747,9 @@
+   }
+ 
+   bool PointerIsMine(const void *p) {
++    uptr mem = reinterpret_cast<uptr>(p);
++    if (mem < kSpaceBeg || mem >= kSpaceBeg + kSpaceSize)
++      return false;
+     return GetSizeClass(p) != 0;
+   }
+ 

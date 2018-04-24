@@ -1,0 +1,3290 @@
+gcc-6 (6.4.0-17ubuntu1) bionic; urgency=medium
+
+  * Merge with Debian; remaining changes:
+    - Build from upstream sources.
+
+ -- Matthias Klose <doko@ubuntu.com>  Tue, 24 Apr 2018 07:16:10 +0200
+
+gcc-6 (6.4.0-17) unstable; urgency=medium
+
+  * Update to SVN 20180424 (r259590) from the gcc-6-branch.
+    - Fix PR target/83660 (PPC), PR middle-end/85496, PR target/85261 (ARM),
+      PR target/84574 (x86), PR target/84039 (x86), PR target/84530 (x86),
+      PR target/83839 (x86), PR target/83905 (x86), PR target/82499 (x86),
+      PR target/84748 (AArch64), PR target/85196 (SPARC).
+    - Backport of the retpoline support.
+  * Use triplet-prefixed as and ld (Helmut Grohne). Addresses: #895251.
+  * Link libasan, liblsan, libubsan always with --no-as-needed. LP: #1762683.
+  * Use --push-state --as-needed and --pop-state instead of --as-needed and
+    --no-as-needed for linking libgcc.
+  * Use the binutils in the build chroot if present.
+
+ -- Matthias Klose <doko@debian.org>  Tue, 24 Apr 2018 07:01:10 +0200
+
+gcc-6 (6.4.0-16ubuntu1) bionic; urgency=medium
+
+  * Merge with Debian; remaining changes:
+    - Build from upstream sources.
+
+ -- Matthias Klose <doko@ubuntu.com>  Fri, 06 Apr 2018 12:54:08 +0200
+
+gcc-6 (6.4.0-16) unstable; urgency=medium
+
+  * Update to SVN 20180406 (r259166) from the gcc-6-branch.
+    - Fix PR target/85100 (x86), PR target/85193 (x86), PR target/84912 (PPC),
+      PR target/84912 (PPC), PR target/85056 (nvptx), PR target/84826 (ARM),
+      PR target/85026 (ARM), PR target/82411 (PPC), PR target/82989 (ARM),
+      PR target/82518 (ARM), PR tree-optimization/84956, PR c++/78489,
+      PR c++/84489, PR fortran/85084, PR fortran/85001.
+  * Don't install i586 symlinks anymore for i386 builds in sid.
+  * Build a native compiler with a cross directory layout using the
+    FORCE_CROSS_LAYOUT environment variable.
+  * Fix zlib-dev dependencies for the libphobos cross multilib packages.
+  * Fix dependency generation for libatomic and libquadmath cross packages.
+  * Fix some lintian warnings.
+
+ -- Matthias Klose <doko@debian.org>  Fri, 06 Apr 2018 12:51:22 +0200
+
+gcc-6 (6.4.0-15ubuntu1) bionic; urgency=medium
+
+  * Merge with Debian; remaining changes:
+    - Build from upstream sources.
+
+ -- Matthias Klose <doko@ubuntu.com>  Wed, 21 Mar 2018 08:09:51 +0800
+
+gcc-6 (6.4.0-15) unstable; urgency=medium
+
+  * Update to SVN 20180321 (r258694) from the gcc-6-branch.
+    - Backport the hppa-linux caller-copies ABI. See #892848.
+    - Fix PR fortran/84931, PR fortran/65453.
+
+ -- Matthias Klose <doko@debian.org>  Wed, 21 Mar 2018 07:29:03 +0800
+
+gcc-6 (6.4.0-14ubuntu2) bionic; urgency=medium
+
+  * Don't build the gcj packages for bionic.
+
+ -- Matthias Klose <doko@ubuntu.com>  Tue, 20 Mar 2018 00:51:34 +0800
+
+gcc-6 (6.4.0-14ubuntu1) bionic; urgency=medium
+
+  * Merge with Debian; remaining changes:
+    - Build from upstream sources.
+
+ -- Matthias Klose <doko@ubuntu.com>  Mon, 19 Mar 2018 01:27:28 +0800
+
+gcc-6 (6.4.0-14) unstable; urgency=medium
+
+  * Update to SVN 20180319 (r258632) from the gcc-6-branch.
+    - Fix PR target/83451 (PA), PR fortran/83939.
+
+  [ John David Anglin ]
+  * Switch hppa-linux to caller copies ABI (as done in GCC 8). See #892848.
+
+  [ Matthias Klose ]
+  * Stop build gcj in current distro releases. Addresses: #892536.
+
+ -- Matthias Klose <doko@debian.org>  Mon, 19 Mar 2018 01:23:36 +0800
+
+gcc-6 (6.4.0-13ubuntu1) bionic; urgency=medium
+
+  * Merge with Debian; remaining changes:
+    - Build from upstream sources.
+
+ -- Matthias Klose <doko@ubuntu.com>  Mon, 12 Mar 2018 16:55:32 +0100
+
+gcc-6 (6.4.0-13) unstable; urgency=medium
+
+  * Update to SVN 20180312 (r258446) from the gcc-6-branch.
+    - S/390: Disable branch prediction.
+    - Fix PR libstdc++/84671, PR libstdc++/81797, PR libstdc++/83833,
+      PR target/PR84295 (S390), PR c/84310, PR target/79747, PR other/80589,
+      PR gcov-profile/84137, PR gcov-profile/83879, PR rtl-optimization/82675,
+      PR c/84229, PR ipa/81360, PR target/83790 (NVPTX), PR target/82096,
+      PR target/84154 (PPC), PR target/83758 (PPC), PR target/84089 (PA),
+      PR bootstrap/84017, PR target/83370 (AArch64), PR tree-optimization/82726,
+      PR tree-optimization/70754, PR bootstrap/80867, PR target/84033 (PPC),
+      PR target/83399 (PPC), PR target/83862 (PPC), PR c++/84686, PR c++/84489,
+      PR c++/71784, PR c++/84441, PR c++/84520, PR c++/84151, PR fortran/56667,
+      PR fortran/71085, PR fortran/78990, PR fortran/83633, PR fortran/30792,
+      PR fortran/84506, PR fortran/84511, PR fortran/84346, PR fortran/68560,
+      PR fortran/35299, PR fortran/54223, PR fortran/84276, PR fortran/82994,
+      PR fortran/82049, PR lto/81440, PR ipa/81360, PR lto/81004,
+      PR lto/83954, PR lto/83954, PR target/83984 (PA), PR debug/77844,
+      PR ipa/82352, PR gcov-profile/82633, PR gcov-profile/82457, PR c++/84785,
+      PR fortran/84734, PR fortran/64124, PR fortran/70409.
+
+  [ Aurelien Jarno ]
+  * Configure s390x build with --with-arch=z196 on Debian.
+
+  [ Matthias Klose ]
+  * Fix cross-building libgnat on armel, when not building the common libraries.
+
+  [ Moritz Muehlenhoff ]
+  * Backport of retpoline support by H.J. Lu.
+
+ -- Matthias Klose <doko@debian.org>  Mon, 12 Mar 2018 16:52:57 +0100
+
+gcc-6 (6.4.0-12ubuntu1) bionic; urgency=medium
+
+  * Merge with Debian; remaining changes:
+    - Build from upstream sources.
+
+ -- Matthias Klose <doko@ubuntu.com>  Tue, 23 Jan 2018 22:58:25 +0100
+
+gcc-6 (6.4.0-12) unstable; urgency=medium
+
+  * Update to SVN 20180223 (r256971) from the gcc-6-branch.
+    - Fix PR c/81875, PR libstdc++/83834, PR libstdc++/83626,
+      PR libstdc++/83600, PR libstdc++/83598, PR libstdc++/83279,
+      PR libstdc++/79283, PR libstdc++/59568, PR target/81485 (SH),
+      PR target/80870 (SH), PR rtl-optimization/83424, PR target/83677 (PPC),
+      PR target/82975 (ARM), PR target/66488, PR target/80210 (PPC),
+      PR c++/83301, PR c++/78692, PR fortran/83900, PR fortran/83900,
+      PR fortran/80768, PR fortran/83874, PR fortran/78814, PR fortran/82367,
+      PR fortran/83093, PR fortran/82841, PR fortran/83679, PR fortran/83650,
+      PR libgfortran/83649, PR libgfortran/81937.
+  * Move the .gox files into the gccgo packages. Addresses: #883136.
+  * Fix shlibs search path for mips64 cross targets. Addresses: #883988.
+  * libffi: mips/n32.S: disable .set mips4 on mips r6 (YunQiang Su).
+  * debian/rules2: Fix typo for N32 conditions (YunQiang Su).
+    Addresses: #886316.
+  * Install the msa.h header for mips targets (YunQiang Su). Addresses: #887066.
+
+ -- Matthias Klose <doko@debian.org>  Tue, 23 Jan 2018 13:41:09 +0100
+
+gcc-6 (6.4.0-11ubuntu1) bionic; urgency=medium
+
+  * Merge with Debian; remaining changes:
+    - Build from upstream sources.
+
+ -- Matthias Klose <doko@debian.org>  Mon, 13 Nov 2017 10:36:43 +0100
+
+gcc-6 (6.4.0-11) unstable; urgency=medium
+
+  * Update to SVN 20171206 (r255440) from the gcc-6-branch.
+    - Fix PR target/82941 (x86), PR target/82942 (x86), PR target/82990 (x86),
+      PR 81288/target (PPC), PR rtl-optimization/82621, PR fortran/82934,
+      PR fortran/78619.
+  * Update the Linaro support to the 6.4-2017.11 snapshot.
+  * Fix mipsr6 typos. Closes: #881621.
+  * Don't build mips r6 packages on old releases (YunQiang Su). Closes: #881610.
+
+ -- Matthias Klose <doko@debian.org>  Wed, 06 Dec 2017 10:23:53 +0100
+
+gcc-6 (6.4.0-10ubuntu1) bionic; urgency=medium
+
+  * Merge with Debian; remaining changes:
+    - Build from upstream sources.
+
+ -- Matthias Klose <doko@debian.org>  Mon, 13 Nov 2017 10:36:43 +0100
+
+gcc-6 (6.4.0-10) unstable; urgency=medium
+
+  * Update to SVN 20171112 (r254663) from the gcc-6-branch.
+    - Fix PR target/82772 (alpha), PR rtl-optimization/64682,
+      PR rtl-optimization/69567, PR rtl-optimization/69737,
+      PR rtl-optimization/82683, PR fortran/78641, PR fortran/69739,
+      PR fortran/82796, PR fortran/81735, PR fortran/78293,
+      PR fortran/80554.
+  * Bump libunwind (build-)dependency for ia64. Addresses: #879959.
+  * gcj-6: Depend on gcc-6. Addresses: #855640.
+  * Add support for a plethora of mips r6 architectures (YunQiang Su).
+    Closes: #881575.
+
+ -- Matthias Klose <doko@debian.org>  Mon, 13 Nov 2017 10:08:07 +0100
+
+gcc-6 (6.4.0-9ubuntu1) bionic; urgency=medium
+
+  * Merge with Debian; remaining changes:
+    - Build from upstream sources.
+
+ -- Matthias Klose <doko@ubuntu.com>  Thu, 26 Oct 2017 11:25:24 +0200
+
+gcc-6 (6.4.0-9) unstable; urgency=medium
+
+  * Update to SVN 20171026 (r254099) from the gcc-6-branch.
+    - Fix PR target/82274 (x86), PR rtl-optimization/82602,
+      PR rtl-optimization/82549, PR libstdc++/81395, PR target/82445 (ARM),
+      PR fortran/79795, PR fortran/79402, PR fortran/81048, PR libfortran/82233.
+  * Update the Linaro support to the 6.4-2017.10 snapshot.
+  * Do the extra/optional dance ...
+  * Override hardening-no-pie flags for compiler executables.
+
+ -- Matthias Klose <doko@debian.org>  Thu, 26 Oct 2017 11:19:43 +0200
+
+gcc-6 (6.4.0-8ubuntu1) artful; urgency=medium
+
+  * Merge with Debian; remaining changes:
+    - Build from upstream sources.
+
+ -- Matthias Klose <doko@ubuntu.com>  Tue, 10 Oct 2017 14:29:12 +0200
+
+gcc-6 (6.4.0-8) unstable; urgency=medium
+
+  * Update to SVN 20171010 (r253582) from the gcc-6-branch.
+    - Fix PR libstdc++/60936, PR tree-optimization/82337,
+      PR target/81996 (PPC), PR target/71951 (AArch64).
+  * Fix builds without hppa64 cross compiler and new debhelper. See: #877589.
+  * Fix build dependency on realpath. Closes: #877818.
+
+ -- Matthias Klose <doko@debian.org>  Tue, 10 Oct 2017 13:59:13 +0200
+
+gcc-6 (6.4.0-7ubuntu1) artful; urgency=medium
+
+  * Merge with Debian; remaining changes:
+    - Build from upstream sources.
+
+ -- Matthias Klose <doko@ubuntu.com>  Wed, 20 Sep 2017 13:46:18 +0200
+
+gcc-6 (6.4.0-7) unstable; urgency=medium
+
+  * Update to SVN 20170920 (r253004) from the gcc-6-branch.
+    - Fix PR c++/81314, PR c/81687, PR c/45784, PR libquadmath/65757,
+      PR libstdc++/60936, PR target/82112 (PPC), PR c++/81355 (x86),
+      PR tree-optimization/81977, PR tree-optimization/82084,
+      PR middle-end/81505, PR middle-end/81768, PR c/81687,
+      PR middle-end/81766, PR target/81621 (S390), PR middle-end/81052,
+      PR middle-end/79499, PR target/81225 (x86), PR tree-opt/79987,
+      PR sanitizer/81224.
+  * Fix fortran cross compiler build with debhelper 10.9. See: #876246.
+  * Bump binutils dependency to 2.29.1 for sid/buster.
+
+ -- Matthias Klose <doko@debian.org>  Wed, 20 Sep 2017 11:34:45 +0200
+
+gcc-6 (6.4.0-6ubuntu1) artful; urgency=medium
+
+  * Merge with Debian; remaining changes:
+    - Build from upstream sources.
+
+ -- Matthias Klose <doko@ubuntu.com>  Fri, 15 Sep 2017 12:33:23 +0200
+
+gcc-6 (6.4.0-6) unstable; urgency=medium
+
+  * Update to SVN 20170915 (r252799) from the gcc-6-branch.
+    - Fix PR target/81833 (PPC), PR target/82181 (xtensa),
+      PR tree-optimization/81987, PR other/39851, PR ipa/81128,
+      PR inline-asm/82001, PR c++/81355, PR tree-opt/81696, PR ipa/81128.
+  * Fix PR sanitizer/81066, taken from the gcc-7-branch.
+  * Fix libjava build failure with glibc-2.26.
+  * Update the Linaro support to the 6.4-2017.09 snapshot.
+
+ -- Matthias Klose <doko@debian.org>  Fri, 15 Sep 2017 12:30:51 +0200
+
+gcc-6 (6.4.0-5ubuntu3) artful; urgency=medium
+
+  * Fix PR sanitizer/81066, taken from the gcc-7-branch.
+  * Fix libjava build failure with glibc-2.26.
+
+ -- Matthias Klose <doko@ubuntu.com>  Wed, 06 Sep 2017 18:10:47 +0200
+
+gcc-6 (6.4.0-5ubuntu1) artful; urgency=medium
+
+  * Merge with Debian; remaining changes:
+    - Build from upstream sources.
+
+ -- Matthias Klose <doko@ubuntu.com>  Wed, 06 Sep 2017 11:25:30 +0200
+
+gcc-6 (6.4.0-5) unstable; urgency=medium
+
+  * Update to SVN 20170906 (r251754) from the gcc-6-branch.
+    - Fix PR libstdc++/79820, PR libstdc++/81751, PR libstdc++/53984,
+      PR libstdc++/81017, PR c++/82039, PR libstdc++/81891, PR libstdc++/81599,
+      PR libstdc++/81338, PR target/81593 (PPC), PR target/81170 (PPC),
+      PR target/81295 (PPC), PR target/81170, PR target/81295, PR driver/81523,
+      PR c++/80287, PR target/80210 (PPC), PR target/81910 (AVR),
+      PR fortran/81770, PR tree-optimization/81503.
+  * Update the Linaro support to the 6.4-2017.08 snapshot.
+  * Default to PIE on powerpc again, now that PR target/81170 and
+    PR target/81295 are fixed. Closes: #856224.
+  * Bump standards version.
+
+ -- Matthias Klose <doko@debian.org>  Wed, 06 Sep 2017 11:12:57 +0200
+
+gcc-6 (6.4.0-4ubuntu1) artful; urgency=medium
+
+  * Merge with Debian; remaining changes:
+    - Build from upstream sources.
+
+ -- Matthias Klose <doko@ubuntu.com>  Sun, 20 Aug 2017 17:27:57 +0200
+
+gcc-6 (6.4.0-4) unstable; urgency=medium
+
+  * Update to SVN 20170820 (r251205) from the gcc-6-branch.
+    - Fix PR target/81894 (x86), PR target/81861 (x86),
+      PR tree-optimization/81354, PR c++/71570.
+  * Don't build the gc enabled libobjc for cross compilers. Closes: #872301.
+  * Fix hangs w/ asan binaries on arm64 (Dann Frazier). LP: #1709727.
+
+ -- Matthias Klose <doko@debian.org>  Sun, 20 Aug 2017 17:23:10 +0200
+
+gcc-6 (6.4.0-3ubuntu1) artful; urgency=medium
+
+  * Merge with Debian; remaining changes:
+    - Build from upstream sources.
+
+ -- Matthias Klose <doko@ubuntu.com>  Sat, 05 Aug 2017 10:49:52 -0400
+
+gcc-6 (6.4.0-3) unstable; urgency=medium
+
+  * Update to SVN 20170805 (r250889) from the gcc-6-branch.
+    - Fix PR lto/81487, PR target/81641 (x86), PR sanitizer/81604,
+      PR target/81414 (AArch64), PR tree-optimization/81555,
+      PR tree-optimization/81556, PR target/79883 (AVR), PR target/67353 (AVR),
+      PR target/81305 (AVR), PR target/81407 (AVR), PR lto/81487,
+      PR tree-optimization/81162, PR rtl-optimization/75964,
+      PR target/80569 (x86).
+  * Don't run the testsuite on the kfreebsd and hurd buildds, hangs.
+
+ -- Matthias Klose <doko@debian.org>  Sat, 05 Aug 2017 10:26:43 -0400
+
+gcc-6 (6.4.0-2ubuntu1) artful; urgency=medium
+
+  * Merge with Debian; remaining changes:
+    - Build from upstream sources.
+
+ -- Matthias Klose <doko@ubuntu.com>  Mon, 24 Jul 2017 15:31:51 +0200
+
+gcc-6 (6.4.0-2) unstable; urgency=medium
+
+  * Update to SVN 20170724 (r250470) from the gcc-6-branch.
+    - Fix PR libstdc++/80316, PR target/80929 (AVR), PR target/80103 (PPC),
+      PR target/80101 (PPC), PR target/81375 (x86), PR target/81300 (x86),
+      PR tree-optimization/81192, PR target/81471 (x86).
+  * Don't configure powerpc with --enable-default-pie, fails to build.
+    See #856224, PR target/81295.
+  * Update the Linaro support to the 6.3-2017.07 snapshot.
+
+ -- Matthias Klose <doko@debian.org>  Mon, 24 Jul 2017 10:37:10 +0200
+
+gcc-6 (6.4.0-1ubuntu2) artful; urgency=medium
+
+  * Merge with Debian; remaining changes:
+    - Build from upstream sources.
+
+ -- Matthias Klose <doko@ubuntu.com>  Tue, 04 Jul 2017 17:03:56 +0200
+
+gcc-6 (6.4.0-1) unstable; urgency=medium
+
+  * GCC 6.4.0 release.
+
+ -- Matthias Klose <doko@debian.org>  Tue, 04 Jul 2017 16:59:17 +0200
+
+gcc-6 (6.3.0-21ubuntu1) artful; urgency=medium
+
+  * Merge with Debian; remaining changes:
+    - Build from upstream sources.
+
+ -- Matthias Klose <doko@ubuntu.com>  Wed, 28 Jun 2017 19:43:19 +0200
+
+gcc-6 (6.3.0-21) unstable; urgency=medium
+
+  * Fix Replaces attribute for the liblto_plugin move from cpp to gcc.
+
+ -- Matthias Klose <doko@debian.org>  Wed, 28 Jun 2017 19:34:28 +0200
+
+gcc-6 (6.3.0-20) unstable; urgency=medium
+
+  * Update to SVN 20170628 (r249732) from the gcc-6-branch (6.4.0 RC).
+    - Fix PR c++/81130, PR libgomp/80822, PR middle-end/80809,
+      PR middle-end/80809, PR middle-end/80853, PR rtl-optimization/73650,
+      PR target/61729 (PPC), PR target/77850 (PPC), PR rtl-optimization/60818,
+      PR target/80382 (PPC), PR rtl-optimization/80429, PR middle-end/80692,
+      PR target/80618 (PPC), PR target/80966 (PPC), PR middle-end/80902,
+      PR tree-optimization/79552, PR tree-optimization/43434, PR target/79155,
+      PR other/80909, PR ipa/80663, PR ipa/79849, PR ipa/79850, PR driver/31468,
+      PR other/80589, PR gcov-profile/53915, PR driver/56469, PR lto/69953,
+      PR lto/78049, PR middle-end/80809, PR middle-end/80809,
+      PR middle-end/80853, PR tree-optimization/80453, PR middle-end/80341,
+  * 
+
+ -- Matthias Klose <doko@x1>  Wed, 06 Dec 2017 14:56:25 +0100
+
+gcc-6 (6.4.0-10ubuntu1) bionic; urgency=medium
+
+  * Merge with Debian; remaining changes:
+    - Build from upstream sources.
+
+ -- Matthias Klose <doko@debian.org>  Mon, 13 Nov 2017 10:36:43 +0100
+
+gcc-6 (6.4.0-10) unstable; urgency=medium
+
+  * Update to SVN 20171112 (r254663) from the gcc-6-branch.
+    - Fix PR target/82772 (alpha), PR rtl-optimization/64682,
+      PR rtl-optimization/69567, PR rtl-optimization/69737,
+      PR rtl-optimization/82683, PR fortran/78641, PR fortran/69739,
+      PR fortran/82796, PR fortran/81735, PR fortran/78293,
+      PR fortran/80554.
+  * Bump libunwind (build-)dependency for ia64. Addresses: #879959.
+  * gcj-6: Depend on gcc-6. Addresses: #855640.
+  * Add support for a plethora of mips r6 architectures (YunQiang Su).
+    Closes: #881575.
+
+ -- Matthias Klose <doko@debian.org>  Mon, 13 Nov 2017 10:08:07 +0100
+
+gcc-6 (6.4.0-9ubuntu1) bionic; urgency=medium
+
+  * Merge with Debian; remaining changes:
+    - Build from upstream sources.
+
+ -- Matthias Klose <doko@ubuntu.com>  Thu, 26 Oct 2017 11:25:24 +0200
+
+gcc-6 (6.4.0-9) unstable; urgency=medium
+
+  * Update to SVN 20171026 (r254099) from the gcc-6-branch.
+    - Fix PR target/82274 (x86), PR rtl-optimization/82602,
+      PR rtl-optimization/82549, PR libstdc++/81395, PR target/82445 (ARM),
+      PR fortran/79795, PR fortran/79402, PR fortran/81048, PR libfortran/82233.
+  * Update the Linaro support to the 6.4-2017.10 snapshot.
+  * Do the extra/optional dance ...
+  * Override hardening-no-pie flags for compiler executables.
+
+ -- Matthias Klose <doko@debian.org>  Thu, 26 Oct 2017 11:19:43 +0200
+
+gcc-6 (6.4.0-8ubuntu1) artful; urgency=medium
+
+  * Merge with Debian; remaining changes:
+    - Build from upstream sources.
+
+ -- Matthias Klose <doko@ubuntu.com>  Tue, 10 Oct 2017 14:29:12 +0200
+
+gcc-6 (6.4.0-8) unstable; urgency=medium
+
+  * Update to SVN 20171010 (r253582) from the gcc-6-branch.
+    - Fix PR libstdc++/60936, PR tree-optimization/82337,
+      PR target/81996 (PPC), PR target/71951 (AArch64).
+  * Fix builds without hppa64 cross compiler and new debhelper. See: #877589.
+  * Fix build dependency on realpath. Closes: #877818.
+
+ -- Matthias Klose <doko@debian.org>  Tue, 10 Oct 2017 13:59:13 +0200
+
+gcc-6 (6.4.0-7ubuntu1) artful; urgency=medium
+
+  * Merge with Debian; remaining changes:
+    - Build from upstream sources.
+
+ -- Matthias Klose <doko@ubuntu.com>  Wed, 20 Sep 2017 13:46:18 +0200
+
+gcc-6 (6.4.0-7) unstable; urgency=medium
+
+  * Update to SVN 20170920 (r253004) from the gcc-6-branch.
+    - Fix PR c++/81314, PR c/81687, PR c/45784, PR libquadmath/65757,
+      PR libstdc++/60936, PR target/82112 (PPC), PR c++/81355 (x86),
+      PR tree-optimization/81977, PR tree-optimization/82084,
+      PR middle-end/81505, PR middle-end/81768, PR c/81687,
+      PR middle-end/81766, PR target/81621 (S390), PR middle-end/81052,
+      PR middle-end/79499, PR target/81225 (x86), PR tree-opt/79987,
+      PR sanitizer/81224.
+  * Fix fortran cross compiler build with debhelper 10.9. See: #876246.
+  * Bump binutils dependency to 2.29.1 for sid/buster.
+
+ -- Matthias Klose <doko@debian.org>  Wed, 20 Sep 2017 11:34:45 +0200
+
+gcc-6 (6.4.0-6ubuntu1) artful; urgency=medium
+
+  * Merge with Debian; remaining changes:
+    - Build from upstream sources.
+
+ -- Matthias Klose <doko@ubuntu.com>  Fri, 15 Sep 2017 12:33:23 +0200
+
+gcc-6 (6.4.0-6) unstable; urgency=medium
+
+  * Update to SVN 20170915 (r252799) from the gcc-6-branch.
+    - Fix PR target/81833 (PPC), PR target/82181 (xtensa),
+      PR tree-optimization/81987, PR other/39851, PR ipa/81128,
+      PR inline-asm/82001, PR c++/81355, PR tree-opt/81696, PR ipa/81128.
+  * Fix PR sanitizer/81066, taken from the gcc-7-branch.
+  * Fix libjava build failure with glibc-2.26.
+  * Update the Linaro support to the 6.4-2017.09 snapshot.
+
+ -- Matthias Klose <doko@debian.org>  Fri, 15 Sep 2017 12:30:51 +0200
+
+gcc-6 (6.4.0-5ubuntu3) artful; urgency=medium
+
+  * Fix PR sanitizer/81066, taken from the gcc-7-branch.
+  * Fix libjava build failure with glibc-2.26.
+
+ -- Matthias Klose <doko@ubuntu.com>  Wed, 06 Sep 2017 18:10:47 +0200
+
+gcc-6 (6.4.0-5ubuntu1) artful; urgency=medium
+
+  * Merge with Debian; remaining changes:
+    - Build from upstream sources.
+
+ -- Matthias Klose <doko@ubuntu.com>  Wed, 06 Sep 2017 11:25:30 +0200
+
+gcc-6 (6.4.0-5) unstable; urgency=medium
+
+  * Update to SVN 20170906 (r251754) from the gcc-6-branch.
+    - Fix PR libstdc++/79820, PR libstdc++/81751, PR libstdc++/53984,
+      PR libstdc++/81017, PR c++/82039, PR libstdc++/81891, PR libstdc++/81599,
+      PR libstdc++/81338, PR target/81593 (PPC), PR target/81170 (PPC),
+      PR target/81295 (PPC), PR target/81170, PR target/81295, PR driver/81523,
+      PR c++/80287, PR target/80210 (PPC), PR target/81910 (AVR),
+      PR fortran/81770, PR tree-optimization/81503.
+  * Update the Linaro support to the 6.4-2017.08 snapshot.
+  * Default to PIE on powerpc again, now that PR target/81170 and
+    PR target/81295 are fixed. Closes: #856224.
+  * Bump standards version.
+
+ -- Matthias Klose <doko@debian.org>  Wed, 06 Sep 2017 11:12:57 +0200
+
+gcc-6 (6.4.0-4ubuntu1) artful; urgency=medium
+
+  * Merge with Debian; remaining changes:
+    - Build from upstream sources.
+
+ -- Matthias Klose <doko@ubuntu.com>  Sun, 20 Aug 2017 17:27:57 +0200
+
+gcc-6 (6.4.0-4) unstable; urgency=medium
+
+  * Update to SVN 20170820 (r251205) from the gcc-6-branch.
+    - Fix PR target/81894 (x86), PR target/81861 (x86),
+      PR tree-optimization/81354, PR c++/71570.
+  * Don't build the gc enabled libobjc for cross compilers. Closes: #872301.
+  * Fix hangs w/ asan binaries on arm64 (Dann Frazier). LP: #1709727.
+
+ -- Matthias Klose <doko@debian.org>  Sun, 20 Aug 2017 17:23:10 +0200
+
+gcc-6 (6.4.0-3ubuntu1) artful; urgency=medium
+
+  * Merge with Debian; remaining changes:
+    - Build from upstream sources.
+
+ -- Matthias Klose <doko@ubuntu.com>  Sat, 05 Aug 2017 10:49:52 -0400
+
+gcc-6 (6.4.0-3) unstable; urgency=medium
+
+  * Update to SVN 20170805 (r250889) from the gcc-6-branch.
+    - Fix PR lto/81487, PR target/81641 (x86), PR sanitizer/81604,
+      PR target/81414 (AArch64), PR tree-optimization/81555,
+      PR tree-optimization/81556, PR target/79883 (AVR), PR target/67353 (AVR),
+      PR target/81305 (AVR), PR target/81407 (AVR), PR lto/81487,
+      PR tree-optimization/81162, PR rtl-optimization/75964,
+      PR target/80569 (x86).
+  * Don't run the testsuite on the kfreebsd and hurd buildds, hangs.
+
+ -- Matthias Klose <doko@debian.org>  Sat, 05 Aug 2017 10:26:43 -0400
+
+gcc-6 (6.4.0-2ubuntu1) artful; urgency=medium
+
+  * Merge with Debian; remaining changes:
+    - Build from upstream sources.
+
+ -- Matthias Klose <doko@ubuntu.com>  Mon, 24 Jul 2017 15:31:51 +0200
+
+gcc-6 (6.4.0-2) unstable; urgency=medium
+
+  * Update to SVN 20170724 (r250470) from the gcc-6-branch.
+    - Fix PR libstdc++/80316, PR target/80929 (AVR), PR target/80103 (PPC),
+      PR target/80101 (PPC), PR target/81375 (x86), PR target/81300 (x86),
+      PR tree-optimization/81192, PR target/81471 (x86).
+  * Don't configure powerpc with --enable-default-pie, fails to build.
+    See #856224, PR target/81295.
+  * Update the Linaro support to the 6.3-2017.07 snapshot.
+
+ -- Matthias Klose <doko@debian.org>  Mon, 24 Jul 2017 10:37:10 +0200
+
+gcc-6 (6.4.0-1ubuntu2) artful; urgency=medium
+
+  * Merge with Debian; remaining changes:
+    - Build from upstream sources.
+
+ -- Matthias Klose <doko@ubuntu.com>  Tue, 04 Jul 2017 17:03:56 +0200
+
+gcc-6 (6.4.0-1) unstable; urgency=medium
+
+  * GCC 6.4.0 release.
+
+ -- Matthias Klose <doko@debian.org>  Tue, 04 Jul 2017 16:59:17 +0200
+
+gcc-6 (6.3.0-21ubuntu1) artful; urgency=medium
+
+  * Merge with Debian; remaining changes:
+    - Build from upstream sources.
+
+ -- Matthias Klose <doko@ubuntu.com>  Wed, 28 Jun 2017 19:43:19 +0200
+
+gcc-6 (6.3.0-21) unstable; urgency=medium
+
+  * Fix Replaces attribute for the liblto_plugin move from cpp to gcc.
+
+ -- Matthias Klose <doko@debian.org>  Wed, 28 Jun 2017 19:34:28 +0200
+
+gcc-6 (6.3.0-20) unstable; urgency=medium
+
+  * Update to SVN 20170628 (r249732) from the gcc-6-branch (6.4.0 RC).
+    - Fix PR c++/81130, PR libgomp/80822, PR middle-end/80809,
+      PR middle-end/80809, PR middle-end/80853, PR rtl-optimization/73650,
+      PR target/61729 (PPC), PR target/77850 (PPC), PR rtl-optimization/60818,
+      PR target/80382 (PPC), PR rtl-optimization/80429, PR middle-end/80692,
+      PR target/80618 (PPC), PR target/80966 (PPC), PR middle-end/80902,
+      PR tree-optimization/79552, PR tree-optimization/43434, PR target/79155,
+      PR other/80909, PR ipa/80663, PR ipa/79849, PR ipa/79850, PR driver/31468,
+      PR other/80589, PR gcov-profile/53915, PR driver/56469, PR lto/69953,
+      PR lto/78049, PR middle-end/80809, PR middle-end/80809,
+      PR middle-end/80853, PR tree-optimization/80453, PR middle-end/80341,
+      PR middle-end/80281, PR tree-optimization/79256,
+      PR tree-optimization/69264, PR tree-optimization/69823, PR target/80718,
+      PR target/80510, PR target/68163, PR target/71778, PR c++/80241,
+      PR c++/80244, PR sanitizer/80348, PR sanitizer/80348, PR c++/81154,
+      PR c++/80973, PR c++/80984, PR c++/70844, PR fortran/80918.
+  * Fix PR target/79041, aarch64 backend emitting R_AARCH64_ADR_PREL_PG_HI21
+    relocation despite -mpc-relative-literal-loads option being used.
+  * Move the liblto_plugin from the cpp to the gcc package.
+  * libstdc++6: Add more Breaks to smoothen upgrades from jessie to stretch.
+    Closes: #863845, #863745.
+  * Don't provide libobjc_gc symlinks for the libobjc multilib packages.
+    Closes: #866150.
+  * Configure with --enable-default-pie on ppc64 (Adrian Glaubitz) and
+    powerpc (Mathieu Malaterre).  Closes: #856224.
+
+ -- Matthias Klose <doko@debian.org>  Wed, 28 Jun 2017 13:53:40 +0200
+
+gcc-6 (6.3.0-19ubuntu1) artful; urgency=medium
+
+  * Merge with Debian; remaining changes:
+    - Build from upstream sources.
+
+ -- Matthias Klose <doko@ubuntu.com>  Tue, 20 Jun 2017 15:59:28 +0200
+
+gcc-6 (6.3.0-19) unstable; urgency=medium
+
+  * Update to SVN 20170618 (r249347) from the gcc-6-branch.
+    - Fix PR libstdc++/80504, PR libstdc++/80493, PR libstdc++/80448,
+      PR libstdc++/80137, PR libstdc++/67440, PR libstdc++/69699,
+      PR libstdc++/71444, PR libstdc++/78236, PR target/80799 (x86),
+      PR sanitizer/80166, PR libgcc/80037, PR gcov-profile/78783,
+      PR sanitizer/80350, PR middle-end/79931, PR ipa/65972, PR lto/50345,
+      PR gcov-profile/78783, PR gcov-profile/80413, PR ipa/80212,
+      PR sanitizer/70878, PR gcov-profile/80224, PR ipa/80205, PR ipa/80104,
+      PR c++/80179, PR c++/80267, PR c++/60992, PR c++/80294,
+      PR libstdc++/81002, PR c/81006, PR rtl-optimization/80474,
+      PR target/80968, PR c++/81011, PR fortran/70601, PR fortran/65542,
+      PR fortran/80904, PR ada/80921.
+  * Update the Linaro support to the 6.3-2017.05 snapshot.
+  * Fix libmpx dependency generation for cross builds.
+  * Stop building packages now built by gcc-7.
+
+ -- Matthias Klose <doko@debian.org>  Sun, 18 Jun 2017 16:21:31 +0200
+
+gcc-6 (6.3.0-18ubuntu2) artful; urgency=medium
+
+  * Update to SVN 20170519 (r248302) from the gcc-6-branch.
+    - Fix PR libstdc++/80504, PR libstdc++/80493, PR libstdc++/80448,
+      PR libstdc++/80137, PR libstdc++/67440, PR libstdc++/69699,
+      PR libstdc++/71444, PR libstdc++/78236, PR target/80799 (x86).
+  * Update the Linaro support to the 6.3-2017.05 snapshot.
+  * Starting with 17.10, enable PIE on armhf, arm64 and i386.
+
+ -- Matthias Klose <doko@ubuntu.com>  Fri, 19 May 2017 12:22:57 -0700
+
+gcc-6 (6.3.0-18ubuntu1) artful; urgency=medium
+
+  * Merge with Debian; remaining changes:
+    - Build from upstream sources.
+  * Update the Linaro support to the 6.3-2017.05 snapshot.
+
+ -- Matthias Klose <doko@ubuntu.com>  Tue, 16 May 2017 11:56:34 -0700
+
+gcc-6 (6.3.0-18) unstable; urgency=medium
+
+  * Update to SVN 20170516 (r248076) from the gcc-6-branch.
+    - Revert fix for PR middle-end/80222.
+    - Fix PR target/80090 (PA), PR target/79027 (PA), PR go/64238,
+      PR fortran/80752.
+  * Install crtfastmath.o and re-add unwind support on kfreebsd-amd64 (James
+    Clarke). Closes: #833829.
+  * Work around #814977 (gnat calling gcc-6-6) by providing a gcc-6-6
+    symlink.
+
+ -- Matthias Klose <doko@debian.org>  Tue, 16 May 2017 08:59:32 -0700
+
+gcc-6 (6.3.0-17ubuntu1) artful; urgency=medium
+
+  * Merge with Debian; remaining changes:
+    - Build from upstream sources.
+
+ -- Matthias Klose <doko@ubuntu.com>  Wed, 10 May 2017 15:56:32 +0200
+
+gcc-6 (6.3.0-17) unstable; urgency=medium
+
+  * Update to SVN 20170510 (r247831) from the gcc-6-branch.
+    - Fix PR target/77728 (ARM), PR target/68491 (x86), PR fortran/80392,
+      PR libgomp/80394, PR c/79940, PR c++/79572, PR c++/79641, PR c/80097,
+      PR c++/79512, PR rtl-optimization/80501, PR sanitizer/80349,
+      PR rtl-optimization/80385, PR libgomp/80394, PR c++/80297, PR debug/80321,
+      PR target/80286 (x86), PR debug/79255, PR debug/80025, PR sanitizer/80168,
+      PR rtl-optimization/80112, PR c++/80129, PR sanitizer/79944,
+      PR target/79932 (x86), PR target/79932 (x86), PR c/79940,
+      PR rtl-optimization/79901, PR target/79807 (x86), PR c++/79681,
+      PR target/79729 (x86), PR middle-end/79396, PR target/79570,
+      PR target/79494 (x86), PR target/79568 (x86), PR target/79559 (x86),
+      PR c++/80363, PR c++/80176, PR c++/79572, PR c++/80141, PR c++/79896,
+      PR c++/79664, PR c++/79639, PR c++/79512, PR middle-end/80075,
+      PR plugin/80094, PR tree-optimization/80113, PR tree-optimization/80122,
+      PR tree-optimization/80167, PR tree-optimization/80170,
+      PR middle-end/80171, PR middle-end/80222, PR tree-optimization/80262,
+      PR tree-optimization/80275, PR tree-optimization/80334,
+      PR middle-end/80362, PR tree-optimization/80492, PR middle-end/80539,
+      PR middle-end/71310, PR bootstrap/71510.
+  * Fix dependency on gcc-base package for rtlibs stage build (Helmut Grohne).
+  * Remove libquadmath/gdtoa license from debian/copyright (files removed).
+  * Build libgo when not building common libs.
+  * Fix PR rtl-optimization/60818, taken from the trunk (Adrian Glaubitz).
+    Closes: #861945.
+  * Fix building libgfortran, libgphobos and libmpx when building without
+    common libs.
+
+ -- Matthias Klose <doko@debian.org>  Wed, 10 May 2017 13:13:01 +0200
+
+gcc-6 (6.3.0-16ubuntu6) artful; urgency=medium
+
+  * Update to SVN 20170506 (r247720) from the gcc-6-branch.
+    - Fix PR target/77728 (ARM), PR target/68491 (x86), PR fortran/80392,
+      PR libgomp/80394, PR c/79940, PR c++/79572, PR c++/79641, PR c/80097,
+      PR c++/79512, PR rtl-optimization/80501, PR sanitizer/80349,
+      PR rtl-optimization/80385, PR libgomp/80394, PR c++/80297, PR debug/80321,
+      PR target/80286 (x86), PR debug/79255, PR debug/80025, PR sanitizer/80168,
+      PR rtl-optimization/80112, PR c++/80129, PR sanitizer/79944,
+      PR target/79932 (x86), PR target/79932 (x86), PR c/79940,
+      PR rtl-optimization/79901, PR target/79807 (x86), PR c++/79681,
+      PR target/79729 (x86), PR middle-end/79396, PR target/79570,
+      PR target/79494 (x86), PR target/79568 (x86), PR target/79559 (x86),
+      PR c++/80363, PR c++/80176, PR c++/79572, PR c++/80141, PR c++/79896,
+      PR c++/79664, PR c++/79639, PR c++/79512.
+  * Fix dependency on gcc-base package for rtlibs stage build (Helmut Grohne).
+  * Remove libquadmath/gdtoa license from debian/copyright (files removed).
+  * Stop building packages now built by the gcc-7 source.
+  * Fix PR rtl-optimization/60818, taken from the trunk (Adrian Glaubitz).
+    Closes: #861945.
+  * Fix building libgfortran, libgphobos and libmpx when building without
+    common libs.
+
+ -- Matthias Klose <doko@ubuntu.com>  Sun, 07 May 2017 09:21:42 +0200
+
+gcc-6 (6.3.0-16) unstable; urgency=medium
+
+  * Update to SVN 20170425 (r247223) from the gcc-6-branch.
+    - Fix PR tree-optimization/80426, PR target/80462 (AVR),
+      PR target/79453 (AVR), PR fortran/80361.
+  * libstdc++6: add Breaks: libsigc++-2.0-0c2a (<= 2.4.1-1+b1). Closes: #861060.
+  * Fix PR middle-end/80533 (wrong code), taken from the trunk. LP: #1685385.
+
+ -- Matthias Klose <doko@debian.org>  Sun, 30 Apr 2017 15:47:47 +0700
+
+gcc-6 (6.3.0-14ubuntu3) artful; urgency=medium
+
+  * debian/rules.patch: Disable ignore-pie-specs-when-not-enabled on Ubuntu.
+
+ -- Adam Conrad <adconrad@ubuntu.com>  Tue, 25 Apr 2017 13:55:59 -0600
+
+gcc-6 (6.3.0-14ubuntu2) artful; urgency=medium
+
+  * debian/rules.conf: Update rules to make artful behave like zesty.
+
+ -- Adam Conrad <adconrad@ubuntu.com>  Thu, 20 Apr 2017 18:40:26 -0600
+
+gcc-6 (6.3.0-14ubuntu1) zesty; urgency=medium
+
+  * Merge with Debian; remaining changes:
+    - Build from upstream sources.
+
+ -- Matthias Klose <doko@ubuntu.com>  Tue, 18 Apr 2017 08:47:36 +0630
+
+gcc-6 (6.3.0-14) unstable; urgency=medium
+
+  * Re-upload as -14 to undo the reproducible builds upload.
+
+ -- Matthias Klose <doko@debian.org>  Mon, 17 Apr 2017 20:19:55 +0630
+
+gcc-6 (6.3.0-13) unstable; urgency=medium
+
+  * Update to SVN 20170415 (r246940) from the gcc-6-branch.
+    - Fix PR target/45053 (PPC), PR target/80376 (PPC), PR target/80315 (PPC),
+      PR ipa/77333, PR target/78002 (AArch64), PR target/79733 (x86),
+      PR target/80298 (x86), PR c++/80150, PR c++/77563, PR c++/79519,
+      PR c++/79640, PR c++/80043, PR c++/78282, PR c++/79607, PR c++/79566,
+      PR c++/79580, PR c++/79508, PR c++/79050, PR c++/79461.
+  * Fix PR go/77857, gccgo vendoring. Taken from the trunk. Closes: #839598.
+  * libstdc++6: add Breaks: libopencv-core2.4. Closes: #859914.
+
+ -- Matthias Klose <doko@debian.org>  Sat, 15 Apr 2017 23:34:35 +0200
+
+gcc-6 (6.3.0-12ubuntu2) zesty; urgency=medium
+
+  * Merge with Debian; remaining changes:
+    - Build from upstream sources.
+
+ -- Matthias Klose <doko@ubuntu.com>  Fri, 07 Apr 2017 14:21:56 +0200
+
+gcc-6 (6.3.0-12) unstable; urgency=medium
+
+  * Update to SVN 20170406 (r246741) from the gcc-6-branch.
+    - Fix PR libstdc++/79141, PR libstdc++/80137, PR libstdc++/62045,
+      PR c++/79548, PR target/80082 (ARM), PR target/79947 (PPC),
+      PR tree-optimization/80218, PR target/80246 (PPC), PR target/80123 (PPC),
+      PR target/71294 (PPC), PR tree-optimization/78644,
+      PR tree-optimization/80181, PR sanitizer/80067, PR target/78543 (PPC),
+      PR target/80180 (x86), PR lto/66295, PR lto/79587, PR lto/66295,
+      PR target/79906 (PPC), PR gcov-profile/80081, PR middle-end/79753,
+      PR ipa/79769, PR c/79770, PR middle-end/79831, PR target/79892,
+      PR middle-end/78339, PR target/65705 (x86), PR target/69804 (x86,
+      closes: #812255), PR tree-optimization/79631, PR ipa/79761, PR lto/79760,
+      PR tree-optimization/79803, PR rtl-optimization/79574,
+      PR rtl-optimization/79574, PR rtl-optimization/79577, PR sanitizer/71458,
+      PR target/79951 (PPC), PR c++/80091, PR ada/80117, PR fortran/71838,
+      PR fortran/79676, PR fortran/79434.
+  * Re-add the fix for PR c++/72813, taken from the trunk, and accidentally
+    removed when updating the branch. Closes: #837162.
+  * Fix PR demangler/70909, libiberty demangler segfaults. CVE-2016-4491.
+  * Bump binutils version requirement.
+
+ -- Matthias Klose <doko@debian.org>  Thu, 06 Apr 2017 23:49:46 +0200
+
+gcc-6 (6.3.0-11) unstable; urgency=medium
+
+  * Fix PR target/78543 (PPC), taken from the gcc-6-branch. Closes: #856809.
+
+ -- Matthias Klose <doko@debian.org>  Wed, 29 Mar 2017 00:17:25 +0200
+
+gcc-6 (6.3.0-10ubuntu1) zesty; urgency=medium
+
+  * Merge with Debian; remaining changes:
+    - Build from upstream sources.
+
+ -- Matthias Klose <doko@ubuntu.com>  Tue, 21 Mar 2017 16:30:53 +0100
+
+gcc-6 (6.3.0-10) unstable; urgency=medium
+
+  * Update to SVN 20170321 (r246313) from the gcc-6-branch.
+    - Fix PR libstdc++/79980, PR libstdc++/80041, PR libstdc++/79980,
+      PR libstdc++/79511, PR target/71017 (x86).
+
+  [ Matthias Klose ]
+  * Update the Linaro support to the 6.3-2017.03 snapshot.
+  * Address PR c++/80091, reverting r246134. Closes: #858261.
+
+  [ Nicolas Boulenguez ]
+  * Reactive the ada-gcc-name patch, calling the versioned gcc.
+
+ -- Matthias Klose <doko@debian.org>  Tue, 21 Mar 2017 16:29:17 +0100
+
+gcc-6 (6.3.0-9ubuntu2) zesty; urgency=medium
+
+  * Update the Linaro support to the 6.3-2017.03 snapshot.
+
+ -- Matthias Klose <doko@ubuntu.com>  Fri, 17 Mar 2017 18:49:54 +0100
+
+gcc-6 (6.3.0-9ubuntu1) zesty; urgency=medium
+
+  * Merge with Debian; remaining changes:
+    - Build from upstream sources.
+
+ -- Matthias Klose <doko@ubuntu.com>  Thu, 16 Mar 2017 14:59:50 +0100
+
+gcc-6 (6.3.0-9) unstable; urgency=medium
+
+  * Update to SVN 20170316 (r246188) from the gcc-6-branch.
+    - Fix PR target/79261 (PPC), PR fortran/78474, PR libstdc++/79789,
+      PR target/79514 (x86), PR target/79544 (PPC), PR lto/79579,
+      PR target/79749 (sparc), PR target/79261 (PPC), PR fortran/78474,
+      PR fortran/78331, PR target/77850 (PA), PR target/79439 (PPC),
+      PR c++/79796, PR ada/79903, PR ada/79945, PR libstdc++/80034,
+      PR c++/79962, PR c++/79984, PR c/79756, PR tree-optimization/79732,
+      PR target/80019 (x86), PR target/79752 (PPC), PR middle-end/80004,
+      PR target/49244 (x86), PR tree-optimization/79977, PR middle-end/79971,
+      PR tree-optimization/79666, PR middle-end/79576, PR c++/72775,
+      PR c++/79900, PR c++/79687, PR c++/79264, PR c++/61636, PR fortran/79894.
+  * gcj-6: Fix ecj1 symlink on i386. Closes: #856903.
+  * Fix libcc1.so symlink for cross compilers. Addresses: #856875.
+  * dpkg-buildflags stopped fiddling around with spec files; remove
+    the code removing and warning about dpkg's specs.
+  * libstdc++6: Add break for libopenmpi1.6. Closes: #854881.
+  * Fix symlinks to man pages in the hppa64 package. Closes: #857583.
+  * Don't ship the gnatgcc manpage symlink when building GFDL packages.
+    Closes: #857384.
+  * Install the gcov-dump utility.
+  * Allow to use lld with -fuse-ld=ld.lld.
+
+ -- Matthias Klose <doko@debian.org>  Thu, 16 Mar 2017 14:25:48 +0100
+
+gcc-6 (6.3.0-8ubuntu1) zesty; urgency=medium
+
+  * Merge with Debian; remaining changes:
+    - Build from upstream sources.
+
+ -- Matthias Klose <doko@ubuntu.com>  Tue, 21 Feb 2017 15:05:42 +0100
+
+gcc-6 (6.3.0-8) unstable; urgency=medium
+
+  * Update to SVN 20170221 (r245621) from the gcc-6-branch.
+    - Fix ICEs PR middle-end/79537, PR sanitizer/79558, PR middle-end/79536.
+  * Fix ecj1 symlink for gcj cross compiler packages. Addresses: #855640.
+  * Bump binutils version requirement.
+
+ -- Matthias Klose <doko@debian.org>  Tue, 21 Feb 2017 14:54:53 +0100
+
+gcc-6 (6.3.0-7) unstable; urgency=medium
+
+  * Update to SVN 20170218 (r245414) from the gcc-6-branch.
+    - Fix PR target/78945 (ARM), PR translation/79397,
+      PR tree-optimization/71824, PR tree-optimization/71824,
+      PR tree-optimization/77318, PR target/71017 (x86), PR c++/78897,
+      PR c++/78908, PR c++/79296 (closes: #854692), PR sanitizer/79562,
+      PR libstdc++/79114, PR libstdc++/59170, PR libstdc++/59161,
+      PR libstdc++/72792, PR libstdc++/72792, PR libstdc++/72793,
+      PR libstdc++/69321, PR libstdc++/69301, PR libstdc++/79114,
+      PR libstdc++/78702, PR libstdc++/78134, PR libstdc++/78273,
+      PR c/79431, PR target 79545 (PPC), PR target/76731 (x86), PR c/79428,
+      PR tree-optimization/79411, PR c/79431, PR middle-end/79399,
+      PR tree-optimization/79338, PR target/79197 (PPC), PR target/79079,
+      PR tree-optimization/79267, PR target/79495 (x86), PR c/79471,
+      PR c++/79429, PR c/79431, PR c++/79377.
+  * Update the Linaro support to the 6.3-2017.02 snapshot.
+  * Fix target architecture for sparc non-multilib builds (Adrian Glaubitz).
+    Closes: #855197.
+  * Bump binutils version requirement.
+
+ -- Matthias Klose <doko@debian.org>  Sat, 18 Feb 2017 10:00:36 +0100
+
+gcc-6 (6.3.0-6ubuntu2) zesty; urgency=medium
+
+  * Update to SVN 20170211 (r245353) from the gcc-6-branch.
+    - Fix PR target/78945 (ARM), PR translation/79397,
+      PR tree-optimization/71824, PR tree-optimization/71824,
+      PR tree-optimization/77318, PR target/71017 (x86), PR c++/78897.
+  * Update the Linaro support to the 6.3-2017.02 snapshot.
+
+ -- Matthias Klose <doko@ubuntu.com>  Sat, 11 Feb 2017 02:13:55 +0100
+
+gcc-6 (6.3.0-6) unstable; urgency=medium
+
+  * Update to SVN 20170205 (r245197) from the gcc-6-branch.
+    - Fix PR libstdc++/78346, PR libstdc++/79195, PR libstdc++/79254,
+      PR target/78478, PR target/79268 (PPC, LP: #1661051), PR c++/79176,
+      PR middle-end/78742, PR target/77439 (ARM32), PR tree-optimization/79034,
+      PR fortran/70697, PR fortran/70696, PR fortran/79305, PR go/79037,
+      PR go/79281 (closes: #853223), PR target/78862 (tilegx), PR lto/79061,
+      PR target/65484 (PPC).
+
+  [ Aurelien Jarno ]
+  * Don't use disable madd4 on MIPS big-endian.
+  * Disable lxc1/sxc1 instruction on mips and mipsel.
+
+  [ Matthias Klose ]
+  * Configure with --enable-default-pie on sparc and sparc64 (James Clark).
+    Closes: #854090.
+  * Configure with --enable-default-pie on kfreebsd-* (Steven Chamberlain).
+  * Configure staged builds with --disable-libmpx (Helmut Grohne).
+    Closes: #854159.
+  * Fix suffix'd gnat binary names (Svante Signell). Closes: #814978.
+
+ -- Matthias Klose <doko@debian.org>  Sun, 05 Feb 2017 21:16:42 +0100
+
+gcc-6 (6.3.0-5ubuntu1) zesty; urgency=medium
+
+  * Merge with Debian; remaining changes:
+    - Build from upstream sources.
+
+ -- Matthias Klose <doko@ubuntu.com>  Tue, 24 Jan 2017 18:17:14 +0100
+
+gcc-6 (6.3.0-5) unstable; urgency=medium
+
+  * Update to SVN 20170124 (r244868) from the gcc-6-branch.
+    - Fix PR lto/69188, PR go/78763, PR target/78478 (RTEMS).
+  * Fix removing the RUNPATH from the asan, tsan, ubsan, cilkrts, gfortran
+    and gphobos runtime libraries.
+  * Let the gnatgcc symlinks point to the versioned names. Closes: #839209.
+  * Backport patches to disable madd4 instructions on mips* targets and
+    disable these by default (YunQiang Su). Closes. #852153.
+  * Update multiarch builds for a new sh3 target. Closes: #851869.
+
+ -- Matthias Klose <doko@debian.org>  Tue, 24 Jan 2017 14:48:12 +0100
+
+gcc-6 (6.3.0-4ubuntu1) zesty; urgency=medium
+
+  * Merge with Debian; remaining changes:
+    - Build from upstream sources.
+
+ -- Matthias Klose <doko@ubuntu.com>  Sat, 21 Jan 2017 21:35:25 +0100
+
+gcc-6 (6.3.0-4) unstable; urgency=medium
+
+  * Update to SVN 20170121 (r244748) from the gcc-6-branch.
+    - Fix PR target/77455 (AArch64), PR rtl-optimization/79121, PR ipa/79043,
+      PR ipa/71207, PR tree-optimization/72488, PR c++/77545, PR c++/77284.
+  * Fix gdc cross build.
+  * Fix symlinks to unprefixed man pages. Closes: #851886.
+  * Fix PR go/79037, proposed golang patch (John Paul Adrian Glaubitz).
+    Closes: #852091.
+
+ -- Matthias Klose <doko@debian.org>  Sat, 21 Jan 2017 18:51:03 +0100
+
+gcc-6 (6.3.0-3ubuntu1) zesty; urgency=medium
+
+  * Merge with Debian; remaining changes:
+    - Build from upstream sources.
+
+ -- Matthias Klose <doko@ubuntu.com>  Wed, 18 Jan 2017 22:18:31 +0100
+
+gcc-6 (6.3.0-3) unstable; urgency=medium
+
+  * Update to SVN 20170118 (r244586) from the gcc-6-branch.
+    - Fix PR tree-optimization/71055 (closes: #849032), PR driver/78863,
+      PR translation/78745, PR tree-optimization/78886,
+      PR tree-optimization/78428, PR libstdc++/78956, PR libstdc++/78991,
+      PR rtl-optimization/78255, PR target/78041 (ARM), PR pch/78970,
+      PR lto/79042, PR target/78900 (PPC), PR tree-optimization/78024,
+      PR sanitizer/65479 (PPC), PR c++/77812, PR libstdc++/78389,
+      PR libstdc++/78389, PR debug/78839, PR rtl-optimization/78617,
+      PR target/78253 (ARM), PR target/79044 (PPC), PR c++/78341, PR c++/78949,
+      PR c++/78693, PR c++/71182, PR fortran/78866, PR middle-end/50199.
+  * Always configure sparc builds --with-cpu-32=ultrasparc (James Clark).
+    Closes: #850250.
+  * Enable gccgo on m68k (John Paul Adrian Glaubitz). Closes: #850749.
+  * Reapply the fix for PR target/55947, and fix PR c++/72813, taken from
+    the trunk.
+  * Fix PR target/79044 (PPC), ICE (Bill Schmidt). Closes: #850777.
+  * Don't add the configured prefix to libcc1's compiler name.
+    Closes: #851146.
+  * Update the Linaro support to the 6.3-2017.01 snapshot.
+  * Apply the header changes for PR libstdc++/64735 on armel as well,
+    conditionalized to keep the headers unchanged for other architectures.
+    Closes: #851273.
+  * Install the unprefixed man pages for gcc-ar, -nm and ranlib.
+    Closes: #851698.
+
+ -- Matthias Klose <doko@debian.org>  Wed, 18 Jan 2017 20:02:20 +0100
+
+gcc-6 (6.3.0-2ubuntu1) zesty; urgency=medium
+
+  * Merge with Debian; remaining changes:
+    - Build from upstream sources.
+
+ -- Matthias Klose <doko@ubuntu.com>  Sat, 31 Dec 2016 06:18:31 +0100
+
+gcc-6 (6.3.0-2) unstable; urgency=medium
+
+  * Update gdc-driver-nophobos patch.
+
+ -- Matthias Klose <doko@debian.org>  Sat, 31 Dec 2016 06:10:49 +0100
+
+gcc-6 (6.3.0-1) unstable; urgency=medium
+
+  * GCC 6.3.0 release.
+  * Update to SVN 20161229 (r243959) from the gcc-6-branch.
+    - Fix PR c/77767, PR ipa/77905, PR translation/78922, PR fortran/78239.
+
+  [ Matthias Klose ]
+  * Backport proposed patch for PR libstdc++/64735. Closes: #727621.
+  * Configure --with-cpu-32=ultrasparc on sparc. Closes: #845461.
+  * Update gdc to the GCC-6 branch (20161222).
+  * Don't mark libphobos multilib packages as M-A: same.
+  * Configure libphobos builds with --with-target-system-zlib.
+  * Stop applying PR c++/77379.
+  * Fix ignoring dpkg's pie specs when pie is not enabled (James Clarke).
+    Closes: #849542.
+  * Apply proposed patch for PR rtl-optimization/65618. Addresses: #781457.
+  * Bump requirement on binutils to 2.27.90 (gold now implementing -z bndplt).
+
+  [ Samuel Thibault ]
+  * libgo fixup for program invocation name.
+
+ -- Matthias Klose <doko@debian.org>  Sat, 31 Dec 2016 04:46:10 +0100
+
+gcc-6 (6.2.1-7ubuntu1) zesty; urgency=medium
+
+  * Merge with Debian; remaining changes:
+    - Build from upstream sources.
+
+ -- Matthias Klose <doko@ubuntu.com>  Thu, 15 Dec 2016 22:50:24 +0100
+
+gcc-6 (6.2.1-7) unstable; urgency=medium
+
+  * GCC 6.3.0 release candidate.
+  * Update to SVN 20161215 (r243686, 6.2.1) from the gcc-6-branch.
+    - Fix PR libstdc++/78465, PR c++/78761, PR c++/78252, PR target/59874,
+      PR target/78796, PR tree-optimization/77673, PR target/72717 (PPC),
+      PR rtl-optimization/71496, PR c++/78701.
+  * Drop build dependency on g++-5.
+  * Fix PR c++/78774, proposed for the gcc-6-branch.
+  * Apply patches for zlib security issues CVE-2016-9840, CVE-2016-9841,
+    CVE-2016-9842, CVE-2016-9843.
+  * Ignore dpkg's pie specs when pie is not enabled. Addresses: #848129.
+
+ -- Matthias Klose <doko@debian.org>  Thu, 15 Dec 2016 22:43:42 +0100
+
+gcc-6 (6.2.1-6ubuntu1) zesty; urgency=medium
+
+  * Merge with Debian; remaining changes:
+    - Build from upstream sources.
+
+ -- Matthias Klose <doko@ubuntu.com>  Mon, 12 Dec 2016 17:17:23 +0100
+
+gcc-6 (6.2.1-6) unstable; urgency=high
+
+  * Update to SVN 20161212 (r243558, 6.2.1) from the gcc-6-branch.
+    - Fix PR target/78426 (SH), PR fortran/78500, PR target/78101 (PPC),
+      PR target/48863 (ARM32), PR inline-asm/70184, PR libstdc++/71856,
+      PR libstdc++/77459, PR libstdc++/78326, PR libstdc++/51960,
+      PR target/57438 (x86), PR target/77933 (ARM), PR c++/78550,
+      PR tree-optimization/78542, PR tree-optimization/78482, PR c++/71848,
+      PR middle-end/71762, PR tree-optimization/71575, PR bootstrap/78188,
+      PR tree-optimization/78224, PR tree-optimization/77646, PR target/77957,
+      PR middle-end/78540, PR rtl-optimization/78546, PR fortran/78298,
+      PR middle-end/69183, PR middle-end/78416, PR middle-end/67335,
+      PR middle-end/78419, PR rtl-optimization/78378, PR fortran/78299,
+      PR target/77834, PR target/78227, PR target/77834,
+      PR rtl-optimization/77919, PR rtl-optimization/77919, PR middle-end/78025,
+      PR fortran/77973, PR sanitizer/66343, PR fortran/77665,
+      PR middle-end/77624, PR target/77587, PR tree-optimization/78646,
+      PR target/72827, PR c++/78551, PR c++/78649, PR c++/72808, PR c++/77591,
+      PR c++/77739, PR c++/77285, PR c++/78089, PR c++/77467, PR c++/77722,
+      PR c++/77638, PR c++/77637, PR c++/77482, PR c++/77375, PR c++/71274,
+      PR c++/71515, PR c++/77907, PR c++/57728, PR fortran/78593,
+      PR fortran/77666, PR fortran/78443, PR libstdc++/70975,
+      PR libstdc++/71337, PR libstdc++/78111, PR rtl-optimization/77309,
+      PR target/77904 (ARM32).
+
+  [ Matthias Klose ]
+  * Fix dependency generation for libgphobos multilib builds.
+  * Install missing vecintrin.h header on s390x.
+  * Fix PR target/77267 (x86), taken from the trunk.
+  * Use --push-state/--pop-state for gold as well when linking libtsan.
+  * Fix the configure check for compressed debug section support in as and ld.
+    Enables the -gz option again. Taken from the trunk.
+  * In GCC ICE dumps, prefix each line with the PID of the driver.
+  * Stop ignoring the bootstrap comparison failures on mips targets now that
+    these are release architectures.
+
+  [ Svante Signell ]
+  * GNU/Hurd port for gccgo.
+
+  [ Iain Buclaw ]
+  * Use needsCodegen rather than isRoot for determining the static/extern of a
+    template symbol. Closes: #845377.
+
+ -- Matthias Klose <doko@debian.org>  Mon, 12 Dec 2016 16:53:57 +0100
+
+gcc-6 (6.2.1-5ubuntu2) zesty; urgency=medium
+
+  * Update to SVN 20161202 (r243204, 6.2.1) from the gcc-6-branch.
+    - Fix PR target/78426 (SH), PR fortran/78500, PR target/78101 (PPC),
+      PR target/48863 (ARM32), PR inline-asm/70184.
+  * Fix dependency generation for libgphobos multilib builds.
+  * Install missing vecintrin.h header on s390x.
+  * Fix PR target/77267 (x86), taken from the trunk. LP: #1623418.
+  * Use --push-state/--pop-state for gold as well when linking libtsan.
+  * Fix the configure check for compressed debug section support in as and ld.
+    Enables the -gz option again. Taken from the trunk.
+
+ -- Matthias Klose <doko@ubuntu.com>  Fri, 02 Dec 2016 23:22:52 +0100
+
+gcc-6 (6.2.1-5ubuntu1) zesty; urgency=medium
+
+  * Merge with Debian; remaining changes:
+    - Build from upstream sources.
+
+ -- Matthias Klose <doko@ubuntu.com>  Thu, 24 Nov 2016 13:36:19 +0100
+
+gcc-6 (6.2.1-5) unstable; urgency=medium
+
+  * Update to SVN 20161124 (r242827, 6.2.1) from the gcc-6-branch.
+    - Fix PR target/77822 (AArch64), PR fortran/58001, PR fortran/69741,
+      PR libstdc++/78490, PR lto/78472, PR middle-end/78305, PR ipa/78309,
+      PR middle-end/78333, PR tree-optimization/78228, PR middle-end/78185,
+      PR tree-optimization/77855, PR fortran/66227, PR fortran/78297,
+      PR middle-end/78429.
+  * Don't apply the ada patches for stage builds.
+  * Add pkg-config to the build dependencies.
+  * Drop the work around for PR libstdc++/65913.
+  * gdc: Link with the shared libgphobos runtime by default. Closes: #845377.
+
+ -- Matthias Klose <doko@debian.org>  Thu, 24 Nov 2016 12:41:33 +0100
+
+gcc-6 (6.2.1-4ubuntu1) zesty; urgency=medium
+
+  * Merge with Debian; remaining changes:
+    - Build from upstream sources.
+
+ -- Matthias Klose <doko@ubuntu.com>  Sat, 19 Nov 2016 12:39:00 +0100
+
+gcc-6 (6.2.1-4) unstable; urgency=medium
+
+  * Update to SVN 20161119 (r242621, 6.2.1) from the gcc-6-branch.
+    - Fix PR c++/67631.
+  * Build the GC enabled libobjc using the system libgc when available
+  * Always apply *all* the gnat patches whether or not gnat is built.
+  * Bump debhelper compat level to 9.
+  * Mark libgphobos symbols changing with the file location (sic!) as optional.
+
+ -- Matthias Klose <doko@debian.org>  Sat, 19 Nov 2016 15:52:25 +0100
+
+gcc-6 (6.2.1-3) unstable; urgency=medium
+
+  * Build-depend on binutils (>= 2.27.51.20161118), required for sparc64.
+  * Always apply the gnat patches whether or not gnat is built.
+
+ -- Matthias Klose <doko@debian.org>  Fri, 18 Nov 2016 16:34:00 +0100
+
+gcc-6 (6.2.1-2ubuntu1) zesty; urgency=medium
+
+  * Merge with Debian; remaining changes:
+    - Build from upstream sources.
+
+ -- Matthias Klose <doko@ubuntu.com>  Fri, 18 Nov 2016 14:03:09 +0100
+
+gcc-6 (6.2.1-2) unstable; urgency=medium
+
+  * Update to SVN 20161118 (r242586, 6.2.1) from the gcc-6-branch.
+    - Fix PR c++/68377.
+  * Add Replaces for renamed lib*gphobos-dev packages.
+  * libphobos: Fix ARM32 multilib detection for system zlib.
+  * Update libgphobos symbols files for ARM32 targets.
+
+ -- Matthias Klose <doko@debian.org>  Fri, 18 Nov 2016 13:32:28 +0100
+
+gcc-6 (6.2.1-1ubuntu2) zesty; urgency=medium
+
+  * Merge with Debian; remaining changes:
+    - Build from upstream sources.
+
+ -- Matthias Klose <doko@ubuntu.com>  Thu, 17 Nov 2016 13:26:20 +0100
+
+gcc-6 (6.2.1-1) unstable; urgency=medium
+
+  * Update to SVN 20161116 (r241998, 6.2.1) from the gcc-6-branch.
+    - Fix PR sanitizer/78294, PR target/78310 (x86), PR target/77822 (s390x),
+      PR target/78262 (x86).
+  * Update gdc to the GCC-6 branch (20161116).
+  * Update libasan symbol files.
+  * Build libgfortran libraries when building without common libs.
+  * Avoid warning for libgcc symbols files.
+  * Add symbols for libobjc_gc library.
+  * Build shared phobos runtime libraries (not yet enabled by default).
+
+ -- Matthias Klose <doko@debian.org>  Thu, 17 Nov 2016 12:42:56 +0100
+
+gcc-6 (6.2.0-13ubuntu1) zesty; urgency=medium
+
+  * Merge with Debian; remaining changes:
+    - Build from upstream sources.
+
+ -- Matthias Klose <doko@ubuntu.com>  Wed, 09 Nov 2016 21:04:13 +0100
+
+gcc-6 (6.2.0-13) unstable; urgency=medium
+
+  * Update to SVN 20161109 (r241998, 6.2.1) from the gcc-6-branch.
+    - Fix PR c/71115, PR target/78229 (closes: #843379),
+      PR tree-optimization/77768, PR c++/78039 (closes: #841316),
+      PR libgcc/78064, PR driver/78206.
+  * Fix using the gcc-6-source package (Stephen Kitt). Closes: #843476.
+  * Fix PR target/77822 (AArch64), taken from the trunk. Closes: #839249.
+  * Fix PR target/77822 (s390x), proposed patch.
+  * Update libiberty to the trunk 20161108. Addresses security issues:
+    CVE-2016-6131, CVE-2016-4493, CVE-2016-4492, CVE-2016-4490,
+    CVE-2016-4489, CVE-2016-4488, CVE-2016-4487, CVE-2016-2226.
+
+ -- Matthias Klose <doko@debian.org>  Wed, 09 Nov 2016 20:42:53 +0100
+
+gcc-6 (6.2.0-11ubuntu1) zesty; urgency=medium
+
+  * Merge with Debian; remaining changes:
+    - Build from upstream sources.
+
+ -- Matthias Klose <doko@ubuntu.com>  Thu, 03 Nov 2016 15:27:16 +0100
+
+gcc-6 (6.2.0-11) unstable; urgency=medium
+
+  * Update to SVN 20161103 (r241817, 6.2.1) from the gcc-6-branch.
+    - Fix PR debug/77773, PR middle-end/72747, PR tree-optimization/78047,
+      PR tree-optimization/77879, PR tree-optimization/77839,
+      PR tree-optimization/77745, PR tree-optimization/77648,
+      PR target/78166 (PA), PR rtl-optimization/78038, PR middle-end/78128,
+      PR middle-end/71002, PR fortran/69544, PR fortran/78178,
+      PR fortran/71902, PR fortran/67219, PR fortran/71891, PR lto/78129,
+      PR libgfortran/78123.
+  * Fix symlinks for gcj manual pages. Closes: #842407.
+  * Fix ICE in tree_to_shwi, Linaro issue #2575.
+
+ -- Matthias Klose <doko@debian.org>  Thu, 03 Nov 2016 14:10:24 +0100
+
+gcc-6 (6.2.0-10ubuntu1) zesty; urgency=medium
+
+  * Merge with Debian; remaining changes:
+    - Build from upstream sources.
+
+ -- Matthias Klose <doko@ubuntu.com>  Thu, 27 Oct 2016 22:12:20 +0200
+
+gcc-6 (6.2.0-10) unstable; urgency=medium
+
+  * Update to SVN 20161027 (r241619, 6.2.1) from the gcc-6-branch.
+    - Fix PR libstdc++/77288, PR libstdc++/77727, PR libstdc++/78052,
+      PR tree-optimization/77550, PR tree-optimization/77916,
+      PR fortran/71895, PR fortran/77763, PR fortran/61420, PR fortran/78013,
+      PR fortran/78021, PR fortran/72832, PR fortran/78092, PR fortran/78108,
+      PR target/78057 (x86), PR target/78037 (x86).
+  * Include go-relocation-test-gcc620-sparc64.obj.uue to fix libgo's
+    debug/elf TestDWARFRelocations test case (James Clark).
+  * Reapply fix for PR c++/71912, apply proposed fix for PR c++/78039.
+    Closes: #841292.
+  * Don't install alternatives for go and gofmt. The preferred way to do that
+    is to install the golang-any package.
+  * For Debian builds, don't enable bind now by default when linking with pie
+    by default.
+
+ -- Matthias Klose <doko@debian.org>  Thu, 27 Oct 2016 15:27:07 +0200
+
+gcc-6 (6.2.0-9) unstable; urgency=medium
+
+  * Regenerate the control file.
+
+ -- Matthias Klose <doko@debian.org>  Thu, 20 Oct 2016 10:46:44 +0200
+
+gcc-6 (6.2.0-8ubuntu1) zesty; urgency=medium
+
+  * Merge with Debian; remaining changes:
+    - Build from upstream sources.
+
+ -- Matthias Klose <doko@ubuntu.com>  Wed, 19 Oct 2016 18:47:57 +0200
+
+gcc-6 (6.2.0-8) unstable; urgency=medium
+
+  * Update to SVN 20161019 (r241346, 6.2.1) from the gcc-6-branch.
+    - Fix PR libstdc++/77990, PR target/77991 (x86).
+  * Install arm_fp16.h header on arm* architectures for Linaro builds.
+  * Backport upstream revisions from trunk (James Clark). Closes: #840574.
+    - r240457 (add getrandom for MIPS/SPARC)
+    - r241051 (fix getrandom on sparc64 and clone on sparc*)
+    - r241072 (make rawClone no_split_stack)
+    - r241084 (don't use pt_regs; unnecessary, and seemingly not defined by
+               the included headers on arm64)
+    - r241171 (sparc64 relocations, e1fc2925 in go master, now also in
+               gofrontend/gccgo)
+  * Revert fix for PR c++/71912, causing PR c++/78039. Addresses: #841292.
+
+ -- Matthias Klose <doko@debian.org>  Wed, 19 Oct 2016 08:57:23 +0200
+
+gcc-6 (6.2.0-7ubuntu11) zesty; urgency=medium
+
+  * Build using the Linaro branch on armhf and arm64.
+
+ -- Matthias Klose <doko@ubuntu.com>  Tue, 18 Oct 2016 09:09:47 +0200
+
+gcc-6 (6.2.0-7) unstable; urgency=medium
+
+  * Update to SVN 20161018 (r241301, 6.2.1) from the gcc-6-branch.
+    - Fix PR libstdc++/77987, PR libstdc++/77322, PR libstdc++/72820,
+      PR libstdc++/77994, PR tree-optimization/77937, PR c++/71912,
+      PR tree-optimization/77937, PR tree-optimization/77943,
+      PR bootstrap/77995, PR fortran/77978, PR fortran/77915, PR fortran/77942.
+
+  [ Matthias Klose ]
+  * Backport Mips go closure support, taken from libffi. Closes: #839132.
+  * Configure with --enable-default-pie and pass -z now when pie is enabled;
+    on amd64 arm64 armel armhf i386 mips mipsel mips64el ppc64el s390x.
+    Closes: #835148.
+  * Update the Linaro support to the 6-2016.10 snapshot.
+
+  [ Aurelien Jarno ]
+  * Enable logwatch on mips64el.
+
+ -- Matthias Klose <doko@debian.org>  Tue, 18 Oct 2016 13:53:00 +0200
+
+gcc-6 (6.2.0-6) unstable; urgency=medium
+
+  * Update to SVN 20161010 (r240906, 6.2.1) from the gcc-6-branch.
+    - Fix PR libstdc++/68323, PR libstdc++/77794, PR libstdc++/77795,
+      PR libstdc++/77801, PR libgcc/77519, PR target/77756 (x86),
+      PR target/77670 (PPC), PR rtl-optimization/71709, PR c++/77804,
+      PR fortran/41922, PR fortran/60774, PR fortran/61318, PR fortran/68566,
+      PR fortran/69514, PR fortran/69867, PR fortran/69962, PR fortran/70006,
+      PR fortran/71067, PR fortran/71730, PR fortran/71799, PR fortran/71859,
+      PR fortran/71862, PR fortran/77260, PR fortran/77351, PR fortran/77372,
+      PR fortran/77380, PR fortran/77391, PR fortran/77420, PR fortran/77429,
+      PR fortran/77460, PR fortran/77506, PR fortran/77507, PR fortran/77612,
+      PR fortran/77694, PR libgfortran/77707, PR libstdc++/70101,
+      PR libstdc++/77864, PR libstdc++/70564, PR target/77874 (x86),
+      PR target/77759 (sparc), PR fortran/77406, PR fortran/58991,
+      PR fortran/58992.
+  * Really fix gij installation on hppa. Closes: #838111.
+  * Install alternatives for go and gofmt. Closes: #840190.
+
+ -- Matthias Klose <doko@debian.org>  Mon, 10 Oct 2016 05:20:07 +0200
+
+gcc-6 (6.2.0-5ubuntu12) yakkety; urgency=medium
+
+  * Update to SVN 20161005 (r240765, 6.2.1) from the gcc-6-branch.
+    - Fix PR libstdc++/68323, PR libstdc++/77794, PR libstdc++/77795,
+      PR libstdc++/77801, PR libgcc/77519, PR target/77756 (x86),
+      PR target/77670 (PPC), PR rtl-optimization/71709, PR c++/77804,
+      PR fortran/41922, PR fortran/60774, PR fortran/61318, PR fortran/68566,
+      PR fortran/69514, PR fortran/69867, PR fortran/69962, PR fortran/70006,
+      PR fortran/71067, PR fortran/71730, PR fortran/71799, PR fortran/71859,
+      PR fortran/71862, PR fortran/77260, PR fortran/77351, PR fortran/77372,
+      PR fortran/77380, PR fortran/77391, PR fortran/77420, PR fortran/77429,
+      PR fortran/77460, PR fortran/77506, PR fortran/77507, PR fortran/77612,
+      PR fortran/77694, PR libgfortran/77707.
+  * Really fix gij installation on hppa. Closes: #838111.
+  * Strip again the compiler binaries.
+
+ -- Matthias Klose <doko@ubuntu.com>  Wed, 05 Oct 2016 09:01:56 +0200
+
+gcc-6 (6.2.0-5ubuntu11) yakkety; urgency=medium
+
+  * Merge with Debian; remaining changes:
+    - Build from upstream sources.
+
+ -- Matthias Klose <doko@ubuntu.com>  Wed, 28 Sep 2016 15:58:48 +0200
+
+gcc-6 (6.2.0-5) unstable; urgency=medium
+
+  * Update to SVN 20160927 (r240553, 6.2.1) from the gcc-6-branch.
+    - Fix PR sanitizer/77396, PR libstdc++/77645, PR libstdc++/77645,
+      PR target/77326 (AVR), PR target/77349 (PPC), PR middle-end/77594,
+      PR sanitizer/68260, PR fortran/77516, PR target/69255 (x86),
+      PR c++/77553, PR c++/77539, PR fortran/77500, PR c/77450,
+      PR middle-end/77436, PR tree-optimization/77514, PR middle-end/77544,
+      PR tree-optimization/77514, PR middle-end/77605, PR middle-end/77679,
+      PR tree-optimization/77621, PR target/77621 (x86), PR c++/71979.
+  * Fix gij installation on hppa. Closes: #838111.
+  * Fix PR rtl-optimization/71709, taken from the trunk. LP: #1628207.
+  * Apply workaround for PR libstdc++/77686. Addresses: #838438.
+
+ -- Matthias Klose <doko@debian.org>  Wed, 28 Sep 2016 15:53:28 +0200
+
+gcc-6 (6.2.0-4) unstable; urgency=medium
+
+  * Update to SVN 20160914 (r240133, 6.2.1) from the gcc-6-branch.
+    - Fix PR rtl-optimization/77452, PR c++/77427.
+  * gcj: Depend on the ecj1 standalone binary.
+  * Configure native builds using --with-program-prefix.
+  * Fix ICE in gdc symbol mangling (Iain Buclaw). LP: #1620681.
+  * Backport from libffi trunk (Stefan Bühler):
+    - Always check for PaX MPROTECT on linux, make EMUTRAMP experimental.
+    - dlmmap_locked always needs locking as it always modifies execsize.
+
+ -- Matthias Klose <doko@debian.org>  Thu, 15 Sep 2016 19:22:35 +0200
+
+gcc-6 (6.2.0-3ubuntu15) yakkety; urgency=medium
+
+  * Update to SVN 20160914 (r240133, 6.2.1) from the gcc-6-branch.
+    - PR c++/77427.
+  * Fix updating gcj-6-jdk. LP: #1623337.
+
+ -- Matthias Klose <doko@ubuntu.com>  Wed, 14 Sep 2016 13:33:20 +0200
+
+gcc-6 (6.2.0-3ubuntu14) yakkety; urgency=medium
+
+  * Update to SVN 20160910 (r240069, 6.2.1) from the gcc-6-branch.
+    - Fix PR rtl-optimization/77452.
+  * gcj: Depend on the ecj1 standalone binary.
+  * Configure native builds using --with-program-prefix.
+  * Fix ICE in gdc symbol mangling (Iain Buclaw). LP: #1620681.
+  * Restore the AArch64 vulcan support for non Linaro builds.
+
+ -- Matthias Klose <doko@ubuntu.com>  Sun, 11 Sep 2016 12:50:59 +0200
+
+gcc-6 (6.2.0-3ubuntu11) yakkety; urgency=medium
+
+  * Merge with Debian; remaining changes:
+    - Build from upstream sources.
+
+ -- Matthias Klose <doko@ubuntu.com>  Sun, 04 Sep 2016 13:28:31 +0200
+
+gcc-6 (6.2.0-3) unstable; urgency=medium
+
+  * Update to SVN 20160901 (r239944, 6.2.1) from the gcc-6-branch.
+    - Fix PR fortran/71014, PR libstdc++/77395, PR tree-optimization/72866,
+      PR debug/77363, PR middle-end/77377, PR middle-end/77259,
+      PR target/71910 (cygwin), PR target/77281 (ARM),
+      PR tree-optimization/71077, PR tree-optimization/68542, PR fortran/77352,
+      PR fortran/77374, PR fortran/71014, PR fortran/69281.
+  * Fix setting the stage1 C++ compiler.
+  * gdc: Always link with -ldl when linking with -lgphobos.
+    Closes: #835255, #835757.
+  * Fix building D code with external C++ references.
+
+ -- Matthias Klose <doko@debian.org>  Sun, 04 Sep 2016 12:38:47 +0200
+
+gcc-6 (6.2.0-2ubuntu11) yakkety; urgency=medium
+
+  * Merge with Debian; remaining changes:
+    - Build from upstream sources.
+
+ -- Matthias Klose <doko@ubuntu.com>  Wed, 31 Aug 2016 12:38:54 +0200
+
+gcc-6 (6.2.0-2) unstable; urgency=medium
+
+  * Update to SVN 20160830 (r239868, 6.2.1) from the gcc-6-branch.
+    - Fix PR libstdc++/77334, PR tree-optimization/76783,
+      PR tree-optimization/72851, PR target/72867 (x86), PR middle-end/71700,
+      PR target/77403 (x86), PR target/77270 (x86), PR target/77270 (x86),
+      PR lto/70955, PR target/72863 (PPC), PR tree-optimization/76490,
+      PR fortran/77358.
+  * Call default_file_start from s390_asm_file_start, taken from the trunk.
+  * Update multiarch patches for mips* r6 (YunQiang Su).
+  * Fix install location of D header files for cross builds (YunQiang Su).
+    Closes: #835847.
+  * Fix PR c++/77379, taken from the trunk.
+  * Update the Linaro support to the 6-2016.08 snapshot.
+
+ -- Matthias Klose <doko@debian.org>  Wed, 31 Aug 2016 12:28:38 +0200
+
+gcc-6 (6.2.0-1ubuntu12) yakkety; urgency=medium
+
+  * Update to SVN 20160824 (r239726, 6.2.1) from the gcc-6-branch.
+    - Fix PR libstdc++/77334, PR tree-optimization/76783,
+      PR tree-optimization/72851, PR target/72867 (x86), PR middle-end/71700,
+  * Call default_file_start from s390_asm_file_start, taken from the trunk.
+
+ -- Matthias Klose <doko@ubuntu.com>  Wed, 24 Aug 2016 08:12:10 +0200
+
+gcc-6 (6.2.0-1ubuntu11) yakkety; urgency=medium
+
+  * GCC 6.2 release.
+
+ -- Matthias Klose <doko@ubuntu.com>  Mon, 22 Aug 2016 15:23:46 +0200
+
+gcc-6 (6.2.0-1) unstable; urgency=medium
+
+  * GCC 6.2 release.
+  * Update gdc to the gdc-6 branch 20160822.
+
+ -- Matthias Klose <doko@debian.org>  Mon, 22 Aug 2016 14:15:21 +0200
+
+gcc-6 (6.1.1-12ubuntu11) yakkety; urgency=medium
+
+  * Merge with Debian; remaining changes:
+    - Build from upstream sources.
+
+ -- Matthias Klose <doko@ubuntu.com>  Mon, 15 Aug 2016 17:56:19 +0200
+
+gcc-6 (6.1.1-12) unstable; urgency=medium
+
+  * GCC 6.2 release candidate 1.
+  * Update to SVN 20160815 (r239482, 6.1.1) from the gcc-6-branch.
+    Fix PR target/71869 (PPC), PR target/72805 (x86), PR target/70677 (AVR),
+    PR c++/72415, PR sanitizer/71042, PR libstdc++/71964, PR libstdc++/70940,
+    PR c/67410, PR c/72816, PR driver/72765, PR debug/71906,
+    PR tree-optimization/73434, PR tree-optimization/72824, PR target/76342,
+    PR target/72843, PR c/71512, PR tree-optimization/71083, PR target/72819,
+    PR target/72853, PR tree-optimization/72824, PR ipa/71981, PR ipa/68273,
+    PR tree-optimization/71881, PR target/72802, PR target/72802,
+    PR rtl-optimization/71976, PR c++/71972, PR c++/72868, PR c++/73456,
+    PR c++/72800, PR c++/68724, PR debug/71906, PR fortran/71936,
+    PR fortran/72698, PR fortran/70524, PR fortran/71795, PR libgfortran/71123,
+    PR libgfortran/73142.
+
+  [ Matthias Klose ]
+  * Fix running the libjava testsuite.
+  * Revert fix for PR target/55947, causing PR libstdc++/72813. LP: #1610220.
+  * Update the Linaro support to the 6-2016.07 snapshot.
+
+  [ Aurelien Jarno ]
+  * Replace proposed fix for PR ipa/68273 by the corresponding patch taken
+    from trunk.
+
+ -- Matthias Klose <doko@debian.org>  Mon, 15 Aug 2016 17:51:10 +0200
+
+gcc-6 (6.1.1-11ubuntu12) yakkety; urgency=medium
+
+  * Update to SVN 20160805 (r239167, 6.1.1) from the gcc-6-branch.
+    Fix PR target/71869 (PPC), PR target/72805 (x86), PR target/70677 (AVR),
+    PR c++/72415.
+
+  * Fix running the libjava testsuite.
+  * Revert fix for PR target/55947, causing PR libstdc++/72813. LP: #1610220.
+
+ -- Matthias Klose <doko@ubuntu.com>  Fri, 05 Aug 2016 15:09:39 +0200
+
+gcc-6 (6.1.1-11ubuntu11) yakkety; urgency=medium
+
+  * Merge with Debian; remaining changes:
+    - Build from upstream sources.
+
+ -- Matthias Klose <doko@ubuntu.com>  Wed, 03 Aug 2016 21:55:46 +0200
+
+gcc-6 (6.1.1-11) unstable; urgency=medium
+
+  * Update to SVN 20160802 (r238981, 6.1.1) from the gcc-6-branch.
+    - Fix PR target/72767 (AVR), PR target/71151 (AVR), PR c/7652,
+      PR target/71216 (PPC), PR target/72103 (PPC), PR c++/72457, PR c++/71576,
+      PR c++/71833, PR fortran/71883.
+
+  [ Nicolas Boulenguez ]
+  * debian/ada/confirm_debian_bugs.py: Update for GCC 6. Closes: #832799.
+
+  [ Matthias Klose ]
+  * Backport AArch64 Vulcan cost models (Dann Frazier). LP: #1603587.
+
+ -- Matthias Klose <doko@debian.org>  Wed, 03 Aug 2016 21:53:37 +0200
+
+gcc-6 (6.1.1-10ubuntu11) yakkety; urgency=medium
+
+  * Merge with Debian; remaining changes:
+    - Build from upstream sources.
+
+ -- Matthias Klose <doko@ubuntu.com>  Sun, 24 Jul 2016 20:28:46 +0200
+
+gcc-6 (6.1.1-10) unstable; urgency=medium
+
+  * Update to SVN 20160724 (r238695, 6.1.1) from the gcc-6-branch.
+    - Fix PR libstdc++/71856, PR libstdc++/71320, PR c++/71214,
+      PR sanitizer/71953, PR fortran/71688, PR rtl-optimization/71916,
+      PR debug/71855, PR middle-end/71874, PR target/71493 (PPC),
+      PR rtl-optimization/71634, PR target/71733 (PPC), PR ipa/71624,
+      PR target/71805 (PPC), PR target/70098 (PPC), PR target/71763 (PPC),
+      PR middle-end/71758, PR tree-optimization/71823, PR middle-end/71606,
+      PR tree-optimization/71518, PR target/71806 (PPC), PR target/71720 (PPC),
+      PR middle-end/64516, PR tree-optimization/71264, PR middle-end/71423,
+      PR tree-optimization/71521, PR tree-optimization/71452, PR target/50739,
+      PR tree-optimization/71522, PR c++/55922, PR c++/63151, PR c++/70709,
+      PR c++/70778, PR c++/71738, PR c++/71350, PR c++/71748, PR c++/52746,
+      PR c++/69223, PR c++/71630, PR c++/71913, PR c++/71728, PR c++/71941,
+      PR c++/70822, PR c++/70106, PR c++/67565, PR c++/67579, PR c++/71843,
+      PR c++/70781, PR c++/71896, PR c++/71092, PR c++/71117, PR c++/71495,
+      PR c++/71511, PR c++/71513, PR c++/71604, PR c++/54430, PR c++/71711,
+      PR c++/71814, PR c++/71718, PR c++/70824, PR c++/71909, PR c++/71835,
+      PR c++/71828, PR c++/71822, PR c++/71871, PR c++/70869, PR c++/71054,
+      PR fortran/71807, PR fortran/70842, PR fortran/71764, PR fortran/71623,
+      PR fortran/71783.
+
+  [ Matthias Klose ]
+  * Build-depend on gnat-6 instead of gnat-5 on development distros.
+
+  [ Aurelien Jarno ]
+  * Replace libjava-mips64el-proposed.diff by the corresponding patch
+    taken from trunk.
+
+ -- Matthias Klose <doko@debian.org>  Sun, 24 Jul 2016 19:42:10 +0200
+
+gcc-6 (6.1.1-9ubuntu11) yakkety; urgency=medium
+
+  * Merge with Debian; remaining changes:
+    - Build from upstream sources.
+
+ -- Matthias Klose <doko@ubuntu.com>  Tue, 05 Jul 2016 15:15:56 +0200
+
+gcc-6 (6.1.1-9) unstable; urgency=medium
+
+  * Update to SVN 20160705 (r237999, 6.1.1) from the gcc-6-branch.
+    - Fix PR fortran/71717, PR libstdc++/71313, PR c/71685, PR c++/71739,
+      PR target/71670 (PPC), PR middle-end/71626, PR target/71559 (x86),
+      PR target/71656 (PPC), PR target/71698 (PPC), PR driver/71651,
+      PR fortran/71687, PR fortran/71704, PR fortran/71705.
+  * Mark cross compilers as M-A: foreign. Addresses: #827136.
+  * On sparc64, configure with --with-cpu-32=ultrasparc, drop the
+    sparc-force-cpu patch. Closes: #809509.
+
+ -- Matthias Klose <doko@debian.org>  Tue, 05 Jul 2016 11:19:50 +0200
+
+gcc-6 (6.1.1-8ubuntu11) yakkety; urgency=medium
+
+  * Merge with Debian; remaining changes:
+    - Build from upstream sources.
+
+ -- Matthias Klose <doko@ubuntu.com>  Thu, 30 Jun 2016 15:41:06 +0200
+
+gcc-6 (6.1.1-8) unstable; urgency=medium
+
+  * Update to SVN 20160630 (r237878, 6.1.1) from the gcc-6-branch.
+    - Fix PR tree-optimization/71647, PR target/30417 (AVR),
+      PR target/71103 (AVR), PR tree-optimization/71588, PR middle-end/71581,
+      PR c++/71528, PR fortran/70673, PR middle-end/71693.
+
+  [ Aurelien Jarno ]
+  * Apply proposed patch from Matthew Fortune to fix libjava on mips64el.
+
+  [ Matthias Klose ]
+  * Add AArch64 Vulcan cpu support (Dann Frazier). LP: #1594452.
+  * gfortran: Suggest libcoarrays-dev. Closes: #827995.
+  * cpp: Breaks libmagics++-dev (<< 2.28.0-4). Closes: #825278.
+  * Optimize for mips32r2 for o32 (YunQiang Su). Closes: #827801.
+
+ -- Matthias Klose <doko@debian.org>  Thu, 30 Jun 2016 14:12:55 +0200
+
+gcc-6 (6.1.1-7ubuntu11) yakkety; urgency=medium
+
+  * Merge with Debian; remaining changes:
+    - Build from upstream sources.
+
+ -- Matthias Klose <doko@ubuntu.com>  Mon, 20 Jun 2016 20:27:58 +0200
+
+gcc-6 (6.1.1-7) unstable; urgency=medium
+
+  * Update to SVN 20160620 (r237590, 6.1.1) from the gcc-6-branch.
+    - Fix PR middle-end/71373, PR c/71381, PR libstdc++/71545, PR c/68657,
+      PR sanitizer/71498, PR middle-end/71529, PR target/71103 (AVR),
+      PR target/71554 (x86), PR middle-end/71494, PR c++/71448,
+      PR tree-optimization/71405, PR tree-optimization/71505,
+      PR target/71379 (s390), PR target/71186 (PPC), PR target/70915 (PPC),
+      PR c++/70572, PR c++/71516, PR c/71381.
+  * Fix libgnatprj build to avoid undefined symbols (YunQiang Su).
+    Closes: #826503.
+  * Add build support for tilegx (Helmut Grohne). Closes: #827578.
+  * Drop support for loongson 2f (YunQiang Su). Closes: #827554.
+
+ -- Matthias Klose <doko@debian.org>  Mon, 20 Jun 2016 13:41:44 +0200
+
+gcc-6 (6.1.1-6ubuntu11) yakkety; urgency=medium
+
+  * Merge with Debian; remaining changes:
+    - Build from upstream sources.
+
+ -- Matthias Klose <doko@ubuntu.com>  Thu, 09 Jun 2016 19:27:27 +0200
+
+gcc-6 (6.1.1-6) unstable; urgency=medium
+
+  * Update to SVN 20160609 (r237267, 6.1.1) from the gcc-6-branch.
+    - Fix PR target/71389 (x86), PR tree-optimization/71259,
+      PR target/70830 (ARM), PR target/67310 (x86), PR c++/71442,
+      PR c++/70847, PR c++/71330, PR c++/71393, PR fortran/69659.
+  * gdc: Fix linking the runtime library. Addresses: #826645.
+  * Fix building libgnatprj on powerpc, and on PIE enabled builds (YunQiang Su).
+    Closes: #826365.
+
+ -- Matthias Klose <doko@debian.org>  Thu, 09 Jun 2016 18:19:42 +0200
+
+gcc-6 (6.1.1-5ubuntu11) yakkety; urgency=medium
+
+  * Merge with Debian; remaining changes:
+    - Build from upstream sources.
+
+ -- Matthias Klose <doko@ubuntu.com>  Fri, 03 Jun 2016 19:46:59 +0200
+
+gcc-6 (6.1.1-5) unstable; urgency=medium
+
+  * Update to SVN 20160603 (r237075, 6.1.1) from the gcc-6-branch.
+    - Fix PR libstdc++/70762, PR libstdc++/69703, PR libstdc++/69703,
+      PR libstdc++/71038, PR libstdc++/71036, PR libstdc++/71037,
+      PR libstdc++/71005, PR libstdc++/71004, PR libstdc++/70609, PR c/71171,
+      PR middle-end/71279, PR c++/71147, PR c++/71257,
+      PR tree-optimization/70884, PR c++/71210, PR tree-optimization/71031,
+      PR c++/69872, PR c++/71257, PR c++/70344, PR c++/71184, PR fortran/66461,
+      PR fortran/71204, PR libffi/65567, PR c++/71349, PR target/71201,
+      PR middle-end/71371, PR debug/71057, PR target/71056 (ARM32),
+      PR tree-optimization/69068, PR middle-end/71002, PR bootstrap/71071,
+      PR c++/71372, PR c++/70972, PR c++/71166, PR c++/71227, PR c++/60095,
+      PR c++/69515, PR c++/69009, PR c++/71173, PR c++/70522, PR c++/70584,
+      PR c++/70735, PR c++/71306, PR c++/71349, PR c++/71105, PR c++/71147,
+      PR ada/71358, PR ada/71317, PR fortran/71156, PR middle-end/71387.
+  * Fix cross building libgnatprj on i386 targeting 64bit archs (YunQiang Su).
+    Closes: #823126.
+  * Detect hard float for non-linux or non-glibc arm-*-*eabihf builds (Helmut
+    Grohne). Closes: #823894.
+  * Update embedded timestamp setting patch, backported from the trunk.
+  * gccgo: Combine combine gccgo's ld() and ldShared() methods
+    in cmd/go (Michael Hudson-Doyle). LP: #1586872.
+
+ -- Matthias Klose <doko@debian.org>  Fri, 03 Jun 2016 18:58:40 +0200
+
+gcc-6 (6.1.1-4ubuntu11) yakkety; urgency=medium
+
+  * Merge with Debian; remaining changes:
+    - Build from upstream sources.
+
+ -- Matthias Klose <doko@ubuntu.com>  Thu, 19 May 2016 17:24:36 +0200
+
+gcc-6 (6.1.1-4) unstable; urgency=medium
+
+  * Update to SVN 20160519 (r236478, 6.1.1) from the gcc-6-branch.
+    - Fix PR sanitizer/71160, PR c++/70498, PR target/71161 (x86),
+      PR fortran/70856, PR c++/71100, PR target/71145 (alpha), PR c++/70466,
+      PR target/70860 (nvptx), PR target/70809 (AArch64), PR hsa/70857,
+      PR driver/68463, PR target/70947 (PPC), PR ipa/70760, PR middle-end/70931,
+      PR middle-end/70941, PR tree-optimization/71006, PR target/70830 (ARM),
+      PR fortran/69603, PR fortran/71047, PR fortran/56226, PR ipa/70646.
+  * libgnat{prj,svn}-dev: Don't recommend gnat when building cross compiler
+    packages.
+
+ -- Matthias Klose <doko@debian.org>  Thu, 19 May 2016 18:40:49 +0200
+
+gcc-6 (6.1.1-3ubuntu11) yakkety; urgency=medium
+
+  * Merge with Debian; remaining changes:
+    - Build from upstream sources.
+
+ -- Matthias Klose <doko@ubuntu.com>  Thu, 12 May 2016 02:33:19 +0200
+
+gcc-6 (6.1.1-3) unstable; urgency=medium
+
+  * Update to SVN 20160511 (r236071, 6.1.1) from the gcc-6-branch.
+    - Fix PR libstdc++/71049, PR middle-end/70877, PR tree-optimization/70876,
+      PR target/70963, PR tree-optimization/70916, PR debug/70935.
+  * Enable gdc for sh4.
+
+ -- Matthias Klose <doko@debian.org>  Wed, 11 May 2016 22:35:33 +0200
+
+gcc-6 (6.1.1-2ubuntu12) yakkety; urgency=medium
+
+  * Fix package replacements with gccgo-6 packages. LP: #1578247, #1578250.
+
+ -- Matthias Klose <doko@ubuntu.com>  Tue, 10 May 2016 14:31:52 +0200
+
+gcc-6 (6.1.1-2) unstable; urgency=medium
+
+  * Update to SVN 20160510 (r236071, 6.1.1) from the gcc-6-branch.
+    - Fix PR tree-optimization/70956, PR sanitizer/70875, PR sanitizer/70342,
+      PR ada/70969, PR ada/70900.
+
+  [ Matthias Klose ]
+  * Call dh_makeshlibs with the --noscripts option when building a
+    cross compiler.
+  * Fix building cross gnat libs when not building the common libs.
+  * Fix building cross mips* multilibs when not building the common libs.
+  * Re-enable gnat build on some architectures for snapshot builds.
+  * Don't build gnat cross compilers on 32bit archs targeting 64bit targets.
+    Addresses: #823126.
+  * Avoid empty architecture lists in build dependencies. Closes: #823280.
+  * Tighten debhelper build dependency for cross build dependencies.
+  * Allow build dependencies for musl configurations (Helmut Grohne).
+    Closes: #823769.
+  * Fix dependency resolution for libraries not built anymore from
+    this source package.
+
+  [ Samuel Thibault ]
+  * patches/ada-hurd.diff: Fix Get_Page_Size type.
+
+ -- Matthias Klose <doko@debian.org>  Tue, 10 May 2016 13:34:49 +0200
+
+gcc-6 (6.1.1-1) unstable; urgency=medium
+
+  * GCC 6.1.0 release.
+    - Fix PR bootstrap/70704, PR tree-optimization/70780, PR libgfortran/70684,
+      PR middle-end/70626, PR java/70839, PR target/70858, PR ada/70759,
+      PR ada/70786, PR c++/70540, PR middle-end/70626.
+  * Update to SVN 20160430 (r235678, 6.1.1) from the gcc-6-branch.
+    - Fix PR middle-end/70680, PR target/70750 (x86), PR ipa/70785,
+      PR sanitizer/70712, PR target/70728 (x86).
+    - Don't encode the minor version in the gcj abi version.
+
+  [ Aurelien Jarno ]
+  * Apply proposed patch for PR target/68273 (Wrong code on mips/mipsel due to
+    (invalid?) peeking at alignments in function_arg) on mips and mipsel.
+
+  [ Matthias Klose ]
+  * Always configure with --enable-targets=powerpcle-linux on ppc64el.
+  * Stop building libcc1 and libgccjit0, when not building common libs.
+  * Rename libgccjit-5-dbg to libgccjit0-dbg.
+  * Fix libjava testsuite with dejagnu 1.6, taken from the trunk.
+  * Allow embedded timestamps by C/C++ macros to be set externally (Eduard
+    Sanou).
+  * Add missing libstdc++ symbol to symbols file.
+  * libstdc++-doc: Ignore warnings about formulas and long identifiers in
+    man pages.
+  * Default the 32bit x86 architectures to i686, keep i585 symlinks.
+    See https://lists.debian.org/debian-devel/2015/09/msg00589.html
+  * Build-depend on debhelper (>= 9) and dpkg-dev (>= 1.17.14).
+  * Update gdc to the gdc-6 branch 20160430.
+
+ -- Matthias Klose <doko@debian.org>  Sat, 30 Apr 2016 13:31:12 +0200
+
+gcc-6 (6.1.1-0ubuntu12) yakkety; urgency=medium
+
+  * GCC 6.1.0 release.
+    - Fix PR bootstrap/70704, PR tree-optimization/70780, PR libgfortran/70684.
+  * Update to SVN 20160428 (r235548, 6.1.1) from the gcc-6-branch.
+    - Fix PR middle-end/70680, PR target/70750 (x86), PR ipa/70785,
+      PR sanitizer/70712, PR target/70728 (x86).
+    - Don't encode the minor version in the gcj abi version.
+  * Always configure with --enable-targets=powerpcle-linux on ppc64el.
+  * Stop building libcc1 and libgccjit0, when not building common libs.
+  * Rename libgccjit-5-dbg to libgccjit0-dbg.
+  * Fix libjava testsuite with dejagnu 1.6, taken from the trunk.
+  * Re-enable running the tests.
+
+ -- Matthias Klose <doko@ubuntu.com>  Thu, 28 Apr 2016 10:33:38 +0200
+
+gcc-6 (6.0.1-2ubuntu12) yakkety; urgency=medium
+
+  * Merge with Debian; remaining changes:
+    - Build from upstream sources.
+
+ -- Matthias Klose <doko@ubuntu.com>  Sat, 23 Apr 2016 18:24:49 +0200
+
+gcc-6 (6.0.1-2) unstable; urgency=medium
+
+  * GCC 6.1 release candidate 2.
+  * Update gdc to the trunk 20160423.
+
+ -- Matthias Klose <doko@debian.org>  Sat, 23 Apr 2016 17:56:52 +0200
+
+gcc-6 (6.0.1-1ubuntu11) xenial; urgency=medium
+
+  * Merge with Debian; remaining changes:
+    - Build from upstream sources.
+
+ -- Matthias Klose <doko@ubuntu.com>  Fri, 15 Apr 2016 18:38:06 +0200
+
+gcc-6 (6.0.1-1) experimental; urgency=medium
+
+  * GCC 6 release candidate 1.
+
+  [ Michael Hudson-Doyle ]
+  * cmd/go: deduplicate gccgo afiles by package path, not *Package. LP: #1566552.
+
+ -- Matthias Klose <doko@debian.org>  Fri, 15 Apr 2016 18:32:25 +0200
+
+gcc-6 (6-20160405-0ubuntu1) xenial; urgency=medium
+
+  * GCC 6 snapshot build, taken from the trunk 20160405.
+
+ -- Matthias Klose <doko@ubuntu.com>  Tue, 05 Apr 2016 17:10:35 +0200
+
+gcc-6 (6-20160319-0ubuntu11) xenial; urgency=medium
+
+  * GCC 6 snapshot build, taken from the trunk 20160319.
+
+ -- Matthias Klose <doko@ubuntu.com>  Sat, 19 Mar 2016 12:17:24 +0100
+
+gcc-6 (6-20160313-0ubuntu11) xenial; urgency=medium
+
+  * GCC 6 snapshot build, taken from the trunk 20160313.
+
+ -- Matthias Klose <doko@ubuntu.com>  Sun, 13 Mar 2016 10:19:12 +0100
+
+gcc-6 (6-20160227-0ubuntu11) xenial; urgency=medium
+
+  * GCC 6 snapshot build, taken from the trunk 20160227.
+
+ -- Matthias Klose <doko@ubuntu.com>  Sat, 27 Feb 2016 11:02:40 +0100
+
+gcc-6 (6-20160225-0ubuntu11) xenial; urgency=medium
+
+  * GCC 6 snapshot build, taken from the trunk 20160225.
+
+ -- Matthias Klose <doko@ubuntu.com>  Thu, 25 Feb 2016 02:09:51 +0100
+
+gcc-6 (6-20160225-1) experimental; urgency=medium
+
+  * GCC 6 snapshot build, taken from the trunk 20160225.
+  * Update gdc to the trunk 20160224.
+  * Install missing architecture specific plugin header files.
+  * Fix PR target/69885, bootstrap error on m68k.
+
+ -- Matthias Klose <doko@debian.org>  Thu, 25 Feb 2016 02:00:57 +0100
+
+gcc-6 (6-20160220-0ubuntu11) xenial; urgency=medium
+
+  * GCC 6 snapshot build, taken from the trunk 20160220.
+
+ -- Matthias Klose <doko@ubuntu.com>  Sat, 20 Feb 2016 04:38:26 +0100
+
+gcc-6 (6-20160206-0ubuntu11) xenial; urgency=medium
+
+  * GCC 6 snapshot build, taken from the trunk 20160206.
+
+ -- Matthias Klose <doko@ubuntu.com>  Sat, 06 Feb 2016 12:07:51 +0100
+
+gcc-6 (6-20160205-1) experimental; urgency=medium
+
+  * GCC 6 snapshot build, taken from the trunk 20160205.
+    - Fix PR tree-optimization/69320. Closes: #811921.
+    - Fix PR c++/68782. Closes: #812287.
+    - Fix PR tree-optimization/69328. Closes: #812247.
+    - Fix PR target/69421. Closes: #812246.
+    - Fix PR c++/69379. Closes: #812068.
+    - Fix PR lto/69393. Closes: #812062.
+    - Fix PR tree-optimization/69166. Closes: #812061.
+  * Update gdc to the trunk 20160205.
+    - Fix data corruption bug when passing around longdoubles.
+      Closes: #812080.
+  * Add more conflicts to GCC 5's debug and doc packages. Closes: #813081.
+  * Fix dependency generation for armel/armhf multilib cross targets.
+  * Fix libc dependency generation for multilib cross targets.
+  * Build libitm on alpha, s390x, sh4, sparc64.
+
+ -- Matthias Klose <doko@debian.org>  Fri, 05 Feb 2016 18:08:37 +0100
+
+gcc-6 (6-20160122-1) experimental; urgency=medium
+
+  * Fix gnat build failure on KFreeBSD (Steven Chamberlain). Closes: #811372.
+  * Fix dependencies on target libraries which are not built anymore
+    from this source.
+  * Bump libmpx soname. Closes: #812084.
+  * Apply proposed patch for PR target/69129. Closes: #810081.
+  * Apply proposed patch for PR go/66904, pass linker flags from
+    "#cgo pkg-config:" directives (Michael Hudson).
+  * Configure with --enable-fix-cortex-a53-843419 on AArch64.
+
+ -- Matthias Klose <doko@debian.org>  Fri, 22 Jan 2016 13:33:19 +0100
+
+gcc-6 (6-20160117-1ubuntu1) xenial; urgency=medium
+
+  * GCC 6 snapshot build, taken from the trunk 20160117.
+
+ -- Matthias Klose <doko@ubuntu.com>  Sun, 17 Jan 2016 12:34:33 +0100
+
+gcc-6 (6-20160117-1) experimental; urgency=medium
+
+  * GCC 6 snapshot build, taken from the trunk 20160117.
+  * Update gdc to the trunk 20160115.
+  * Update libgnatvsn/libgnatprj conflicts. Closes: #810809.
+  * Fix gnat build failures on the Hurd and KFreeBSD (Svante Signell).
+    Closes: #811063.
+  * Build libstdc++-6-doc with a fixed doxygen. Closes: #810717.
+
+ -- Matthias Klose <doko@debian.org>  Sun, 17 Jan 2016 12:14:39 +0100
+
+gcc-6 (6-20160109-1ubuntu1) xenial; urgency=medium
+
+  * GCC 6 snapshot build, taken from the trunk 20160109.
+
+ -- Matthias Klose <doko@ubuntu.com>  Sat, 09 Jan 2016 12:03:28 +0100
+
+gcc-6 (6-20160109-1) experimental; urgency=medium
+
+  * GCC 6 snapshot build, taken from the trunk 20160109.
+  * Install new header file pkuintrin.h. Closes: #809807.
+  * Fix libcc1-0 dependency for cross compilers.
+
+ -- Matthias Klose <doko@debian.org>  Sat, 09 Jan 2016 11:49:50 +0100
+
+gcc-6 (6-20160105-0ubuntu1) xenial; urgency=medium
+
+  * GCC 6 snapshot build, taken from the trunk 20160105.
+  * Install new header file pkuintrin.h. Closes: #809807.
+  * Fix libgcc1-0 dependency for cross compilers.
+
+ -- Matthias Klose <doko@ubuntu.com>  Sat, 02 Jan 2016 15:55:27 +0100
+
+gcc-6 (6-20160103-1) experimental; urgency=medium
+
+  * GCC 6 snapshot build, taken from the trunk 20160101.
+
+ -- Matthias Klose <doko@debian.org>  Sun, 03 Jan 2016 12:47:13 +0100
+
+gcc-6 (6-20160101-0ubuntu2) xenial; urgency=medium
+
+  * Bump the libgcj version.
+
+ -- Matthias Klose <doko@ubuntu.com>  Sat, 02 Jan 2016 15:55:27 +0100
+
+gcc-6 (6-20160101-0ubuntu1) xenial; urgency=medium
+
+  * GCC 6 snapshot build, taken from the trunk 20160101.
+
+ -- Matthias Klose <doko@ubuntu.com>  Fri, 01 Jan 2016 21:40:43 +0100
+
+gcc-6 (6-20151221-0ubuntu1) xenial; urgency=medium
+
+  * GCC 6 snapshot build, taken from the trunk 20151220.
+
+ -- Matthias Klose <doko@ubuntu.com>  Mon, 21 Dec 2015 15:56:05 +0100
+
+gcc-6 (6-20151220-1ubuntu1) xenial; urgency=medium
+
+  * Test build for xenial.
+
+ -- Matthias Klose <doko@ubuntu.com>  Sun, 20 Dec 2015 14:11:14 +0100
+
+gcc-6 (6-20151220-1) experimental; urgency=medium
+
+  * GCC 6 snapshot build, taken from the trunk 20151220.
+  * Update libstdc++-dbg conflicts. Closes: #807885.
+  * Set target tools and build dependencies for cross builds.
+  * Relax gcj-6-{jre,jre-headless,jdk} dependencies on libgcj16.
+  * Fix cross build issues.
+
+ -- Matthias Klose <doko@debian.org>  Sun, 20 Dec 2015 13:46:12 +0100
+
+gcc-6 (6-20151219-1) experimental; urgency=medium
+
+  * GCC 6 snapshot build, taken from the trunk 20151219.
+  * Update libstdc++-dbg conflicts. Closes: #807885.
+  * Set target tools and build dependencies for cross builds.
+
+ -- Matthias Klose <doko@debian.org>  Sat, 19 Dec 2015 10:17:25 +0100
+
+gcc-6 (6-20151213-1ubuntu2) xenial; urgency=medium
+
+  * Test build for xenial.
+
+ -- Matthias Klose <doko@ubuntu.com>  Sun, 13 Dec 2015 15:04:49 +0100
+
+gcc-6 (6-20151213-1) experimental; urgency=medium
+
+  * GCC 6 snapshot build, taken from the trunk 20151213.
+  * Update the ada-kfreebsd and ada-m68k patches.
+  * Fix cross-building without having the common cross libraries installed.
+  * Allow unstripped, non-optimized debug builds with setting DEB_BUILD_OPTIONS
+    including gccdebug.
+  * Remove obsolete libgccmath packaging support.
+  * Define SONAME macros whether the libraries are built or not.
+
+ -- Matthias Klose <doko@debian.org>  Sun, 13 Dec 2015 13:24:55 +0100
+
+gcc-6 (6-20151211-1ubuntu3) xenial; urgency=medium
+
+  * Test build for xenial.
+
+ -- Matthias Klose <doko@ubuntu.com>  Fri, 11 Dec 2015 17:42:35 +0100
+
+gcc-6 (6-20151211-1) experimental; urgency=medium
+
+  * GCC 6 snapshot build, taken from the trunk 20151211.
+  * Update gnat and gdc patches, re-enable gnat and gdc.
+
+ -- Matthias Klose <doko@debian.org>  Fri, 11 Dec 2015 12:35:03 +0100
+
+gcc-6 (6-20151210-1) experimental; urgency=medium
+
+  * GCC 6 snapshot build, taken from 20151210.
+
+ -- Matthias Klose <doko@debian.org>  Thu, 10 Dec 2015 22:09:13 +0100
+
+gcc-5 (5.3.1-3ubuntu1) xenial; urgency=medium
+
+  * Merge with Debian; remaining changes:
+    - Build from upstream sources.
+    - Build using GCC Linaro on armhf and arm64.
+
+ -- Matthias Klose <doko@ubuntu.com>  Tue, 08 Dec 2015 02:21:55 +0100
+
+gcc-5 (5.3.1-3)  unstable; urgency=medium
+
+  * Update to SVN 20151207 (r231361, 5.3.1) from the gcc-5-branch.
+  * Remove upstreamed chunks from the ada-kfreebsd patch.
+
+ -- Matthias Klose <doko@debian.org>  Tue, 08 Dec 2015 02:10:51 +0100
+
+gcc-5 (5.3.1-2ubuntu2) xenial; urgency=medium
+
+  * Merge with Debian; remaining changes:
+    - Build from upstream sources.
+    - Build using GCC Linaro on armhf and arm64.
+
+ -- Matthias Klose <doko@ubuntu.com>  Mon, 07 Dec 2015 00:00:19 +0100
+
+gcc-5 (5.3.1-2) unstable; urgency=medium
+
+  * Update to SVN 20151206 (r231339, 5.3.1) from the gcc-5-branch.
+  * Re-enable building gdc/libphobos, fixing the profiled build.
+  * Fix PR sanitizer/67899, build failure on sparc/sparc64.
+
+ -- Matthias Klose <doko@debian.org>  Sun, 06 Dec 2015 19:15:46 +0100
+
+gcc-5 (5.3.1-1ubuntu1) xenial; urgency=medium
+
+  * Merge with Debian; remaining changes:
+    - Build from upstream sources.
+    - Build using GCC Linaro on armhf and arm64.
+
+ -- Matthias Klose <doko@debian.org>  Sat, 05 Dec 2015 11:40:27 +0100
+
+gcc-5 (5.3.1-1) unstable; urgency=medium
+
+  * Update to SVN 20151205 (r231314, 5.3.1) from the gcc-5-branch.
+
+ -- Matthias Klose <doko@debian.org>  Sat, 05 Dec 2015 11:36:26 +0100
+
+gcc-5 (5.3.1-0ubuntu2) xenial; urgency=medium
+
+  * Update libgcc symbols file.
+
+ -- Matthias Klose <doko@ubuntu.com>  Fri, 04 Dec 2015 18:52:20 +0100
+
+gcc-5 (5.3.1-0ubuntu1) xenial; urgency=medium
+
+  * Update to SVN 20151204 (r231267, 5.3.1) from the gcc-5-branch.
+  * Build using GCC Linaro on armhf and arm64.
+
+ -- Matthias Klose <doko@ubuntu.com>  Fri, 04 Dec 2015 15:04:01 +0100
+
+gcc-5 (5.3.0-3) unstable; urgency=medium
+
+  * Update libgcc symbols file.
+  * Restore libgcc.symbols.aebi.
+  * Disabled profiled bootstraps for backports.
+
+ -- Matthias Klose <doko@debian.org>  Sat, 05 Dec 2015 07:50:48 +0100
+
+gcc-5 (5.3.0-1) experimental; urgency=medium
+
+  * GCC 5.3 release.
+    - Fix PR libstdc++/65142 (CVE-2015-5276).
+  * Update gdc to the gcc-5 branch 20151130.
+  * Enable the profiled bootstrap on amd64, arm64, armel armhf, i386, powerpc,
+    ppc64, ppc64el, s390x, x32 (excluding builds from the Linaro branch).
+  * Move test summary into the gcc-test-results package.
+  * Simplify libatomic, libcilkrts, libgcc, libgfortran, libgomp, libitm,
+    libmpx, libquadmath symbols files using versioned symbol references.
+    Closes: #806784.
+  * Only build the hppa64 cross compiler when either building the native compiler,
+    or when cross building the native compiler. Closes: #806479.
+  * Configure staged build with --enable-linker-build-id.
+
+ -- Matthias Klose <doko@debian.org>  Fri, 04 Dec 2015 12:01:04 +0100
+
+gcc-5 (5.2.1-27ubuntu1) xenial; urgency=medium
+
+  * Configure with --enable-default-pie on s390x.
+
+ -- Matthias Klose <doko@ubuntu.com>  Mon, 30 Nov 2015 00:49:40 +0100
+
+gcc-5 (5.2.1-27) unstable; urgency=medium
+
+  * Update to SVN 20151129 (r231053, 5.2.1) from the gcc-5-branch.
+  * Don't strip cc1plus when shipping with unstripped frontends.
+  * Relax libgnatvsn5-dev-*-cross and libgnatprj5-dev-*-cross dependencies
+    on gnat-5-*-linux-gnu.
+  * Fix setting the explicit libc dependency for cross builds.
+  * Don't build m4-nofpu multilibs on sh4, install the default multilib
+    into the standard location.
+  * Stop building gnat on mips64, see https://gcc.gnu.org/PR65337 (#806370).
+  * Update the patch for PR go/67508 and re-enable Go on sparc and sparc64.
+  * Fix gnat sparc/sparc64 architecture detection.
+  * Update libgcc and libstdc++ symbols files.
+  * Don't ship the gcov tools in the gcc-hppa64-linux-gnu package.
+  * Run the autoconf generation in parallel.
+  * Add --enable-default-pie option to GCC configure, taken from the trunk.
+  * Enable gnat for m68k cross builds.
+  * Link gnat tools, gnat libs and libgccjit with the defaults LDFLAGS.
+  * Skip non-default multilib and libstdc++-v3 debug builds in bootstrap builds.
+  * Ship an empty debian/rules.parameters in the gcc-5-source package.
+
+ -- Matthias Klose <doko@debian.org>  Sun, 29 Nov 2015 23:48:58 +0100
+
+gcc-5 (5.2.1-26ubuntu1) xenial; urgency=medium
+
+  * Merge with Debian; remaining changes:
+    - Build from upstream sources.
+
+ -- Matthias Klose <doko@ubuntu.com>  Wed, 25 Nov 2015 17:29:15 +0100
+
+gcc-5 (5.2.1-26) unstable; urgency=medium
+
+  * Update to SVN 20151125 (r230897, 5.2.1) from the gcc-5-branch.
+  * Fix the rtlibs stage build. Closes: #806186.
+  * Fix packaging the cross libphobos package.
+  * Build the hppa64 cross compiler on x86 architectures.
+  * gcc-5-hppa64-linux-gnu: Stop providing unversioned tools using
+    alternatives. Build a gcc-hppa64-linux-gnu package instead.
+  * Split out a gcc-5-test-results package from g++-5, allowing a post
+    build analysis, and reducing the size of the g++-5 package.
+
+ -- Matthias Klose <doko@debian.org>  Wed, 25 Nov 2015 20:33:08 +0100
+
+gcc-5 (5.2.1-25ubuntu1) xenial; urgency=medium
+
+  * Merge with Debian; remaining changes:
+    - Build from upstream sources.
+
+ -- Matthias Klose <doko@ubuntu.com>  Mon, 23 Nov 2015 06:06:11 +0100
+
+gcc-5 (5.2.1-25) unstable; urgency=medium
+
+  * Update to SVN 20151123 (r230734, 5.2.1) from the gcc-5-branch.
+  * Fix libgcc4-dbg dependency on libgcc4. Closes: #805839.
+  * Fix building epoch prefixed cross packages.
+
+ -- Matthias Klose <doko@debian.org>  Mon, 23 Nov 2015 05:48:00 +0100
+
+gcc-5 (5.2.1-24ubuntu3) xenial; urgency=medium
+
+  * Merge with Debian; remaining changes:
+    - Build from upstream sources.
+
+ -- Matthias Klose <doko@ubuntu.com>  Sat, 21 Nov 2015 12:21:06 +0100
+
+gcc-5 (5.2.1-24) unstable; urgency=medium
+
+  * Update to SVN 20151121 (r230703, 5.2.1) from the gcc-5-branch.
+  * Fix PR libstdc++/56158, taken from the trunk. Closes: #804521. LP: #1514309.
+  * Don't try to build a gnat cross compiler when there is no gnat compiler
+    for the build architecture.
+  * Update gnat build dependencies for backports.
+  * Parallelize building documentation and parallelize the packaging step.
+  * Update the Linaro support to the 5-2015.11 snapshot.
+
+ -- Matthias Klose <doko@debian.org>  Sat, 21 Nov 2015 11:22:16 +0100
+
+gcc-5 (5.2.1-23ubuntu1) xenial; urgency=medium
+
+  * Again, configure with --enable-targets=powerpcle-linux on ppc64el.
+
+ -- Matthias Klose <doko@ubuntu.com>  Wed, 28 Oct 2015 12:18:49 +0100
+
+gcc-5 (5.2.1-23) unstable; urgency=medium
+
+  * Update to SVN 20151028 (r229478, 5.2.1) from the gcc-5-branch.
+
+  [ Matthias Klose ]
+  * Update the Linaro support to the 5-2015.10 snapshot.
+  * gcj: On ppc64el, use the same jvm archdir name as for openjdk (ppc64le).
+  * gcj: Fix priority of java alternatives. Closes: #803055.
+  * gnat-5: Reintroduce the unversioned gnatgcc name. Closes: #802838.
+
+  [ Aurelien Jarno ]
+  * Replace proposed patch for PR rtl-optimization/67736 by the one
+    committed on trunk.
+
+ -- Matthias Klose <doko@debian.org>  Wed, 28 Oct 2015 10:36:54 +0100
+
+gcc-5 (5.2.1-22ubuntu5) xenial; urgency=medium
+
+  * Revert the fix for PR ipa/67056, causing an ICE.
+
+ -- Matthias Klose <doko@ubuntu.com>  Fri, 23 Oct 2015 19:13:51 +0200
+
+gcc-5 (5.2.1-22ubuntu4) xenial; urgency=medium
+
+  * Update to SVN 20151022 (r229176, 5.2.1) from the gcc-5-branch.
+  * Fix PR ipa/67056, taken from the trunk. Closes: #788299.
+  * Target POWER8 on ppc64el.
+  * Again, don't strip the compiler binaries for more verbose ICEs.
+
+ -- Matthias Klose <doko@ubuntu.com>  Thu, 22 Oct 2015 17:32:47 +0200
+
+gcc-5 (5.2.1-22ubuntu2) wily; urgency=medium
+
+  * Strip the compiler binaries for the release.
+
+ -- Matthias Klose <doko@ubuntu.com>  Fri, 16 Oct 2015 12:17:17 +0200
+
+gcc-5 (5.2.1-22ubuntu1) wily; urgency=medium
+
+  * gcj: On ppc64el, use the same jvm archdir name as for openjdk (ppc64le).
+
+ -- Matthias Klose <doko@ubuntu.com>  Sun, 11 Oct 2015 10:13:52 +0200
+
+gcc-5 (5.2.1-22) unstable; urgency=medium
+
+  * Update to SVN 20151010 (r228681, 5.2.1) from the gcc-5-branch.
+    - Fix PR libstdc++/65913, PR libstdc++/67173, PR libstdc++/67747,
+      PR c/67730, PR middle-end/67563, PR lto/67699, PR tree-optimization/67821,
+      PR debug/58315.
+
+  [ Matthias Klose ]
+  * Restore the work around for PR libstdc++/65913, still needed at least
+    for powerpc.
+  * Rename gcc-5-hppa64 to gcc-5-hppa64-linux-gnu, update (build) dependency
+    on binutils. Closes: #800563.
+  * Adjust setting DH_COMPAT for dh_movefiles with updated debhelper supporting
+    globbing of arguments. Closes: #800250.
+  * Build-depend on gnat-5 instead of gnat-4.9.
+
+  [ Aurelien Jarno ]
+  * Do not Use --with-mips-plt on mips and mipsel. Closes: #799811.
+
+ -- Matthias Klose <doko@debian.org>  Sat, 10 Oct 2015 22:17:09 +0200
+
+gcc-5 (5.2.1-21ubuntu2) wily; urgency=medium
+
+  * Restore the work around for PR libstdc++/65913, still needed at least
+    for powerpc.
+
+ -- Matthias Klose <doko@ubuntu.com>  Sun, 04 Oct 2015 02:21:30 +0200
+
+gcc-5 (5.2.1-21ubuntu1) wily; urgency=medium
+
+  * Merge with Debian; remaining changes:
+    - Build from upstream sources.
+
+ -- Matthias Klose <doko@ubuntu.com>  Sat, 03 Oct 2015 21:30:44 +0200
+
+gcc-5 (5.2.1-21) unstable; urgency=medium
+
+  * Update to SVN 20151003 (r228449, 5.2.1) from the gcc-5-branch.
+  * Fix building gnat. Closes: #800781.
+
+ -- Matthias Klose <doko@debian.org>  Sat, 03 Oct 2015 17:28:45 +0200
+
+gcc-5 (5.2.1-20ubuntu1) wily; urgency=medium
+
+  * Merge with Debian; remaining changes:
+    - Build from upstream sources.
+
+ -- Matthias Klose <doko@ubuntu.com>  Fri, 02 Oct 2015 11:35:22 +0200
+
+gcc-5 (5.2.1-20) unstable; urgency=medium
+
+  * Update to SVN 20151002 (r228373, 5.2.1) from the gcc-5-branch.
+  * Fix packaging the ada cross library packages.
+
+ -- Matthias Klose <doko@debian.org>  Fri, 02 Oct 2015 10:24:38 +0200
+
+gcc-5 (5.2.1-19ubuntu1) wily; urgency=medium
+
+  * Configure --with-arch=zEC12 on s390x Ubuntu.
+
+ -- Matthias Klose <doko@ubuntu.com>  Wed, 30 Sep 2015 22:55:14 +0200
+
+gcc-5 (5.2.1-19) unstable; urgency=medium
+
+  * Update to SVN 20150930 (r228302, 5.2.1) from the gcc-5-branch.
+    - Fix PR ipa/66424. Closes: #800318.
+
+  [ Matthias Klose ]
+  * Update the Linaro support to the 5-2015.09 snapshot.
+  * Fix PR libstdc++/67707, taken from the trunk. LP: #1499564.
+  * Ship libgcj.spec in gcj-5 instead of gcj-5-jdk. Closes: #800010.
+  * gcj-5: Suggest gcj-5-jdk.
+  * Fix base dependency for ada cross library packages.
+  * Add ${shlibs:Depends} for libgnatvsn and libgnatprj.
+  * Link lrealpath.o into libgnatprj. Closes: #800045.
+  * libgnat{svn,prj}-dev: For cross builds, move adainclude and adalib files
+    into the gcc libdir.
+  * Default to POWER8 on ppc64el.
+  * armv8: Fix slt lda missing conditional code (taken from the trunk).
+  * Fix lintian pre-depends-directly-on-multiarch-support warnings.
+
+  [ Aurelien Jarno ]
+  * Apply proposed patch for PR rtl-optimization/67736 when building for
+    mips64 or mips64el. Closes: #800321.
+
+ -- Matthias Klose <doko@debian.org>  Wed, 30 Sep 2015 20:36:50 +0200
+
+gcc-5 (5.2.1-18ubuntu1) wily; urgency=medium
+
+  * Merge with Debian; remaining changes:
+    - Build from upstream sources.
+
+ -- Matthias Klose <doko@ubuntu.com>  Wed, 23 Sep 2015 03:10:37 +0200
+
+gcc-5 (5.2.1-18) unstable; urgency=medium
+
+  * Update to SVN 20150922 (r228023, 5.2.1) from the gcc-5-branch.
+
+  [ Matthias Klose ]
+  * gcc-5-plugin-dev: Depend on libmpc-dev. Closes: #798997.
+  * Fix PR libstdc++/65913, taken from the trunk. Closes: #797577.
+
+  [ YunQiang Su ]
+  * Build again the gnat-5-sjlj package. Closes: #798782.
+  * Fix gnat cross builds, and cross building gnat.
+
+ -- Matthias Klose <doko@debian.org>  Tue, 22 Sep 2015 23:15:17 +0200
+
+gcc-5 (5.2.1-17ubuntu5) wily; urgency=medium
+
+  * Don't assume --push-state/--pop-state being available for every linker.
+    LP: #1496743.
+
+ -- Matthias Klose <doko@ubuntu.com>  Tue, 22 Sep 2015 20:54:29 +0200
+
+gcc-5 (5.2.1-17ubuntu4) wily; urgency=medium
+
+  * gcc-5-plugin-dev: Depend on libmpc-dev. Closes: #798997.
+  * Work around PR c++/65913, link with -latomic when linking with -lstdc++.
+    Closes: #797577.
+
+ -- Matthias Klose <doko@ubuntu.com>  Tue, 15 Sep 2015 17:57:31 +0200
+
+gcc-5 (5.2.1-17ubuntu1) wily; urgency=medium
+
+  * Merge with Debian; remaining changes:
+    - Build from upstream sources.
+
+ -- Matthias Klose <doko@ubuntu.com>  Fri, 11 Sep 2015 03:24:48 +0200
+
+gcc-5 (5.2.1-17) unstable; urgency=medium
+
+  * Update to SVN 20150911 (r227671, 5.2.1) from the gcc-5-branch.
+    - Fix PR c++/67369, ICE on valid code. LP: #1489173.
+
+  [ Matthias Klose ]
+  * Build-depend on linux-libc-dev [m68k] for gcc and gcc-snapshot builds.
+    Closes: #796906.
+  * Don't ignore anymore bootstrap comparison failures on sh4. Closes: #796939.
+  * Fix stage1 cross build for KFreeBSD. Closes: #796901.
+  * libgo: Fix PR go/67508, rewrite lfstack packing/unpacking to look more
+    like that in Go (Michael Hudson). LP: #1472650.
+  * Fix PR target/67143 (AArch64), ICE on valid code. LP: #1481333.
+
+  [ Aurelien Jarno ]
+  * Use --with-mips-plt on mips*.
+  * Build for R2 ISA on mips, mips64 and mips64el.
+  * Optimize for R2 ISA on mipsel.
+  * Only apply mips-fix-loongson2f-nop on mipsel.
+
+  [ YunQiang Su ]
+  * Fix running the acats tests. Closes: #798531.
+
+ -- Matthias Klose <doko@debian.org>  Fri, 11 Sep 2015 03:17:20 +0200
+
+gcc-5 (5.2.1-16ubuntu1) wily; urgency=medium
+
+  * Merge with Debian; remaining changes:
+    - Build from upstream sources.
+
+ -- Matthias Klose <doko@ubuntu.com>  Thu, 03 Sep 2015 16:00:26 +0200
+
+gcc-5 (5.2.1-16) unstable; urgency=medium
+
+  * Update to SVN 20150903 (r227431, 5.2.1) from the gcc-5-branch.
+    - Backport the filesystem TS library.
+  * libstdc++-dev: Install libstdc++fs.a.
+  * Again, configure with --enable-targets=powerpcle-linux on ppc64el.
+  * Apply proposed patch for PR target/67211 (ppc64el).
+  * libgo-dev: Install libgolibbegin.a.
+  * Apply proposed patch for PR target/67280 (ARM). LP: #1482320.
+
+ -- Matthias Klose <doko@debian.org>  Thu, 03 Sep 2015 12:16:15 +0200
+
+gcc-5 (5.2.1-15ubuntu5) wily; urgency=medium
+
+  * Fix libstdc++-breaks (add version for the clustalx breaks).
+
+ -- Matthias Klose <doko@ubuntu.com>  Tue, 25 Aug 2015 17:56:26 +0200
+
+gcc-5 (5.2.1-15ubuntu3) wily; urgency=medium
+
+  * Update to SVN 20150825 (r227166, 5.2.1) from the gcc-5-branch.
+    - Backport the filesystem TS library.
+  * libstdc++-dev: Install libstdc++fs.a.
+  * Again, configure with --enable-targets=powerpcle-linux on ppc64el.
+  * Apply proposed patch for PR target/67211 (ppc64el).
+  * libgo-dev: Install libgolibbegin.a.
+  * Add the PR libstdc++/66145 breaks for wily.
+
+ -- Matthias Klose <doko@ubuntu.com>  Tue, 25 Aug 2015 15:56:11 +0200
+
+gcc-5 (5.2.1-15ubuntu1) wily; urgency=medium
+
+  * Merge with Debian; remaining changes:
+    - Build from upstream sources.
+
+ -- Matthias Klose <doko@ubuntu.com>  Sun, 09 Aug 2015 13:20:15 +0200
+
+gcc-5 (5.2.1-15) unstable; urgency=medium
+
+  * Update to SVN 20150808 (r226731, 5.2.1) from the gcc-5-branch.
+  * Adjust libstdc++-breaks: Break libantlr-dev instead of antlr;
+    adjust libreoffice version (closes: #794203), drop xxsd break (see
+    #793289), remove cython breaks (closes: #794511), add breaks for
+    packages built using cython (chemps2, fiona, guiqwt, htseq, imposm,
+    pysph, pytaglib, python-scipy, python-sfml, rasterio).
+  * Ignore missing libstdc++ symbols on sparc64 (work around #792204).
+
+ -- Matthias Klose <doko@debian.org>  Sat, 08 Aug 2015 11:18:24 +0200
+
+gcc-5 (5.2.1-14) unstable; urgency=high
+
+  * Fix libstdc++6 breaks.
+
+ -- Matthias Klose <doko@debian.org>  Fri, 31 Jul 2015 04:12:08 +0200
+
+gcc-5 (5.2.1-13) unstable; urgency=high
+
+  * Upload to unstable (https://wiki.debian.org/GCC5). See also
+    https://lists.debian.org/debian-devel-announce/2015/07/msg00000.html
+  * Update to SVN 20150730 (r226411, 5.2.1) from the gcc-5-branch.
+    - Fix PR libstdc++/67015. Closes: #793784.
+  * Fix version macros in the plugin-header.h header. Closes: #793478.
+  * libstdc++6: Add breaks for issues tagged with gcc-pr66145.
+  * Add libcpprest2.4 to libstdc++6 breaks. Closes: #784655.
+  * Fix PR c++/66857, taken from the trunk.
+  * Ignore differences in gcc/real.o in the bootstrap build for
+    sh*-*linux-gnu targets.  According to PR 67002, "A rare indeterminacy
+    of the register choice.  Both codes are valid.  It seems very hard to
+    find where has this indeterminacy come from". Suggested by Adrian
+    Glaubitz.
+
+ -- Matthias Klose <doko@debian.org>  Thu, 30 Jul 2015 21:51:25 +0200
+
+gcc-5 (5.2.1-12ubuntu2) wily; urgency=medium
+
+  * Update to SVN 20150729 (r226354, 5.2.1) from the gcc-5-branch.
+    - Fix PR libstdc++/67015. Closes: #793784.
+
+ -- Matthias Klose <doko@ubuntu.com>  Wed, 29 Jul 2015 17:59:18 +0200
+
+gcc-5 (5.2.1-12ubuntu1) wily; urgency=medium
+
+  * Merge with Debian; remaining changes:
+    - Build from upstream sources.
+
+ -- Matthias Klose <doko@ubuntu.com>  Wed, 22 Jul 2015 21:17:54 +0200
+
+gcc-5 (5.2.1-12) experimental; urgency=medium
+
+  * Update to SVN 20150723 (r226105, 5.2.1) from the gcc-5-branch.
+  * Fix PR libstdc++/66145, std::ios_base::failure objects thrown from
+    libstdc++.so using the gcc4-compatible ABI.
+    Just build src/c++11/functexcept.cc using the new ABI. It will break
+    code, which will be handled in the archive by adding Breaks for the
+    affected packages.  Third party code using such code will need a rebuild.
+  * Remove the work around to build with -O1 on sh4.
+
+ -- Matthias Klose <doko@debian.org>  Thu, 23 Jul 2015 14:18:44 +0200
+
+gcc-5 (5.2.1-11ubuntu1) wily; urgency=medium
+
+  * Configure without --disable-libstdcxx-dual-abi.
+  * Configure with --with-default-libstdcxx-abi=new.
+
+ -- Matthias Klose <doko@ubuntu.com>  Fri, 17 Jul 2015 08:14:56 +0200
+
+gcc-5 (5.2.1-1ubuntu1) wily; urgency=medium
+
+  * Merge with Debian; remaining changes:
+    - Build from upstream sources.
+
+ -- Matthias Klose <doko@ubuntu.com>  Thu, 16 Jul 2015 16:58:50 +0200
+
+gcc-5 (5.2.1-1) experimental; urgency=medium
+
+  * GCC 5.2 release.
+  * Update to SVN 20150716 (r225880, 5.2.1) from the gcc-5-branch.
+  * Require version 5.2 for the libstdc++6 cxx symbols.
+  * Ignore missing libstdc++ symbols on sparc64 (work around #792204).
+  * Go escape analysis: analyze multiple result type assertions (taken
+    from the trunk).
+
+ -- Matthias Klose <doko@debian.org>  Thu, 16 Jul 2015 15:35:44 +0200
+
+gcc-5 (5.1.1-14ubuntu1) wily; urgency=medium
+
+  * Merge with Debian; remaining changes:
+    - Build from upstream sources.
+
+ -- Matthias Klose <doko@ubuntu.com>  Sat, 11 Jul 2015 13:00:26 +0200
+
+gcc-5 (5.1.1-14) unstable; urgency=medium
+
+  * Update to SVN 20150711 (r225710, 5.1.1) from the gcc-5-branch.
+
+ -- Matthias Klose <doko@debian.org>  Sat, 11 Jul 2015 11:57:19 +0200
+
+gcc-5 (5.1.1-13ubuntu1) wily; urgency=medium
+
+  * Merge with Debian; remaining changes:
+    - Build from upstream sources.
+
+ -- Matthias Klose <doko@ubuntu.com>  Tue, 07 Jul 2015 14:29:11 +0200
+
+gcc-5 (5.1.1-13) unstable; urgency=medium
+
+  * Update to SVN 20150706 (r225471, 5.1.1) from the gcc-5-branch.
+  * Update libasan symbol files.
+  * Configure --with-fp-32=xx on all mips targets, setting MIPS O32 default
+    to FPXX (YunQiang Su). Closes: #789612.
+  * Update libgccjit symbol file.
+  * Add x32 symbols files for libgcc1 and libstdc++6.
+  * libgccjit0: Add breaks for python-gccjit and python3-gccjit.
+
+ -- Matthias Klose <doko@debian.org>  Mon, 06 Jul 2015 19:55:08 +0200
+
+gcc-5 (5.1.1-12ubuntu1) wily; urgency=medium
+
+  * Merge with Debian; remaining changes:
+    - Build from upstream sources.
+
+ -- Matthias Klose <doko@ubuntu.com>  Tue, 23 Jun 2015 12:53:45 +0200
+
+gcc-5 (5.1.1-12) unstable; urgency=medium
+
+  * Update to SVN 20150622 (r224724, 5.1.1) from the gcc-5-branch.
+  * Update symbols files for mips64 libatomic and libstdc++ (YunQiang Su).
+    Closes: #788990.
+  * Fix "empty-binary-package" lintian warnings.
+
+ -- Matthias Klose <doko@debian.org>  Mon, 22 Jun 2015 14:37:49 +0200
+
+gcc-5 (5.1.1-11ubuntu1) wily; urgency=medium
+
+  * Merge with Debian; remaining changes:
+    - Build from upstream sources.
+
+ -- Matthias Klose <doko@ubuntu.com>  Wed, 17 Jun 2015 14:38:38 +0200
+
+gcc-5 (5.1.1-11) unstable; urgency=medium
+
+  * Update to SVN 20150616 (r224519, 5.1.1) from the gcc-5-branch.
+  * gccgo: escape: Analyze binary expressions (taken from the trunk).
+  * Explicitly build with -Wl,--no-relax on alpha again.
+  * Build with -O1 on sh4 (try to work around PR target/66358).
+
+ -- Matthias Klose <doko@debian.org>  Tue, 16 Jun 2015 16:11:59 +0200
+
+gcc-5 (5.1.1-10) unstable; urgency=medium
+
+  * Update to SVN 20150613 (r224454, 5.1.1) from the gcc-5-branch.
+  * Make removal of byte-compiled libstdc++ pretty printer files more
+    robust. Closes: #787630.
+  * Fix mips 32bit (o32) multilib builds (YunQiang Su).
+  * Build target libraries with -Wl,-z,relro.
+  * Build libstdc++6 when building the common libraries.
+  * Fix a bunch of lintian warnings.
+
+ -- Matthias Klose <doko@debian.org>  Sat, 13 Jun 2015 12:59:17 +0200
+
+gcc-5 (5.1.1-9ubuntu2) wily; urgency=medium
+
+  * Merge with Debian; remaining changes:
+    - Build from upstream sources.
+
+ -- Matthias Klose <doko@ubuntu.com>  Wed, 03 Jun 2015 01:02:23 +0200
+
+gcc-5 (5.1.1-9) unstable; urgency=medium
+
+  * Update to SVN 20150602 (r224029, 5.1.1) from the gcc-5-branch.
+  * Remove byte-compiled libstdc++ pretty printer files on upgrade.
+    Closes: #785939.
+  * Fix dangling libgccjit.so symlink.
+  * Fix base dependency for rtlibs stage builds.
+  * Fix build failure of the hppa64 cross compiler, introduced by the
+    gnat cross patches. Closes: #786692.
+  * Update README.source (Michael Vogt).
+  * libgo: syscall.Sendfile(): Apply proposed patch for PR go/66378.
+    (Michael Vogt). LP: #1460530.
+  * Set CC and CXX matching the same GCC version for the stage1 build.
+  * Work around PR go/66368, build libgo with -fno-stack-protector.
+    LP: #1454183.
+
+ -- Matthias Klose <doko@debian.org>  Wed, 03 Jun 2015 00:49:41 +0200
+
+gcc-5 (5.1.1-8ubuntu1) wily; urgency=medium
+
+  * Merge with Debian; remaining changes:
+    - Build from upstream sources.
+
+ -- Matthias Klose <doko@ubuntu.com>  Thu, 28 May 2015 12:51:48 +0200
+
+gcc-5 (5.1.1-8) unstable; urgency=medium
+
+  * Update to SVN 20150528 (r223816, 5.1.1) from the gcc-5-branch.
+  * Set the priorities of the *-dev-*-cross packages to extra.
+  * Prepare to change the base dependency for *-cross packages.
+  * Fix dependencies for stage1 and stage2 builds.
+  * Relax dependencies on binary indep *-dev-*-cross packages.
+  * Disable building gdc on sh4 (bootstrap comparison failure).
+
+ -- Matthias Klose <doko@debian.org>  Thu, 28 May 2015 15:51:00 +0200
+
+gcc-5 (5.1.1-7) unstable; urgency=medium
+
+  * Update to SVN 20150522 (r223579, 5.1.1) from the gcc-5-branch.
+  * Add description for the ada-gnattools-cross patch (YunQiang Su).
+  * Provide a rtlibs stage to build a subset of target library packages.
+  * Make symbols file symlinking for cross builds more robust.
+  * Prefer gnatgcc-5 over gnatgcc when building native packages.
+  * Various fixes to build a gnat cross compiler:
+    - Fix dependencies of packages.
+    - Fix building libgnatprj and libgnatvsn (still needed to figure
+      out if these are target or host libraries).
+  * Fix building cross compilers with dpkg 1.18.
+
+ -- Matthias Klose <doko@debian.org>  Fri, 22 May 2015 18:20:01 +0200
+
+gcc-5 (5.1.1-6ubuntu1) wily; urgency=medium
+
+  * Merge with Debian; remaining changes:
+    - Build from upstream sources.
+  * Fix dependencies for stage1 and stage2 builds.
+  * Disable building gdc on sh4.
+
+ -- Matthias Klose <doko@ubuntu.com>  Tue, 19 May 2015 18:29:02 +0200
+
+gcc-5 (5.1.1-6) unstable; urgency=medium
+
+  * Update to SVN 20150519 (r223346, 5.1.1) from the gcc-5-branch.
+  * Don't build gdc-multilib on armel.
+  * Remove old CFLAGS/LDFLAGS settings to build gdc.
+  * Remove reference to .ico file in NEWS.html.
+  * Fix gcc's dependency on libcc1-0 for native builds.
+  * Fix stripping the rpath when cross-building cross compilers.
+  * Remove work arounds to build 64bit multilibs on 32bit targets,
+    now properly fixed upstream.
+  * Partially apply patches to build a gnat cross compiler (submitted
+    by YunQiang Su).
+    - gnatmake: Call the versioned gnatbind and gnatlink commands.
+      Closes: #782257.
+    - Allow libgnatprj and libgnatvsn to cross build. Addresses: #783372.
+    - New patch ada-gnattools-cross.diff (no documentation).
+  * Backport patch for gccgo:
+    - gccgo: If unary & does not escape, the var does not escape.
+  * Apply the backported patches for the go escape analysis. Need to
+    be enabled with -fgo-optimize-alloc (this option may go away again).
+  * Re-enable running the tests.
+
+ -- Matthias Klose <doko@debian.org>  Tue, 19 May 2015 10:33:40 +0200
+
+gcc-5 (5.1.1-5ubuntu4) wily; urgency=medium
+
+  * Update to SVN 20150513 (r223155, 5.1.1) from the gcc-5-branch.
+  * Don't build gdc-multilib on armel.
+
+ -- Matthias Klose <doko@ubuntu.com>  Wed, 13 May 2015 14:36:20 +0200
+
+gcc-5 (5.1.1-5ubuntu3) wily; urgency=medium
+
+  * Fix gnat build dependencies.
+
+ -- Matthias Klose <doko@ubuntu.com>  Sun, 10 May 2015 02:46:32 +0200
+
+gcc-5 (5.1.1-5ubuntu2) wily; urgency=medium
+
+  * Update to SVN 20150509 (r222970, 5.1.1) from the gcc-5-branch.
+  * Fix gotools configury.
+  * Configure with
+      --disable-libstdcxx-dual-abi --with-default-libstdcxx-abi=c++98
+    While libstdc++ provides a dual ABI to support both the c++98 and c++11
+    ABI, there is no committment on compatibility of the old experimental
+    c++11 ABI from GCC 4.9 and the stable c++11 ABI in GCC 5.
+    Closes: #784655.
+
+ -- Matthias Klose <doko@ubuntu.com>  Sat, 09 May 2015 19:24:57 +0200
+
+gcc-5 (5.1.1-5ubuntu1) wily; urgency=medium
+
+  * Merge with Debian; remaining changes:
+    - Build from upstream sources.
+
+ -- Matthias Klose <doko@ubuntu.com>  Tue, 05 May 2015 17:52:14 +0200
+
+gcc-5 (5.1.1-5) unstable; urgency=medium
+
+  * Update to SVN 20150507 (r222873, 5.1.1) from the gcc-5-branch.
+  * Fix 32bit libstdc++ symbols files for kfreebsd-amd64.
+  * libx32phobos-dev: Don't depend on libx32z-dev, when not available.
+  * Fix gotools configury.
+  * Configure with
+      --disable-libstdcxx-dual-abi --with-default-libstdcxx-abi=c++98
+    While libstdc++ provides a dual ABI to support both the c++98 and c++11
+    ABI, there is no committment on compatibility of the old experimental
+    c++11 ABI from GCC 4.9 and the stable c++11 ABI in GCC 5.
+    Closes: #784655.
+
+ -- Matthias Klose <doko@debian.org>  Fri, 08 May 2015 18:48:49 +0200
+
+gcc-5 (5.1.1-4) unstable; urgency=medium
+
+  * Update to SVN 20150503 (r222751, 5.1.1) from the gcc-5-branch.
+    - Fix build failure on alpha.
+  * Fix applying the cross-biarch patch for stage1 builds.
+  * Fix libstdc++ symbols files for kfreebsd-amd64.
+  * Remove libn32phobos-5-dev from the control file.
+  * Really disable gnat on x32.
+
+ -- Matthias Klose <doko@debian.org>  Sat, 02 May 2015 19:18:57 +0200
+
+gcc-5 (5.1.1-3) unstable; urgency=high
+
+  * Update to SVN 20150430 (r222660, 5.1.1) from the gcc-5-branch.
+  * Fix libstdc++ symbols files for kfreebsd-i386.
+  * PR libstdc++/62258, fix for std::uncaught_exception, taken from the trunk.
+    LP: #1439451.
+  * Backport patches for gccgo (not yet applied):
+    - Consider multi-result calls in escape analysis.
+    - Propagate escape info from closures to enclosed variables.
+    - Analyze function values and conversions.
+    - Use backend interface for stack allocation.
+  * More libstdc++ symbols updates for the Hurd and KFreeBSD.
+  * config-ml.in: Add D support.
+  * Update cross-biarch.diff to support D and Go.
+  * Apply the cross-biarch patch for every cross build.
+
+ -- Matthias Klose <doko@debian.org>  Thu, 30 Apr 2015 15:42:05 +0200
+
+gcc-5 (5.1.1-2) unstable; urgency=medium
+
+  * Update to SVN 20150428 (r222550, 5.1.1) from the gcc-5-branch.
+  * Fix the gnat build dependency.
+  * Don't build go and gofmt for cross compilers.
+
+ -- Matthias Klose <doko@ubuntu.com>  Tue, 28 Apr 2015 23:57:14 +0200
+
+gcc-5 (5.1.1-1) unstable; urgency=medium
+
+  * GCC 5.1.0 release.
+  * Update to SVN 20150424 (r222416, 5.1.1) from the gcc-5-branch.
+  * Update NEWS files.
+  * Apply the ada-bootstrap-compare patch for snapshot builds as well.
+  * Update libasan, libgomp and libstdc++ symbols files.
+  * Don't ignore errors in dh_makeshlibs and dh_shlibdeps anymore, symbols
+    files should be uptodate now.
+  * Split out the sjlj build related things from the ada-acats patch into
+    a new ada-acats-sjlj patch.
+  * Don't build libx32phobos-5-dev when not building x32 multilibs.
+  * Fix standard C++ include directory for cross builds. Closes: #783241.
+  * Ignore bootstrap comparison failure on ia64. Filed upstream as
+    PR middle-end/65874.
+  * gccgo: Add (don't yet apply) a patch to implement escape analysis (taken
+    from the trunk). Turned off by default, enable with -fgo-optimize-alloc.
+
+ -- Matthias Klose <doko@debian.org>  Fri, 24 Apr 2015 18:42:39 +0200
+
+gcc-5 (5.1.0-0ubuntu11) vivid; urgency=medium
+
+  * GCC 5.1.0 release.
+  * Update NEWS files.
+  * gccgo: Implement escape analysis (taken from the trunk). Turned off
+    by default, enable with -fgo-optimize-alloc.
+
+ -- Matthias Klose <doko@ubuntu.com>  Wed, 22 Apr 2015 14:54:11 +0200
+
+gcc-5 (5.1~rc2-0ubuntu12) vivid; urgency=medium
+
+  * Fix libasan symbols.
+
+ -- Matthias Klose <doko@ubuntu.com>  Wed, 22 Apr 2015 00:12:03 +0200
+
+gcc-5 (5.1~rc2-0ubuntu11) vivid; urgency=medium
+
+  * GCC 5.1 release candidate 2.
+  * Update to SVN 20150421 (r222253) from the gcc-5-branch.
+
+ -- Matthias Klose <doko@ubuntu.com>  Tue, 21 Apr 2015 18:53:06 +0200
+
+gcc-5 (5.1~rc1-0ubuntu12) vivid; urgency=medium
+
+  * Update to SVN 20150419 (r222218) from the gcc-5-branch.
+  * Apply the ada-bootstrap-compare patch for snapshot builds as well.
+  * Update libasan, libgomp and libstdc++ symbols files.
+  * Don't ignore errors in dh_makeshlibs and dh_shlibdeps anymore, symbols
+    files should be uptodate now.
+  * Split out the sjlj build related things from the ada-acats patch into
+    a new ada-acats-sjlj patch.
+  * Ignore bootstrap comparison failure on ia64. Filed upstream as
+    PR middle-end/65874.
+
+ -- Matthias Klose <doko@ubuntu.com>  Sun, 19 Apr 2015 15:57:49 +0200
+
+gcc-5 (5.1~rc1-0ubuntu11) vivid; urgency=medium
+
+  * GCC 5.1 release candidate 1.
+  * Update to SVN 20150414 (r222066) from the gcc-5-branch.
+  * Update GDC to the gcc-5 branch, 20140414.
+  * Don't build libobjc, when not building the common libraries.
+  * Don't run the gccjit tests on KFreeBSD. Works around #782444:.
+  * Fix not building libs built by the next GCC version.
+
+ -- Matthias Klose <doko@ubuntu.com>  Tue, 14 Apr 2015 03:01:02 +0200
+
+gcc-5 (5-20150410-0ubuntu11) vivid; urgency=medium
+
+  * Update to SVN 20150410.
+  * Fix /usr/include/c++/5.0.0 symlink.
+  * Re-enable building the D frontend. Closes: #782254.
+  * gccgo: Install libnetgo.
+
+ -- Matthias Klose <doko@ubuntu.com>  Sat, 11 Apr 2015 02:21:24 +0200
+
+gcc-5 (5-20150404-0ubuntu11) vivid; urgency=medium
+
+  * Update to SVN 20150404.
+  * Don't explicitly configure --with-gxx-include-dir and an absolute path,
+    so the toolchain remains relocatible. Instead, canonicalize the include
+    path names at runtime.
+
+ -- Matthias Klose <doko@ubuntu.com>  Sat, 04 Apr 2015 23:34:58 +0200
+
+gcc-5 (5-20150401-0ubuntu12) vivid; urgency=medium
+
+  * Update to SVN 20150401.
+  * Don't link libgnatprj using --no-allow-shlib-undefined on older releases.
+  * Don't build libmpx on older releases.
+  * Remove the work around to build libgccjit on arm64.
+  * Fix the libgccjit build using the just built compiler.
+  * Don't break other gcc, gcj, gnat -base packages for backports, only
+    needed for dist-upgrades.
+  * Don't add -gtoggle to STAGE3_CFLAGS (disabling the bootstrap comparison).
+    Instead, ignore the one differing file (gcc/ada/a-except.o) for now.
+    See #781457, PR ada/65618.
+  * Update libasan, libtsan, libgfortran and libstdc++ symbols files.
+  * Add symbols files for libmpx, libgccjit and libcc1.
+
+ -- Matthias Klose <doko@ubuntu.com>  Wed, 01 Apr 2015 11:27:39 +0200
+
+gcc-5 (5-20150329-1ubuntu11) vivid; urgency=medium
+
+  * Update to SVN 20150329.
+
+ -- Matthias Klose <doko@ubuntu.com>  Sun, 29 Mar 2015 19:13:54 +0200
+
+gcc-5 (5-20150329-1) experimental; urgency=medium
+
+  * Update to SVN 20150329.
+  * Fix building the gnat-5-doc package.
+  * Fix gnat build dependencies.
+  * Fix installation of the gnat upstream ChangeLog. Closes: #781451.
+  * Restore the bootstrap-debug.mk patch to the ada-mips patch
+    for debugging purposes. See #781457.
+
+ -- Matthias Klose <doko@debian.org>  Sun, 29 Mar 2015 18:53:29 +0200
+
+gcc-5 (5-20150328-0ubuntu11) vivid; urgency=medium
+
+  * Update to SVN 20150328.
+  * Fix building the gnat-5-doc package.
+  * Fix installation of the gnat upstream ChangeLog. Closes: #781451.
+  * Restore the bootstrap-debug.mk patch to the ada-mips patch
+    for debugging purposes. See #781457.
+
+ -- Matthias Klose <doko@ubuntu.com>  Sat, 28 Mar 2015 15:08:55 +0100
+
+gcc-5 (5-20150327-1) experimental; urgency=medium
+
+  * Update to SVN 20150327.
+  * Update libcc1 build support.
+  * Fix syntax in libstdc++ symbols file. Closes: #780991.
+  * Fix PR go/65417: Add support for PPC32 relocs to debug/elf. LP: #1431388.
+  * Fix PR go/65462: Fix go get dependencies. LP: #1432497.
+  * Limit the omp.h multilib fix to Linux. Closes: #778440.
+  * For ICEs, dump the preprocessed source file to stderr when in a
+    distro build environment.
+  * Remove the bootstrap-debug.mk patch from the ada-mips patch.
+  * gnat related work (partly based on #780640):
+    - Update patches for GCC 5.
+    - Build the gnat packages from the gcc-5 source package.
+    - Don't build a gnat-base package from the gcc-5 source.
+    - Stop building the gnat-5-sjlj package for now, patch needs an update.
+    - Fix the packaging when not building the gnat-5-sjlj package.
+    - Don't apply the ada-symbolic-tracebacks, patch needs an update.
+    - Fix the libgnatprj build, build with -DIN_GCC.
+  * Replace cloog/ppl build bits with isl build bits.
+
+ -- Matthias Klose <doko@debian.org>  Fri, 27 Mar 2015 21:05:16 +0100
+
+gcc-5 (5-20150321-1ubuntu12) vivid; urgency=medium
+
+  * Update to SVN 20150321.
+  * Move the libcc1plugin from the gcc-5-plugin-dev package into the
+    gcc-5 package.
+  * Configure with --enable-checking=yes (instead of =release).
+
+ -- Matthias Klose <doko@ubuntu.com>  Sat, 21 Mar 2015 15:28:30 +0100
+
+gcc-5 (5-20150316-1ubuntu11) vivid; urgency=medium
+
+  * Update to SVN 20150316.
+
+ -- Matthias Klose <doko@ubuntu.com>  Mon, 16 Mar 2015 11:56:03 +0100
+
+gcc-5 (5-20150314-1ubuntu11) vivid; urgency=medium
+
+  * Update to SVN 20150314.
+
+ -- Matthias Klose <doko@ubuntu.com>  Sat, 14 Mar 2015 14:29:28 +0100
+
+gcc-5 (5-20150312-1ubuntu11) vivid; urgency=medium
+
+  * Update to SVN 20150312.
+    - PR go/65404, enable cgo on arm64 and powerpc. LP: #1431032.
+  * Fix libmpx multilib builds.
+
+ -- Matthias Klose <doko@ubuntu.com>  Thu, 12 Mar 2015 23:11:21 +0100
+
+gcc-5 (5-20150311-1ubuntu12) vivid; urgency=medium
+
+  * Update to SVN 20150311.
+    - libgo: Add arm64 to the pointer size map (Michael Hudson).
+    - libgo: Add ppc to the pointer size map.
+  * Enable libmpx builds on amd64 and i386.
+  * Update the gcc-multiarch patch for mips64 (YunQiang Su).
+    Closes: #776402, #780271.
+
+ -- Matthias Klose <doko@ubuntu.com>  Wed, 11 Mar 2015 19:56:38 +0100
+
+gcc-5 (5-20150307-1ubuntu11) vivid; urgency=medium
+
+  * Update to SVN 20150307.
+    - Update gccgo to Go 1.4.2.
+  * Enable libsanitizer for AArch64 and POWERPC LE (asan, ubsan).
+  * Remove the support to build empty libsanitizer packages on powerpc
+    and ppc64; libsanitizer should be stable on these architectures.
+  * Fix libcc1.so symlink. Closes: #779341.
+  * Revert the fix for PR65150 on armel and armhf to restore bootstrap.
+  * Don't strip the libgo library, or some things won't work as documented,
+    like runtime.Callers. Still keep the -dbg packages and check if some
+    debug information can be stripped.
+  * gccgo-5: Install alternatives for go and gofmt.
+
+ -- Matthias Klose <doko@ubuntu.com>  Sat, 07 Mar 2015 12:36:40 +0100
+
+gcc-5 (5-20150226-1) experimental; urgency=medium
+
+  * Update to SVN 20150226.
+    - Fix PR c/65040 (closes: #778514), PR tree-optimization/65053
+      (closes: #778070, #778071), PR c++/64898 (closes: #778472).
+  * Allow not to strip the compiler executables to be able to print backtraces
+    for ICEs.
+  * Fix gnat build on mips64el (James Cowgill). Addresses: #779191.
+  * Fix the hppa64 cross build (John David Anglin). Closes: #778658.
+  * Fix libstdc++ pretty printers for Python3. Closes: #778436.
+
+ -- Matthias Klose <doko@debian.org>  Thu, 26 Feb 2015 08:18:23 +0100
+
+gcc-5 (5-20150205-0ubuntu11) vivid; urgency=medium
+
+  * Update to SVN 20150205.
+
+ -- Matthias Klose <doko@ubuntu.com>  Thu, 05 Feb 2015 01:57:43 +0100
+
+gcc-5 (5-20150203-0ubuntu12) vivid; urgency=medium
+
+  * Don't disable bootstrap mode for the jit build on arm64, gets
+    miscompiled.
+
+ -- Matthias Klose <doko@ubuntu.com>  Tue, 03 Feb 2015 13:39:02 +0100
+
+gcc-5 (5-20150203-0ubuntu11) vivid; urgency=medium
+
+  * Update to SVN 20150203.
+
+ -- Matthias Klose <doko@ubuntu.com>  Tue, 03 Feb 2015 13:39:02 +0100
+
+gcc-5 (5-20150129-0ubuntu2) vivid; urgency=medium
+
+  * Fix the libstdc++ build.
+
+ -- Matthias Klose <doko@ubuntu.com>  Thu, 29 Jan 2015 19:09:16 +0100
+
+gcc-5 (5-20150129-0ubuntu1) vivid; urgency=medium
+
+  * Update to SVN 20150129.
+  * Configure --with-default-libstdcxx-abi=c++11 for development,
+    --with-default-libstdcxx-abi=c++98 for backports.
+
+ -- Matthias Klose <doko@ubuntu.com>  Thu, 29 Jan 2015 17:47:03 +0100
+
+gcc-5 (5-20150128-0ubuntu1) vivid; urgency=medium
+
+  * Update to SVN 20150128.
+  * Update GDC for GCC 5.
+  * Build GDC multilib packages.
+  * Update cross-install-location.diff for gcc-5. Closes: #776100.
+  * Re-enable libgccjit on AArch64.
+
+ -- Matthias Klose <doko@ubuntu.com>  Wed, 28 Jan 2015 23:30:09 +0100
+
+gcc-5 (5-20150127-0ubuntu2) vivid; urgency=medium
+
+  * Disable libgccjit on AArch64, compiler issue
+
+ -- Matthias Klose <doko@ubuntu.com>  Tue, 27 Jan 2015 18:05:12 +0100
+
+gcc-5 (5-20150127-0ubuntu1) vivid; urgency=medium
+
+  * Update to SVN 20150127.
+  * Disable libgccjit on AArch64.
+
+ -- Matthias Klose <doko@ubuntu.com>  Tue, 27 Jan 2015 14:39:03 +0100
+
+gcc-5 (5-20150126-0ubuntu3) vivid; urgency=medium
+
+  * Update to SVN 20150126.
+  * More symbol file updates.
+  * Fix libbacktrace and libsanitizer multilib builds.
+  * Fix libssp builds on 64bit architectures.
+
+ -- Matthias Klose <doko@ubuntu.com>  Mon, 26 Jan 2015 18:22:53 +0100
+
+gcc-5 (5-20150121-0ubuntu2) vivid; urgency=medium
+
+  * GCC 5.
+  * Build new binary packages libcc1-0, libgccjit0, libgccjit-5-dev,
+    libgccjit-5-dbg, libgccjit-5-doc.
+  * Update symbols files (still incomplete).
+
+ -- Matthias Klose <doko@ubuntu.com>  Tue, 20 Jan 2015 12:45:13 +0100
+
+gcc-4.9 (4.9.2-10ubuntu2) vivid; urgency=medium
+
+  * Update to SVN 20150116 (r219730) from the gcc-4_9-branch.
+    - Fix PR libstdc++/64476, PR libstdc++/60966, PR libstdc++/64239,
+      PR middle-end/63704 (ice on valid), PR target/64513 (x86),
+      PR rtl-optimization/64286 (wrong code), PR tree-optimization/64563 (ice),
+      PR middle-end/64391 (ice on valid), PR c++/54442 (ice on valid),
+      PR target/64358 (rs6000, wrong code), PR target/63424 (AArch64, ice on
+      valid), PR target/64479 (SH), PR rtl-optimization/64536, PR target/64505
+      (rs6000), PR target/61413 (ARM, wrong code), PR target/64507 (SH),
+      PR target/64409 (x32, ice on valid), PR c++/64487 (ice on valid),
+      PR c++/64352, PR c++/64251 (rejects valid), PR c++/64297 (ice on valid),
+      PR c++/64029 (ice on valid), PR c++/63657 (diagnostic), PR c++/38958
+      (diagnostic), PR c++/63658 (rejects valid), PR ada/64492 (build),
+      PR fortran/64528 (ice on valid), PR fortran/63733 (wrong code),
+      PR fortran/56867 (wrong code), PR fortran/64244 (ice on valid).
+  * Update the Linaro support to the 4.9-2015.01 release.
+
+ -- Matthias Klose <doko@ubuntu.com>  Fri, 16 Jan 2015 14:28:09 +0100
+
+gcc-4.9 (4.9.2-10ubuntu1) vivid; urgency=medium
+
+  * Merge with Debian; remaining changes:
+    - Build from upstream sources.
+
+ -- Matthias Klose <doko@ubuntu.com>  Wed, 31 Dec 2014 04:54:06 +0100
+
+gcc-4.9 (4.9.2-10) unstable; urgency=medium
+
+  * Really add x32 multilib packages for i386 cross builds to the control file.
+    Closes: #773265.
+  * Use the final binutils 2.25 release.
+  * Tighten the gcc-4.9 dependency on libgcc-4.9-dev (YunQiang Su).
+
+ -- Matthias Klose <doko@debian.org>  Thu, 25 Dec 2014 18:10:51 +0100
+
+gcc-4.9 (4.9.2-9) unstable; urgency=medium
+
+  * Update to SVN 20141220 (r218987) from the gcc-4_9-branch.
+    - Fix PR libstdc++/64302, PR libstdc++/64303, PR c++/60955,
+      PR rtl-optimization/64010 (wrong code), PR sanitizer/64265 (wrong code).
+  * Add x32 multilib packages for i386 cross builds to the control file.
+    Closes: #773265.
+  * Fix mips64el multilib cross builds. Closes: #772665.
+  * libphobos-4.x-dev: Stop providing libphobos-dev, now a real package.
+
+ -- Matthias Klose <doko@debian.org>  Sat, 20 Dec 2014 07:47:15 +0100
+
+gcc-4.9 (4.9.2-8) unstable; urgency=medium
+
+  * Update to SVN 20141214 (r218721) from the gcc-4_9-branch.
+    - Fix PR tree-optimization/62021 (ice), PR middle-end/64225 (missed
+      optimization), PR libstdc++/64239, PR rtl-optimization/64037 (wrong
+      code), PR target/64200 (x86, ice), PR tree-optimization/64269 (ice).
+  * Don't build libphobos multilibs, there is no gdc-multilib build.
+  * Really disable the sanitizer libs on powerpc, ppc64 and ppc64el.
+  * Paste config.log files to stdout in case of build errors.
+
+ -- Matthias Klose <doko@debian.org>  Sun, 14 Dec 2014 18:43:49 +0100
+
+gcc-4.9 (4.9.2-7ubuntu3) vivid; urgency=medium
+
+  * Fix the powerpc build.
+
+ -- Matthias Klose <doko@ubuntu.com>  Thu, 11 Dec 2014 15:52:15 +0100
+
+gcc-4.9 (4.9.2-7ubuntu2) vivid; urgency=medium
+
+  * Update to SVN 20141211 (r218620) from the gcc-4_9-branch.
+    - Fix PR tree-optimization/62021 (ice), PR middle-end/64225 (missed
+      optimization).
+  * Don't build libphobos multilibs, there is no gdc-multilib built.
+  * Really disable the sanitizer libs on powerpc, ppc64 and ppc64el.
+  * Paste config.log files to stdout in case of build errors.
+
+ -- Matthias Klose <doko@ubuntu.com>  Thu, 11 Dec 2014 12:04:13 +0100
+
+gcc-4.9 (4.9.2-7ubuntu1) vivid; urgency=medium
+
+  * Merge with Debian; remaining changes:
+    - Build from upstream sources.
+
+ -- Matthias Klose <doko@ubuntu.com>  Wed, 10 Dec 2014 15:27:33 +0100
+
+gcc-4.9 (4.9.2-7) unstable; urgency=medium
+
+  * Update to SVN 20141210 (r218575) from the gcc-4_9-branch.
+    - Fix PR libstdc++/64203, PR target/55351 (SH), PR tree-optimization/61686,
+      PR bootstrap/64213.
+    - libgcc hppa backports.
+  * Fix cross builds with dpkg-architecture unconditionally exporting
+    target variables. For now specify the target architecture
+    in debian/target. This still needs to work with older dpkg versions,
+    so don't "simplify" the packaging. Closes: #768167.
+
+ -- Matthias Klose <doko@debian.org>  Wed, 10 Dec 2014 13:32:42 +0100
+
+gcc-4.9 (4.9.2-6ubuntu1) vivid; urgency=medium
+
+  * Merge with Debian; remaining changes:
+    - Build from upstream sources.
+
+ -- Matthias Klose <doko@ubuntu.com>  Tue, 09 Dec 2014 13:47:24 +0100
+
+# For older changelog entries, run 'apt-get changelog gcc-4.9-base'

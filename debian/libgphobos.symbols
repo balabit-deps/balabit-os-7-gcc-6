@@ -1,0 +1,12 @@
+libgdruntime.so.68 #PACKAGE# #MINVER#
+#(arch-bits=32)#include "libgphobos.symbols.rt32"
+#(arch-bits=64)#include "libgphobos.symbols.rt64"
+(arch=i386 x32 kfreebsd-i386)#include "libgphobos.symbols.rt32"
+(arch=amd64 kfreebsd-amd64)#include "libgphobos.symbols.rt64"
+(arch=armel armhf)#include "libgphobos.symbols.rtarm32"
+libgphobos.so.68 #PACKAGE# #MINVER#
+#(arch-bits=32)#include "libgphobos.symbols.32"
+#(arch-bits=64)#include "libgphobos.symbols.64"
+(arch=i386 x32 kfreebsd-i386)#include "libgphobos.symbols.32"
+(arch=amd64 kfreebsd-amd64)#include "libgphobos.symbols.64"
+(arch=armel armhf)#include "libgphobos.symbols.arm32"

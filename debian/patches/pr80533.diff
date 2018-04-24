@@ -1,0 +1,27 @@
+# DP: Fix PR middle-end/80533, taken from the trunk.
+
+gcc/
+
+2017-04-27  Richard Biener  <rguenther@suse.de>
+
+	PR middle-end/80533
+	* emit-rtl.c (set_mem_attributes_minus_bitpos): When
+	stripping ARRAY_REFs from MEM_EXPR make sure we're not
+	keeping a reference to a trailing array.
+
+Index: b/src/gcc/emit-rtl.c
+===================================================================
+--- a/src/gcc/emit-rtl.c
++++ b/src/gcc/emit-rtl.c
+@@ -1930,7 +1930,10 @@ set_mem_attributes_minus_bitpos (rtx ref
+ 	  while (TREE_CODE (t2) == ARRAY_REF);
+ 
+ 	  if (DECL_P (t2)
+-	      || TREE_CODE (t2) == COMPONENT_REF)
++	      || (TREE_CODE (t2) == COMPONENT_REF
++		  /* For trailing arrays t2 doesn't have a size that
++		     covers all valid accesses.  */
++		  && ! array_at_struct_end_p (t)))
+ 	    {
+ 	      attrs.expr = t2;
+ 	      attrs.offset_known_p = false;

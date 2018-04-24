@@ -1,0 +1,27 @@
+Description: [asan] Enable 48-bit VMA support on aarch64
+ This patch adds 48-bits VMA support for asan on aarch64. The current
+ 47-bit mask is not suffice since on aarch64 kernel with 48-bit vma
+ (default on ubuntu 16.04) the process may use full VMA range as:
+ .
+ [...]
+ ffffa39a7000-ffffa39a8000 r--p 00000000 00:00 0 [vvar]
+ ffffa39a8000-ffffa39a9000 r-xp 00000000 00:00 0 [vdso]
+ ffffa39a9000-ffffa39aa000 r--p 0001c000 08:02 13631554 /lib/aarch64-linux-gnu/ld-2.23.so
+ ffffa39aa000-ffffa39ac000 rw-p 0001d000 08:02 13631554 /lib/aarch64-linux-gnu/ld-2.23.so
+ ffffc2227000-ffffc2248000 rw-p 00000000 00:00 0 [stack]
+Author: Adhemerval Zanella <adhemerval.zanella@linaro.org>
+Origin: http://llvm.org/svn/llvm-project/compiler-rt/trunk@275792
+Bug-Ubuntu: https://bugs.launchpad.net/bugs/1709727
+Applied-Upstream: svn://gcc.gnu.org/svn/gcc/trunk@241977
+
+--- a/src/libsanitizer/sanitizer_common/sanitizer_platform.h	2015-11-23 09:07:18.342543000 +0000
++++ b/src/libsanitizer/sanitizer_common/sanitizer_platform.h	2017-08-09 21:13:12.883595484 +0000
+@@ -107,6 +107,8 @@
+ // will still work but will consume more memory for TwoLevelByteMap.
+ #if defined(__mips__)
+ # define SANITIZER_MMAP_RANGE_SIZE FIRST_32_SECOND_64(1ULL << 32, 1ULL << 40)
++#elif defined(__aarch64__)
++# define SANITIZER_MMAP_RANGE_SIZE FIRST_32_SECOND_64(1ULL << 32, 1ULL << 48)
+ #else
+ # define SANITIZER_MMAP_RANGE_SIZE FIRST_32_SECOND_64(1ULL << 32, 1ULL << 47)
+ #endif
